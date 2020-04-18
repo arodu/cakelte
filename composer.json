@@ -2,6 +2,7 @@
     "name": "arodu/cakelte",
     "description": "AdminLTE plugin for CakePHP",
     "type": "cakephp-plugin",
+    "language": "PHP",
     "license": "MIT",
     "require": {
         "cakephp/cakephp": "^4.0"
