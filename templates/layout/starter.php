@@ -62,10 +62,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-
         <?= $this->Flash->render() ?>
-        <?= $this->fetch('content') ?>
 
+        <?= $this->fetch('content') ?>
+        
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->

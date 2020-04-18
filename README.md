@@ -1,4 +1,4 @@
-# CakeLTE Plugin: AdminLTE plugin for CakePHP
+# CakeLTE: AdminLTE plugin for CakePHP 4.x
 
 ## Installation
 

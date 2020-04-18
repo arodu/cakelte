@@ -1,9 +1,16 @@
 {
     "name": "arodu/cakelte",
-    "description": "AdminLTE plugin for CakePHP",
+    "description": "CakeLTE: AdminLTE plugin for CakePHP 4.x",
     "type": "cakephp-plugin",
     "language": "PHP",
     "license": "MIT",
+    "homepage": "https://github.com/arodu/cakelte",
+    "authors": [
+      {
+        "name": "Alberto G. Rodriguez U. <arodu.dev@gmail.com>",
+        "homepage": "https://github.com/arodu"
+      }
+    ],
     "require": {
         "cakephp/cakephp": "^4.0"
     },
