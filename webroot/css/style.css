@@ -1,0 +1,32 @@
+ul.pagination{
+  margin-bottom: 0;
+}
+
+th.actions{
+  width: 0;
+}
+
+th a::after{
+  font-family: "Font Awesome 5 Free";
+  content: "\f0dc";
+  display: inline-block;
+  margin-left: .2rem;
+  opacity: .3;
+  font-size: .8rem;
+}
+
+th a.desc::after, th a.asc:hover::after{
+  content: "\f0dd";
+  opacity: 1;
+}
+
+th a.asc::after, th a.desc:hover::after, th a:hover::after{
+  content: "\f0de";
+  opacity: 1;
+}
+
+.card-title {
+  display: block;
+  float: inherit;
+  margin-bottom: .5rem;
+}
