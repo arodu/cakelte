@@ -28,23 +28,35 @@ public function bootstrap(){
 
 ## How to use
 
-set the layout into AppController.php
+use traint into `src/View/AppView.php`
 ```php
-  public function initialize(){
+namespace App\View;
 
-    //...
-    $this->viewBuilder()
-      ->setClassName('CakeLTE.CakeLTE')
-      ->setLayout('CakeLTE.starter');
-    //...
+use Cake\View\View;
+use CakeLTE\View\CakeLTETrait;
 
-  }
+class AppView extends View{
+    use CakeLTETrait;
+
+    public function initialize(): void{
+      parent::initialize();
+      $this->initializeCakeLTE();
+      //...
+    }
+
+}
 ```
 
-copy the element files in your app
+you can change the layout with initializeCakeLTE options
+```php
+$this->initializeCakeLTE(['layout'=>'login']);
+```
+default layout is `CakeLTE.starter`
+
+### Copy element files
 * `/plugins/CakeLTE/templates/element/*`
 
-Create code from bake
+### Create code from bake
 ```bash
 bin/cake bake all [command] -t CakeLTE
 ```
