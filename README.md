@@ -54,10 +54,16 @@ $this->initializeCakeLTE(['layout'=>'login']);
 default layout is `CakeLTE.starter`
 
 ### Copy element files
-Replace the files elements
+Link to debug
+```php
+echo $this->Html->link(__('debug'), ['plugin'=>'CakeLTE', 'controller'=>'Pages', 'action'=>'debug']); ?>
+```
+
+* {your-url}/cake-lte/debug
 
 ![Page Debug](docs/page-debug.png)
 
+Replace the files elements
 * `src/templates/element/aside/main.php`
 * `src/templates/element/content/breadcrumb.php`
 * `src/templates/element/content/header.php`

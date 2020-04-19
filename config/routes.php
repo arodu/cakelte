@@ -1,11 +1,12 @@
 <?php
 use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\Router;
+use Cake\Routing\RouteBuilder;
 
 Router::plugin(
     'CakeLTE',
     ['path' => '/cake-lte'],
     function ($routes) {
-      $routes->get('/debug', ['controller' => 'Pages', 'action' => 'debug']);
+      $routes->connect('/debug', ['controller' => 'Pages', 'action' => 'debug']);
     }
 );
