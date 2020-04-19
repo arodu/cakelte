@@ -42,9 +42,12 @@ trait CakeLTETrait{
   }
 
   public function element(string $name, array $data = [], array $options = []): string {
-    if( !$this->elementExists($name) ){
+    if( $this->elementExists($name) ){
+      $options = array_merge($options, ['plugin'=>false]);
+    }else{
       $name = 'CakeLTE.'.$name;
     }
+
     return parent::element($name, $data, $options);
   }
 }
