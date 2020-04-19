@@ -61,6 +61,8 @@ class CakeLTEView extends AppView{
       if( !$this->elementExists($name) ){
         $name = 'CakeLTE.'.$name;
       }
+      
+      //debug($name); exit();
 
       return parent::element($name, $data, $options);
     }

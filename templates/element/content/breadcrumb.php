@@ -6,7 +6,6 @@
   }
 ?>
 
-
 <ol class="breadcrumb float-sm-right">
   <?php
     foreach ($breadcrumb as $key => $value) {
