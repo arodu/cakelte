@@ -39,10 +39,9 @@ class Plugin extends BasePlugin
     {
         $routes->plugin(
             'CakeLTE',
-            ['path' => '/cake-l-t-e'],
+            ['path' => '/cake-lte'],
             function (RouteBuilder $builder) {
-                // Add custom routes here
-
+                $builder->connect('/debug', ['controller' => 'Pages', 'action' => 'debug']);
                 $builder->fallbacks();
             }
         );

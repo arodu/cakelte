@@ -56,7 +56,7 @@ default layout is `CakeLTE.starter`
 ### Copy element files
 Link to debug
 ```php
-echo $this->Html->link(__('debug'), ['plugin'=>'CakeLTE', 'controller'=>'Pages', 'action'=>'debug']); ?>
+echo $this->Html->link(__('CakeLTE debug page'), '/cake-lte/debug' );
 ```
 
 * {your-url}/cake-lte/debug
