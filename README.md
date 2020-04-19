@@ -13,7 +13,9 @@ composer require arodu/cakelte
 
 You can load the plugin using the shell command:
 
+```bash
 bin/cake plugin load CakeLTE
+```
 
 Or you can manually add the loading statement in the `src/Application.php` file of your application:
 
