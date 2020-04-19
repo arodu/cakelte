@@ -54,7 +54,26 @@ $this->initializeCakeLTE(['layout'=>'login']);
 default layout is `CakeLTE.starter`
 
 ### Copy element files
-* `/plugins/CakeLTE/templates/element/*`
+Replace the files elements
+
+![Page Debug](docs/page-debug.png)
+
+* `src/templates/element/aside/main.php`
+* `src/templates/element/content/breadcrumb.php`
+* `src/templates/element/content/header.php`
+* `src/templates/element/flash/default.php`
+* `src/templates/element/flash/error.php`
+* `src/templates/element/flash/info.php`
+* `src/templates/element/flash/success.php`
+* `src/templates/element/footer/main.php`
+* `src/templates/element/header/main.php`
+* `src/templates/element/header/menu.php`
+* `src/templates/element/header/messages.php`
+* `src/templates/element/header/notifications.php`
+* `src/templates/element/header/search.php`
+* `src/templates/element/sidebar/main.php`
+* `src/templates/element/sidebar/menu.php`
+* `src/templates/element/sidebar/user.php`
 
 ### Create code from bake
 ```bash
@@ -62,4 +81,4 @@ bin/cake bake all [command] -t CakeLTE
 ```
 
 ## Theme
-* [AdminLTE 3.0.4](https://adminlte.io/)
+[AdminLTE 3.0.4](https://adminlte.io/)
