@@ -30,3 +30,8 @@ th a.asc::after, th a.desc:hover::after, th a:hover::after{
   float: inherit;
   margin-bottom: .5rem;
 }
+
+.required .control-label::after{
+  content: " *";
+  color: tomato;
+}
