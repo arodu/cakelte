@@ -7,11 +7,7 @@
     <a href="#" class="dropdown-item">
       <!-- Message Start -->
       <div class="media">
-<<<<<<< HEAD
         <?= $this->Html->image('CakeLte./AdminLTE/dist/img/user1-128x128.jpg', ['class'=>'img-size-50 img-circle mr-3', 'alt'=>'User Avatar']) ?>
-=======
-        <?= $this->Html->image('CakeLTE./AdminLTE/dist/img/user1-128x128.jpg', ['class'=>'img-size-50 img-circle mr-3', 'alt'=>'User Avatar']) ?>
->>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
         <div class="media-body">
           <h3 class="dropdown-item-title">
             Brad Diesel
@@ -27,11 +23,7 @@
     <a href="#" class="dropdown-item">
       <!-- Message Start -->
       <div class="media">
-<<<<<<< HEAD
         <?= $this->Html->image('CakeLte./AdminLTE/dist/img/user8-128x128.jpg', ['class'=>'img-size-50 img-circle mr-3', 'alt'=>'User Avatar']) ?>
-=======
-        <?= $this->Html->image('CakeLTE./AdminLTE/dist/img/user8-128x128.jpg', ['class'=>'img-size-50 img-circle mr-3', 'alt'=>'User Avatar']) ?>
->>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
         <div class="media-body">
           <h3 class="dropdown-item-title">
             John Pierce
@@ -47,11 +39,7 @@
     <a href="#" class="dropdown-item">
       <!-- Message Start -->
       <div class="media">
-<<<<<<< HEAD
         <?= $this->Html->image('CakeLte./AdminLTE/dist/img/user3-128x128.jpg', ['class'=>'img-size-50 img-circle mr-3', 'alt'=>'User Avatar']) ?>
-=======
-        <?= $this->Html->image('CakeLTE./AdminLTE/dist/img/user3-128x128.jpg', ['class'=>'img-size-50 img-circle mr-3', 'alt'=>'User Avatar']) ?>
->>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
         <div class="media-body">
           <h3 class="dropdown-item-title">
             Nora Silvester

@@ -14,11 +14,7 @@ composer require arodu/cakelte
 You can load the plugin using the shell command:
 
 ```bash
-<<<<<<< HEAD
 bin/cake plugin load CakeLte
-=======
-bin/cake plugin load CakeLTE
->>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
 ```
 
 Or you can manually add the loading statement in the `src/Application.php` file of your application:
@@ -26,11 +22,7 @@ Or you can manually add the loading statement in the `src/Application.php` file 
 ```php
 public function bootstrap(){
     parent::bootstrap();
-<<<<<<< HEAD
     $this->addPlugin('CakeLte');
-=======
-    $this->addPlugin('CakeLTE');
->>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
 }
 ```
 
@@ -41,7 +33,6 @@ use traint into `src/View/AppView.php`
 namespace App\View;
 
 use Cake\View\View;
-<<<<<<< HEAD
 use CakeLte\View\CakeLteTrait;
 
 class AppView extends View{
@@ -50,35 +41,17 @@ class AppView extends View{
     public function initialize(): void{
       parent::initialize();
       $this->initializeCakeLte();
-=======
-use CakeLTE\View\CakeLTETrait;
-
-class AppView extends View{
-    use CakeLTETrait;
-
-    public function initialize(): void{
-      parent::initialize();
-      $this->initializeCakeLTE();
->>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
       //...
     }
 
 }
 ```
 
-<<<<<<< HEAD
 you can change the layout with initializeCakeLte options
 ```php
 $this->initializeCakeLte(['layout'=>'login']);
 ```
 default layout is `CakeLte.starter`
-=======
-you can change the layout with initializeCakeLTE options
-```php
-$this->initializeCakeLTE(['layout'=>'login']);
-```
-default layout is `CakeLTE.starter`
->>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
 
 ### Copy element files
 Link to debug
@@ -110,11 +83,7 @@ Replace the files elements
 
 ### Create code from bake
 ```bash
-<<<<<<< HEAD
 bin/cake bake all [command] -t CakeLte
-=======
-bin/cake bake all [command] -t CakeLTE
->>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
 ```
 
 ## Theme

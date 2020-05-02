@@ -2,11 +2,7 @@
 declare(strict_types=1);
 
 /**
-<<<<<<< HEAD
  * Test suite bootstrap for CakeLte.
-=======
- * Test suite bootstrap for CakeLTE.
->>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
  *
  * This function is used to find the location of CakePHP whether CakePHP
  * has been installed as a dependency of the plugin, or the plugin is itself
