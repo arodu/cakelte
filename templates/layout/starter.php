@@ -18,6 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <?= $this->fetch('meta') ?>
 
   <!-- Font Awesome Icons -->
+<<<<<<< HEAD
   <?= $this->Html->css('CakeLte./AdminLTE/plugins/fontawesome-free/css/all.min.css') ?>
   <!-- Theme style -->
   <?= $this->Html->css('CakeLte./AdminLTE/dist/css/adminlte.min.css') ?>
@@ -25,6 +26,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <?= $this->Html->css('CakeLte.style') ?>
+=======
+  <?= $this->Html->css('CakeLTE./AdminLTE/plugins/fontawesome-free/css/all.min.css') ?>
+  <!-- Theme style -->
+  <?= $this->Html->css('CakeLTE./AdminLTE/dist/css/adminlte.min.css') ?>
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <?= $this->Html->css('CakeLTE.style') ?>
+>>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
 
   <?= $this->fetch('css') ?>
 
@@ -65,7 +75,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <?= $this->Flash->render() ?>
 
         <?= $this->fetch('content') ?>
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
@@ -90,11 +104,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
+<<<<<<< HEAD
 <?= $this->Html->script('CakeLte./AdminLTE/plugins/jquery/jquery.min.js') ?>
 <!-- Bootstrap 4 -->
 <?= $this->Html->script('CakeLte./AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>
 <!-- AdminLTE App -->
 <?= $this->Html->script('CakeLte./AdminLTE/dist/js/adminlte.min.js') ?>
+=======
+<?= $this->Html->script('CakeLTE./AdminLTE/plugins/jquery/jquery.min.js') ?>
+<!-- Bootstrap 4 -->
+<?= $this->Html->script('CakeLTE./AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>
+<!-- AdminLTE App -->
+<?= $this->Html->script('CakeLTE./AdminLTE/dist/js/adminlte.min.js') ?>
+>>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
 
 <?= $this->fetch('script') ?>
 </body>

@@ -1,7 +1,11 @@
 <?php
 declare(strict_types=1);
 
+<<<<<<< HEAD
 namespace CakeLte;
+=======
+namespace CakeLTE;
+>>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
 
 use Cake\Core\BasePlugin;
 use Cake\Core\PluginApplicationInterface;
@@ -9,7 +13,11 @@ use Cake\Http\MiddlewareQueue;
 use Cake\Routing\RouteBuilder;
 
 /**
+<<<<<<< HEAD
  * Plugin for CakeLte
+=======
+ * Plugin for CakeLTE
+>>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
  */
 class Plugin extends BasePlugin
 {
@@ -38,12 +46,19 @@ class Plugin extends BasePlugin
     public function routes(RouteBuilder $routes): void
     {
         $routes->plugin(
+<<<<<<< HEAD
             'CakeLte',
             ['path' => '/cake-lte'],
             function (RouteBuilder $builder) {
                 // Add custom routes here
                 $builder->connect('/debug', ['controller' => 'Pages', 'action' => 'debug']);
 
+=======
+            'CakeLTE',
+            ['path' => '/cake-lte'],
+            function (RouteBuilder $builder) {
+                $builder->connect('/debug', ['controller' => 'Pages', 'action' => 'debug']);
+>>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
                 $builder->fallbacks();
             }
         );

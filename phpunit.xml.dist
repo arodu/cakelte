@@ -12,7 +12,11 @@
 
     <!-- Add any additional test suites you want to run here -->
     <testsuites>
+<<<<<<< HEAD
         <testsuite name="CakeLte">
+=======
+        <testsuite name="CakeLTE">
+>>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
             <directory>tests/TestCase/</directory>
         </testsuite>
     </testsuites>

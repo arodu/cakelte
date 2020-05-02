@@ -1,8 +1,23 @@
 {
+<<<<<<< HEAD
     "name": "your-name-here/CakeLte",
     "description": "CakeLte plugin for CakePHP",
     "type": "cakephp-plugin",
     "license": "MIT",
+=======
+    "name": "arodu/cakelte",
+    "description": "CakeLTE: AdminLTE plugin for CakePHP 4.x",
+    "type": "cakephp-plugin",
+    "language": "PHP",
+    "license": "MIT",
+    "homepage": "https://github.com/arodu/cakelte",
+    "authors": [
+      {
+        "name": "Alberto G. Rodriguez U. <arodu.dev@gmail.com>",
+        "homepage": "https://github.com/arodu"
+      }
+    ],
+>>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
     "require": {
         "cakephp/cakephp": "^4.0"
     },
@@ -11,12 +26,20 @@
     },
     "autoload": {
         "psr-4": {
+<<<<<<< HEAD
             "CakeLte\\": "src/"
+=======
+            "CakeLTE\\": "src/"
+>>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
         }
     },
     "autoload-dev": {
         "psr-4": {
+<<<<<<< HEAD
             "CakeLte\\Test\\": "tests/",
+=======
+            "CakeLTE\\Test\\": "tests/",
+>>>>>>> 9b5798c8e39feac04f1c1ea5c7c5c4bb4330ee15
             "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
         }
     }
