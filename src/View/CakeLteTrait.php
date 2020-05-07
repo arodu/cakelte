@@ -21,7 +21,7 @@ trait CakeLteTrait{
       'paginator-templates' => 'CakeLte.app_paginator',
   ];
 
-  public function initializeCakeLte(array $options = []): void{
+  public function initializeCakeLte(array $options = []): void {
     $this->settings = array_merge($this->settings, $options);
     $this->layout = $this->settings['layout'];
 
