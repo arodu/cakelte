@@ -8,36 +8,29 @@ use Cake\Core\Exception\Exception;
 
 trait CakeLteTrait{
 
-  /**
-   * $options = [
-   *   'layout'=> [true | string]  // default='CakeLte.starter'
-   * ]
-   */
+  protected $settings = [
+    // layout file
+      'layout'=> 'CakeLte.starter', // [string] default='CakeLte.starter'
+
+    // configure layout options
+      'appName' => 'Cake<b>LTE</b>', // [string] default='Cake<b>LTE</b>'
+      'appLogo' => 'CakeLte.cake.icon.png', // [string] default='CakeLte.cake.icon.png'
+
+    // helpers templates
+      'form-templates' => 'CakeLte.app_form',
+      'paginator-templates' => 'CakeLte.app_paginator',
+  ];
+
   public function initializeCakeLte(array $options = []): void{
-    try{
-      Configure::load('settings', 'default');
-
-    } catch (Exception $e){
-      Configure::load('CakeLte.settings', 'default');
-
-    }
-    $this->settings = Configure::read('AppTheme');
-
-    if (
-        (!isset($options['layout']) || $options['layout'] === true) &&
-        $this->layout === 'default'
-    ) {
-        $this->layout = 'CakeLte.starter';
-    } elseif (isset($options['layout']) && is_string($options['layout'])) {
-        $this->layout = $options['layout'];
-    }
+    $this->settings = array_merge($this->settings, $options);
+    $this->layout = $this->settings['layout'];
 
     $this->loadHelper('Form', [
-      'templates' => 'CakeLte.app_form',
+      'templates' => $this->settings['form-templates'],
     ]);
 
     $this->loadHelper('Paginator', [
-      'templates' => 'CakeLte.app_paginator',
+      'templates' => $this->settings['paginator-templates'],
     ]);
   }
 

@@ -1,6 +1,3 @@
-<?php
-  // debug($this->settings);
-?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -12,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title><?= strip_tags($this->settings['name']).' | '.$this->fetch('title') ?></title>
+  <title><?= strip_tags($this->settings['appName']).' | '.$this->fetch('title') ?></title>
 
   <?= $this->Html->meta('icon') ?>
   <?= $this->fetch('meta') ?>
@@ -42,8 +39,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?= $this->Url->build('/') ?>" class="brand-link">
-      <?= $this->Html->image($this->settings['logo'], ['alt'=> $this->settings['name'].' logo', 'class'=>'brand-image']) ?>
-      <span class="brand-text font-weight-light"><?= $this->settings['name'] ?></span>
+      <?= $this->Html->image($this->settings['appLogo'], ['alt'=> $this->settings['appName'].' logo', 'class'=>'brand-image']) ?>
+      <span class="brand-text font-weight-light"><?= $this->settings['appName'] ?></span>
     </a>
 
     <!-- Sidebar -->
