@@ -1,6 +1,6 @@
 {
-    "name": "your-name-here/CakeLte",
-    "description": "CakeLte plugin for CakePHP",
+    "name": "arodu/cakelte",
+    "description": "CakeLLTE plugin for CakePHP",
     "type": "cakephp-plugin",
     "license": "MIT",
     "require": {
