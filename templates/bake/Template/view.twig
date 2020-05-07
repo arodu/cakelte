@@ -95,7 +95,6 @@ $this->assign('breadcrumb',
 {% endif %}
     </table>
   </div>
-
   <div class="card-footer d-flex">
     <div class="">
       <?= $this->Form->postLink(
@@ -109,17 +108,13 @@ $this->assign('breadcrumb',
       <?= $this->Html->link(__('Cancel'), ['action'=>'index'], ['class'=>'btn btn-default']) ?>
     </div>
   </div>
-
 </div>
-
-
-
 
 {% if groupedFields.text %}
 {% for field in groupedFields.text %}
 <div class="view text card">
   <div class="card-header">
-    <h4 class="card-title"><?= __('{{ field|humanize }}') ?></h4>
+    <h3 class="card-title"><?= __('{{ field|humanize }}') ?></h3>
   </div>
   <div class="card-body">
     <?= $this->Text->autoParagraph(h(${{ singularVar }}->{{ field }})); ?>
@@ -127,13 +122,18 @@ $this->assign('breadcrumb',
 </div>
 {% endfor %}
 {% endif %}
+
 {% set relations = associations.BelongsToMany|merge(associations.HasMany) %}
 {% for alias, details in relations %}
 {% set otherSingularVar = alias|variable %}
 {% set otherPluralHumanName = details.controller|underscore|humanize %}
 <div class="related view card">
-  <div class="card-header">
-    <h4><?= __('Related {{ otherPluralHumanName }}') ?></h4>
+  <div class="card-header d-sm-flex">
+    <h3 class="card-title"><?= __('Related {{ otherPluralHumanName }}') ?></h3>
+    <div class="card-toolbox">
+      <?= $this->Html->link(__('New'), ['controller' => '{{details.controller}}' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
+      <?= $this->Html->link(__('List '), ['controller' => '{{details.controller}}' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
+    </div>
   </div>
   <div class="card-body table-responsive p-0">
     <table class="table table-hover text-nowrap">
@@ -143,51 +143,31 @@ $this->assign('breadcrumb',
 {% endfor %}
           <th class="actions"><?= __('Actions') ?></th>
       </tr>
-      <?php foreach (${{ singularVar }}->{{ details.property }} as ${{ otherSingularVar }}) : ?>
-      <tr>
+      <?php if (empty(${{ singularVar }}->{{ details.property }})) { ?>
+        <tr>
+            <td colspan="{{ details.fields|length + 1 }}" class="text-muted">
+              {{ otherPluralHumanName }} record not found!
+            </td>
+        </tr>
+      <?php }else{ ?>
+        <?php foreach (${{ singularVar }}->{{ details.property }} as ${{ otherSingularVar }}) : ?>
+        <tr>
 {% for field in details.fields %}
-          <td><?= h(${{ otherSingularVar }}->{{ field }}) ?></td>
+            <td><?= h(${{ otherSingularVar }}->{{ field }}) ?></td>
 {% endfor %}
 {% set otherPk = '$' ~ otherSingularVar ~ '->' ~ details.primaryKey[0] %}
-          <td class="actions">
-            <?= $this->Html->link(__('View'), ['controller' => '{{ details.controller }}', 'action' => 'view', {{ otherPk|raw }}]) ?>
-            <?= $this->Html->link(__('Edit'), ['controller' => '{{ details.controller }}', 'action' => 'edit', {{ otherPk|raw }}]) ?>
-            <?= $this->Form->postLink(__('Delete'), ['controller' => '{{ details.controller }}', 'action' => 'delete', {{ otherPk|raw }}], ['confirm' => __('Are you sure you want to delete # {0}?', {{ otherPk|raw }})]) ?>
-          </td>
-      </tr>
-      <?php endforeach; ?>
+            <td class="actions">
+              <?= $this->Html->link(__('View'), ['controller' => '{{ details.controller }}', 'action' => 'view', {{ otherPk|raw }}], ['class'=>'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Html->link(__('Edit'), ['controller' => '{{ details.controller }}', 'action' => 'edit', {{ otherPk|raw }}], ['class'=>'btn btn-xs btn-outline-primary']) ?>
+              <?= $this->Form->postLink(__('Delete'), ['controller' => '{{ details.controller }}', 'action' => 'delete', {{ otherPk|raw }}], ['class'=>'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', {{ otherPk|raw }})]) ?>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+      <?php } ?>
     </table>
   </div>
-
 </div>
 
-
-  <?php if (!empty(${{ singularVar }}->{{ details.property }})) : ?>
-                <div class="table-responsive">
-                    <table>
-                        <tr>
-{% for field in details.fields %}
-                            <th><?= __('{{ field|humanize }}') ?></th>
-{% endfor %}
-                            <th class="actions"><?= __('Actions') ?></th>
-                        </tr>
-                        <?php foreach (${{ singularVar }}->{{ details.property }} as ${{ otherSingularVar }}) : ?>
-                        <tr>
-{% for field in details.fields %}
-                            <td><?= h(${{ otherSingularVar }}->{{ field }}) ?></td>
-{% endfor %}
-{% set otherPk = '$' ~ otherSingularVar ~ '->' ~ details.primaryKey[0] %}
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => '{{ details.controller }}', 'action' => 'view', {{ otherPk|raw }}]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => '{{ details.controller }}', 'action' => 'edit', {{ otherPk|raw }}]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => '{{ details.controller }}', 'action' => 'delete', {{ otherPk|raw }}], ['confirm' => __('Are you sure you want to delete # {0}?', {{ otherPk|raw }})]) ?>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
-                <?php endif; ?>
-            </div>
 {% endfor %}
 
 

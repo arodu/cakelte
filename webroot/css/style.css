@@ -29,6 +29,23 @@ th a.asc::after, th a.desc:hover::after, th a:hover::after{
   display: block;
   float: inherit;
   margin-bottom: .5rem;
+  font-weight: 600;
+}
+
+.card-toolbox {
+  margin-left: auto !important;
+
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.card-toolbox > *{
+  height: max-content;
+  margin-right: .25rem;
+}
+
+.card-toolbox > *:last-child{
+  margin-right: 0;
 }
 
 .required .control-label::after{

@@ -37,14 +37,13 @@ $this->assign('breadcrumb',
 
 <div class="card card-primary card-outline">
   <div class="card-header d-sm-flex">
-    <h3 class="card-title"><!-- --></h3>
-    <div class="ml-auto d-flex">
+    <h2 class="card-title"><!-- --></h2>
+    <div class="card-toolbox">
       <?= $this->Paginator->limitControl([], null, [
             'label'=>false,
             'templates' => 'CakeLte.app_paginator',
           ]); ?>
-
-      <?= $this->Html->link(__('New {{ singularHumanName }}'), ['action' => 'add'], ['class' => 'btn btn-primary btn-sm ml-2']) ?>
+      <?= $this->Html->link(__('New {{ singularHumanName }}'), ['action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
   </div>
   <!-- /.card-header -->
