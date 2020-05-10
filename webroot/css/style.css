@@ -2,7 +2,7 @@ ul.pagination{
   margin-bottom: 0;
 }
 
-th.actions{
+th.actions, td.actions, th.narrow, td.narrow{
   width: 0;
 }
 
