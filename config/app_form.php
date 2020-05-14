@@ -14,6 +14,8 @@
 
           'confirmJs' => '{{confirm}}',
 
+          'nestingLabel' => '{{hidden}}<div class="icheck-primary">{{input}}<label{{attrs}}>{{text}}</label></div>',
+
           // -------------------------------
 
           'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}"{{attrs}}> ',
@@ -42,8 +44,6 @@
           'inputSubmit' => '<input type="{{type}}"{{attrs}}/>',
           // Container element used by control() when a field has an error.
           'inputContainerError' => '<div class="input {{type}}{{required}} error">{{content}}{{error}}</div>',
-          // Label element used for radio and multi-checkbox inputs.
-          'nestingLabel' => '{{hidden}}<label{{attrs}}>{{input}}{{text}}</label>',
           // Legends created by allControls()
           'legend' => '<legend>{{text}}</legend>',
           // Multi-Checkbox input set title element.
