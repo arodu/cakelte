@@ -1,6 +1,6 @@
 {
     "name": "arodu/cakelte",
-    "description": "CakeLLTE plugin for CakePHP",
+    "description": "CakeLTE: AdminLTE plugin for CakePHP 4.x",
     "type": "cakephp-plugin",
     "license": "MIT",
     "require": {
