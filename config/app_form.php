@@ -8,7 +8,7 @@
 
           'select' => '<select class="form-control" name="{{name}}"{{attrs}}>{{content}}</select>',
 
-          'file' => '<div class="input-group"><div class="custom-file"><input type="file" class="custom-file-input" name="{{name}}"{{attrs}}><label class="custom-file-label">'.__('Choose files').'</label></div></div>',
+          'file' => '<div class="input-group"><div class="custom-file"><input type="file" class="custom-file-input" name="{{name}}"{{attrs}}><label class="custom-file-label text-nowrap text-truncate">'.__('Choose files').'</label></div></div>',
 
           'dateWidget' => '<div class="date-widget d-flex" style="width:max-content;">{{year}}{{month}}{{day}}{{hour}}{{minute}}{{second}}{{meridian}}</div>',
 
