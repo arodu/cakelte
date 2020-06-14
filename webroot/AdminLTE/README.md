@@ -1,12 +1,11 @@
 Introduction
 ============
 
-[![Build Status](https://img.shields.io/travis/ColorlibHQ/AdminLTE/master.svg)](https://travis-ci.org/ColorlibHQ/AdminLTE)
 [![npm version](https://img.shields.io/npm/v/admin-lte/latest.svg)](https://www.npmjs.com/package/admin-lte)
 [![Packagist](https://img.shields.io/packagist/v/almasaeed2010/adminlte.svg)](https://packagist.org/packages/almasaeed2010/adminlte)
 [![CDNJS](https://img.shields.io/cdnjs/v/admin-lte.svg)](https://cdnjs.com/libraries/admin-lte)
 
-**AdminLTE** is a fully responsive administration template. Based on **[Bootstrap 4](https://getbootstrap.com)** framework.
+**AdminLTE** is a fully responsive administration template. Based on **[Bootstrap 4.4](https://getbootstrap.com)** framework and also the JS/jQuery plugin.
 Highly customizable and easy to use. Fits many screen resolutions from small mobile devices to large desktops.
 
 **Preview on [AdminLTE.io](https://adminlte.io/themes/v3)**
@@ -30,6 +29,8 @@ There are multiple ways to install AdminLTE.
 Download from [Github releases](https://github.com/ColorlibHQ/AdminLTE/releases).
 
 #### Using The Command Line:
+
+_**Important Note**: To install it via NPM/Yarn, you need at least Node.js 10 or higher._
 
 __Via NPM__
 ```bash
@@ -64,6 +65,7 @@ Browser Support
 - Chrome (latest)
 - Safari (latest)
 - Opera (latest)
+- Microsoft Edge (latest)
 
 Contribution
 ------------
@@ -92,6 +94,10 @@ License
 -------
 AdminLTE is an open source project by [AdminLTE.io](https://adminlte.io) that is licensed under [MIT](http://opensource.org/licenses/MIT). AdminLTE.io
 reserves the right to change the license of future releases.
+
+Latest Release
+---------------
+- [AdminLTE 3](https://github.com/ColorlibHQ/AdminLTE/releases/latest)
 
 Legacy Releases
 ---------------

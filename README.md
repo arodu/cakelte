@@ -28,7 +28,7 @@ public function bootstrap(){
 
 ## How to use
 
-use traint into `src/View/AppView.php`
+use trait into `src/View/AppView.php`
 ```php
 namespace App\View;
 
@@ -36,50 +36,98 @@ use Cake\View\View;
 use CakeLte\View\CakeLteTrait;
 
 class AppView extends View{
-    use CakeLteTrait;
+  use CakeLteTrait;
 
-    public function initialize(): void{
+  public $layout = 'CakeLte.starter';
+
+  public function initialize(): void{
       parent::initialize();
-      $this->initializeCakeLte();
+      $this->initializeCakeLte($options = []);
       //...
-    }
-
+  }
 }
 ```
 
-you can change the layout with initializeCakeLte options
+or you can extends from CakeLteView
 ```php
-$this->initializeCakeLte(['layout'=>'login']);
-```
-default layout is `CakeLte.starter`
+namespace App\View;
 
-### Copy element files
+use Cake\View\View;
+use CakeLte\View\CakeLteView;
+
+class AppView extends CakeLteView{
+
+  public function initialize(): void{
+    parent::initialize();
+    //...
+  }
+}
+```
+
+initializeCakeLte() $options
+```php
+    [
+      // [string] default='Cake<b>LTE</b>'
+      'appName' => 'Cake<b>LTE</b>',
+
+      // [string] default='CakeLte.cake.icon.png'
+      'appLogo' => 'CakeLte.cake.icon.png', 
+
+      // file into CakeLte/config/app_form.php
+      'form-templates' => 'CakeLte.app_form',
+
+      // file into CakeLte/config/app_paginator.php
+      'paginator-templates' => 'CakeLte.app_paginator',
+  ];
+```
+
+Options layouts
+* `CakeLte.stater`
+* `CakeLte.login`
+* `CakeLte.top-nav`
+
+### To modify the template you can copy one or all the files within your project
+
+Replace the files elements
+* Layouts
+  * `src/templates/layout/stater.php`
+  * `src/templates/layout/login.php`
+  * `src/templates/layout/top-nav.php`
+* Aside bar
+  * `src/templates/element/aside/main.php`
+* Content info
+  * `src/templates/element/content/breadcrumb.php`
+  * `src/templates/element/content/header.php`
+* Flash messages
+  * `src/templates/element/flash/default.php`
+  * `src/templates/element/flash/error.php`
+  * `src/templates/element/flash/info.php`
+  * `src/templates/element/flash/success.php`
+* Footer
+  * `src/templates/element/footer/main.php`
+* Header navbar
+  * `src/templates/element/header/main.php`
+  * `src/templates/element/header/menu.php`
+  * `src/templates/element/header/messages.php`
+  * `src/templates/element/header/notifications.php`
+  * `src/templates/element/header/search.php`
+* Left sidebar
+  * `src/templates/element/sidebar/main.php`
+  * `src/templates/element/sidebar/menu.php`
+  * `src/templates/element/sidebar/user.php`
+
+## Page debug
+
 Link to debug
 ```php
 echo $this->Html->link(__('CakeLTE debug page'), '/cake-lte/debug' );
+
+// {your-url}/cake-lte/debug
 ```
 
-* {your-url}/cake-lte/debug
+![Page Debug](docs/page-debug_starter.png)
 
-![Page Debug](docs/page-debug.png)
-
-Replace the files elements
-* `src/templates/element/aside/main.php`
-* `src/templates/element/content/breadcrumb.php`
-* `src/templates/element/content/header.php`
-* `src/templates/element/flash/default.php`
-* `src/templates/element/flash/error.php`
-* `src/templates/element/flash/info.php`
-* `src/templates/element/flash/success.php`
-* `src/templates/element/footer/main.php`
-* `src/templates/element/header/main.php`
-* `src/templates/element/header/menu.php`
-* `src/templates/element/header/messages.php`
-* `src/templates/element/header/notifications.php`
-* `src/templates/element/header/search.php`
-* `src/templates/element/sidebar/main.php`
-* `src/templates/element/sidebar/menu.php`
-* `src/templates/element/sidebar/user.php`
+![Page Debug](docs/page-debug_top-nav.png)
 
 ### Create code from bake
 ```bash
@@ -87,4 +135,6 @@ bin/cake bake all [command] -t CakeLte
 ```
 
 ## Theme
-[AdminLTE 3.0.4](https://adminlte.io/)
+[AdminLTE 3.0.5](https://adminlte.io/)
+
+
