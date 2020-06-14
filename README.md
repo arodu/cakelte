@@ -28,7 +28,7 @@ public function bootstrap(){
 
 ## How to use
 
-use trait into `src/View/AppView.php`
+use trait into `src/View/AppView.php` _(Recomended)_
 ```php
 namespace App\View;
 
