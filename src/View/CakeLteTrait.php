@@ -19,10 +19,6 @@ trait CakeLteTrait{
   ];
 
   public function initializeCakeLte(array $options = []): void {
-
-  }
-
-  public function cakeLteOptions(array $options = []): void {
     $this->settings = array_merge($this->settings, $options);
 
     $this->loadHelper('Form', [
