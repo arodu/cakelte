@@ -86,6 +86,12 @@ Options layouts
 * `CakeLte.login`
 * `CakeLte.top-nav`
 
+
+### Create code from bake
+```bash
+bin/cake bake all [command] -t CakeLte
+```
+
 ### To modify the template you can copy one or all the files within your project
 
 Replace the files elements
@@ -93,28 +99,28 @@ Replace the files elements
   * `src/templates/layout/stater.php`
   * `src/templates/layout/login.php`
   * `src/templates/layout/top-nav.php`
-* Aside bar
-  * `src/templates/element/aside/main.php`
 * Content info
   * `src/templates/element/content/breadcrumb.php`
   * `src/templates/element/content/header.php`
-* Flash messages
-  * `src/templates/element/flash/default.php`
-  * `src/templates/element/flash/error.php`
-  * `src/templates/element/flash/info.php`
-  * `src/templates/element/flash/success.php`
-* Footer
-  * `src/templates/element/footer/main.php`
 * Header navbar
   * `src/templates/element/header/main.php`
   * `src/templates/element/header/menu.php`
   * `src/templates/element/header/messages.php`
   * `src/templates/element/header/notifications.php`
   * `src/templates/element/header/search.php`
+* Footer
+  * `src/templates/element/footer/main.php`
 * Left sidebar
   * `src/templates/element/sidebar/main.php`
   * `src/templates/element/sidebar/menu.php`
   * `src/templates/element/sidebar/user.php`
+* Flash messages
+  * `src/templates/element/flash/default.php`
+  * `src/templates/element/flash/error.php`
+  * `src/templates/element/flash/info.php`
+  * `src/templates/element/flash/success.php`
+* Right sidebar
+  * `src/templates/element/aside/main.php`
 
 ## Page debug
 
@@ -125,14 +131,10 @@ echo $this->Html->link(__('CakeLTE debug page'), '/cake-lte/debug' );
 // {your-url}/cake-lte/debug
 ```
 
-![Page Debug](docs/page-debug_starter.png)
+![Page Debug with starter layout](docs/page-debug_starter.png)
 
-![Page Debug](docs/page-debug_top-nav.png)
+![Page Debug with top-nav layour](docs/page-debug_top-nav.png)
 
-### Create code from bake
-```bash
-bin/cake bake all [command] -t CakeLte
-```
 
 ## Theme
 [AdminLTE 3.0.5](https://adminlte.io/)
