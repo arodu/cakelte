@@ -5,9 +5,15 @@
 You can install this plugin into your CakePHP application using [composer](https://getcomposer.org).
 
 The recommended way to install composer packages is:
+
 ```bash
 composer require arodu/cakelte
 ```
+
+## Dependencies
+
+- [FriendsOfCake/bootstrap-ui](https://github.com/FriendsOfCake/bootstrap-ui), transparently use Bootstrap 4 with CakePHP 4.
+- [AdminLTE 3.0.5](https://adminlte.io/), bootstrap 4 admin theme.
 
 ## Configuration
 
@@ -29,6 +35,7 @@ public function bootstrap(){
 ## How to use
 
 use trait into `src/View/AppView.php` _(Recomended)_
+
 ```php
 namespace App\View;
 
@@ -38,7 +45,7 @@ use CakeLte\View\CakeLteTrait;
 class AppView extends View{
   use CakeLteTrait;
 
-  public $layout = 'CakeLte.starter';
+  public $layout = 'CakeLte.default';
 
   public function initialize(): void{
       parent::initialize();
@@ -49,6 +56,7 @@ class AppView extends View{
 ```
 
 or you can extends from CakeLteView
+
 ```php
 namespace App\View;
 
@@ -64,79 +72,66 @@ class AppView extends CakeLteView{
 }
 ```
 
-initializeCakeLte() $options
+Inpunt options:
+
 ```php
-    [
-      // [string] default='Cake<b>LTE</b>'
-      'appName' => 'Cake<b>LTE</b>',
-
-      // [string] default='CakeLte.cake.icon.png'
-      'appLogo' => 'CakeLte.cake.icon.png', 
-
-      // file into CakeLte/config/app_form.php
-      'form-templates' => 'CakeLte.app_form',
-
-      // file into CakeLte/config/app_paginator.php
-      'paginator-templates' => 'CakeLte.app_paginator',
+  //initializeCakeLte() \$options
+  [
+    'appName' => 'Cake<b>LTE</b>', // [string] default='Cake<b>LTE</b>'
+    'appLogo' => 'CakeLte.cake.icon.png', // [string] default='CakeLte.cake.icon.png'
   ];
 ```
 
 Options layouts
-* `CakeLte.stater`
-* `CakeLte.login`
-* `CakeLte.top-nav`
 
+- `CakeLte.default`
+- `CakeLte.login`
+- `CakeLte.top-nav`
 
 ### Create code from bake
+
 ```bash
 bin/cake bake all [command] -t CakeLte
+
+bin/cake bake template [command] -t CakeLte login
 ```
 
 ### To modify the template you can copy one or all the files within your project
 
 Replace the files elements
-* Layouts
-  * `src/templates/layout/stater.php`
-  * `src/templates/layout/login.php`
-  * `src/templates/layout/top-nav.php`
-* Content info
-  * `src/templates/element/content/breadcrumb.php`
-  * `src/templates/element/content/header.php`
-* Header navbar
-  * `src/templates/element/header/main.php`
-  * `src/templates/element/header/menu.php`
-  * `src/templates/element/header/messages.php`
-  * `src/templates/element/header/notifications.php`
-  * `src/templates/element/header/search.php`
-* Footer
-  * `src/templates/element/footer/main.php`
-* Left sidebar
-  * `src/templates/element/sidebar/main.php`
-  * `src/templates/element/sidebar/menu.php`
-  * `src/templates/element/sidebar/user.php`
-* Flash messages
-  * `src/templates/element/flash/default.php`
-  * `src/templates/element/flash/error.php`
-  * `src/templates/element/flash/info.php`
-  * `src/templates/element/flash/success.php`
-* Right sidebar
-  * `src/templates/element/aside/main.php`
+
+- Layouts
+  - `src/templates/layout/default.php`
+  - `src/templates/layout/login.php`
+  - `src/templates/layout/top-nav.php`
+- Content info
+  - `src/templates/element/content/breadcrumb.php`
+  - `src/templates/element/content/header.php`
+- Header navbar
+  - `src/templates/element/header/main.php`
+  - `src/templates/element/header/menu.php`
+  - `src/templates/element/header/messages.php`
+  - `src/templates/element/header/notifications.php`
+  - `src/templates/element/header/search.php`
+- Footer
+  - `src/templates/element/footer/main.php`
+- Left sidebar
+  - `src/templates/element/sidebar/main.php`
+  - `src/templates/element/sidebar/menu.php`
+  - `src/templates/element/sidebar/user.php`
+- Right sidebar
+  - `src/templates/element/aside/main.php`
 
 ## Page debug
 
 Link to debug
-```php
-echo $this->Html->link(__('CakeLTE debug page'), '/cake-lte/debug' );
 
-// {your-url}/cake-lte/debug
+```php
+echo $this->Html->link(__('CakeLTE debug page'), '/cake_lte/debug' );
+
+// {your-url}/cake_lte/debug
 ```
 
-![Page Debug with starter layout](docs/page-debug_starter.png)
+![Page Debug with starter layout](docs/page-debug_default.png)
 
 ![Page Debug with top-nav layour](docs/page-debug_top-nav.png)
-
-
-## Theme
-[AdminLTE 3.0.5](https://adminlte.io/)
-
-
