@@ -32,11 +32,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="
+    hold-transition
+    sidebar-mini
+    <?= $this->settings['small-text'] ? 'text-sm' : '' ?>
+    <?= $this->settings['fixed-navbar'] ? 'layout-navbar-fixed' : '' ?>
+    <?= $this->settings['fixed-footer'] ? 'layout-footer-fixed' : '' ?>
+    <?= $this->settings['fixed-sidebar'] ? 'layout-fixed' : '' ?>
+    <?= $this->settings['collapsed-sidebar'] ? 'sidebar-collapse' : '' ?>
+    <?= $this->settings['boxed-layout'] ? 'layout-boxed' : '' ?>
+  ">
   <div class="wrapper">
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand <?= $this->navbar[$this->settings['navbar-style']] ?>">
       <?= $this->element('header/main') ?>
     </nav>
     <!-- /.navbar -->

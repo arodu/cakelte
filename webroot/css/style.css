@@ -1,26 +1,32 @@
-ul.pagination{
+ul.pagination {
   margin-bottom: 0;
 }
 
-th.actions, td.actions, th.narrow, td.narrow{
+th.actions,
+td.actions,
+th.narrow,
+td.narrow {
   width: 0;
 }
 
-th a::after{
+th a::after {
   font-family: "Font Awesome 5 Free";
   content: "\f0dc";
   display: inline-block;
-  margin-left: .2rem;
-  opacity: .3;
-  font-size: .8rem;
+  margin-left: 0.2rem;
+  opacity: 0.3;
+  font-size: 0.8rem;
 }
 
-th a.desc::after, th a.asc:hover::after{
+th a.desc::after,
+th a.asc:hover::after {
   content: "\f0dd";
   opacity: 1;
 }
 
-th a.asc::after, th a.desc:hover::after, th a:hover::after{
+th a.asc::after,
+th a.desc:hover::after,
+th a:hover::after {
   content: "\f0de";
   opacity: 1;
 }
@@ -28,7 +34,7 @@ th a.asc::after, th a.desc:hover::after, th a:hover::after{
 .card-title {
   display: block;
   float: inherit;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
@@ -39,16 +45,20 @@ th a.asc::after, th a.desc:hover::after, th a:hover::after{
   display: flex !important;
 }
 
-.card-toolbox > *{
+.card-toolbox > * {
   height: max-content;
-  margin-right: .25rem;
+  margin-right: 0.25rem;
 }
 
-.card-toolbox > *:last-child{
+.card-toolbox > *:last-child {
   margin-right: 0;
 }
 
-.required .control-label::after{
+.card-toolbox .form-group {
+  margin-bottom: 0;
+}
+
+.required > label::after {
   content: " *";
   color: tomato;
 }
