@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 namespace CakeLte\View;
 
+use BootstrapUI\View\UIViewTrait;
+
 trait CakeLteTrait {
+
+  use UIViewTrait;
 
   protected $settings = [
     // configure layout options
@@ -14,6 +18,7 @@ trait CakeLteTrait {
 
   public function initializeCakeLte(array $options = []): void {
     $this->settings = array_merge($this->settings, $options);
+    $this->initializeUI();
   }
 
   public function element(string $name, array $data = [], array $options = []): string {

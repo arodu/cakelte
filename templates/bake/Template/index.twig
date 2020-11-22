@@ -20,9 +20,9 @@
  */
 ?>
 
-<?php
-$this->assign('title', __('{{ pluralHumanName }}') );
+<?php $this->assign('title', __('{{ pluralHumanName }}') ); ?>
 
+<?php
 $this->assign('breadcrumb',
   $this->element('content/breadcrumb', [
     'home' => true,
@@ -33,7 +33,8 @@ $this->assign('breadcrumb',
 );
 ?>
 
-{% set fields = Bake.filterFields(fields, schema, modelObject, indexColumns, ['binary', 'text']) %}
+{%- set fields = Bake.filterFields(fields, schema, modelObject, indexColumns, ['binary', 'text']) %}
+
 
 <div class="card card-primary card-outline">
   <div class="card-header d-sm-flex">
@@ -66,25 +67,27 @@ $this->assign('breadcrumb',
 {% for alias, details in associations.BelongsTo %}
 {% if field == details.foreignKey %}
 {% set isKey = true %}
-              <td><?= ${{ singularVar }}->has('{{ details.property }}') ? $this->Html->link(${{ singularVar }}->{{ details.property }}->{{ details.displayField }}, ['controller' => '{{ details.controller }}', 'action' => 'view', ${{ singularVar }}->{{ details.property }}->{{ details.primaryKey[0] }}]) : '' ?></td>
+            <td><?= ${{ singularVar }}->has('{{ details.property }}') ? $this->Html->link(${{ singularVar }}->{{ details.property }}->{{ details.displayField }}, ['controller' => '{{ details.controller }}', 'action' => 'view', ${{ singularVar }}->{{ details.property }}->{{ details.primaryKey[0] }}]) : '' ?></td>
 {% endif %}
 {% endfor %}
 {% endif %}
 {% if isKey is not same as(true) %}
 {% set columnData = Bake.columnData(field, schema) %}
-{% if columnData.type not in ['integer', 'float', 'decimal', 'biginteger', 'smallinteger', 'tinyinteger'] %}
-              <td><?= h(${{ singularVar }}->{{ field }}) ?></td>
+{% if columnData.type in ['integer', 'float', 'decimal', 'biginteger', 'smallinteger', 'tinyinteger'] %}
+            <td><?= $this->Number->format(${{ singularVar }}->{{ field }}) ?></td>
+{% elseif columnData.type in ['boolean'] %}
+            <td><?= (${{ singularVar }}->{{ field }}) ? __('Yes') : __('No') ?></td>
 {% else %}
-              <td><?= $this->Number->format(${{ singularVar }}->{{ field }}) ?></td>
+            <td><?= h(${{ singularVar }}->{{ field }}) ?></td>
 {% endif %}
 {% endif %}
 {% endfor %}
 {% set pk = '$' ~ singularVar ~ '->' ~ primaryKey[0] %}
-              <td class="actions">
-                  <?= $this->Html->link(__('View'), ['action' => 'view', {{ pk|raw }}], ['class'=>'btn btn-xs btn-outline-primary', 'escape'=>false]) ?>
-                  <?= $this->Html->link(__('Edit'), ['action' => 'edit', {{ pk|raw }}], ['class'=>'btn btn-xs btn-outline-primary', 'escape'=>false]) ?>
-                  <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', {{ pk|raw }}], ['class'=>'btn btn-xs btn-outline-danger', 'escape'=>false, 'confirm' => __('Are you sure you want to delete # {0}?', {{ pk|raw }})]) ?>
-              </td>
+            <td class="actions">
+              <?= $this->Html->link(__('View'), ['action' => 'view', {{ pk|raw }}], ['class'=>'btn btn-xs btn-outline-primary', 'escape'=>false]) ?>
+              <?= $this->Html->link(__('Edit'), ['action' => 'edit', {{ pk|raw }}], ['class'=>'btn btn-xs btn-outline-primary', 'escape'=>false]) ?>
+              <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', {{ pk|raw }}], ['class'=>'btn btn-xs btn-outline-danger', 'escape'=>false, 'confirm' => __('Are you sure you want to delete # {0}?', {{ pk|raw }})]) ?>
+            </td>
           </tr>
           <?php endforeach; ?>
         </tbody>

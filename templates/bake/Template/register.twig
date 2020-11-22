@@ -23,32 +23,51 @@
 <?php $this->layout = "CakeLte.login" ?>
 
 <div class="card">
-  <div class="card-body login-card-body">
-    <p class="login-box-msg"><?= __('Sign in to start your session') ?></p>
+  <div class="card-body register-card-body">
+    <p class="login-box-msg"><?= __('Register a new membership') ?></p>
 
     <?= $this->Form->create() ?>
 
     <?= $this->Form->control('username', [
-      'label' => false,
       'placeholder' => __('Username'),
+      'label' => false,
       'append' => '<i class="fas fa-user"></i>'
     ]) ?>
 
-    <?= $this->Form->control('password', [
+    <?= $this->Form->control('email', [
+      'placeholder' => __('Email'),
       'label' => false,
+      'append' => '<i class="fas fa-envelope"></i>'
+    ]) ?>
+
+    <?= $this->Form->control('password', [
       'placeholder' => __('Password'),
+      'label' => false,
+      'append' => '<i class="fas fa-lock"></i>'
+    ]) ?>
+
+    <?= $this->Form->control('password_confirm', [
+      'type' => 'password',
+      'placeholder' => __('Confirm Password'),
+      'label' => false,
       'append' => '<i class="fas fa-lock"></i>'
     ]) ?>
 
     <div class="row">
       <div class="col-8">
-        <?= $this->Form->control('remember_me', ['type'=>'checkbox', 'custom'=>true]) ?>
+        <?= $this->Form->control('agree_terms', [
+          'label' => 'I agree to the <a href="#">terms</a>',
+          'type' => 'checkbox',
+          'custom' => true,
+          'escape' => false
+        ]) ?>
       </div>
-      <!-- /.col -->
       <div class="col-4">
-        <?= $this->Form->control(__('Sign In'), ['type'=>'submit', 'class'=>'btn btn-primary btn-block']) ?>
+        <?= $this->Form->control(__('Register'), [
+          'type'=>'submit',
+          'class'=>'btn btn-primary btn-block'
+        ]) ?>
       </div>
-      <!-- /.col -->
     </div>
 
     <?= $this->Form->end() ?>
@@ -57,25 +76,20 @@
       <p>- OR -</p>
       <?php
           echo $this->Html->link(
-            '<i class="fab fa-facebook-f mr-2"></i>'.__('Sign in using Facebook'),'#',
+            '<i class="fab fa-facebook-f mr-2"></i>'.__('Sign up using Facebook'),'#',
             ['class'=>'btn btn-block btn-primary', 'escape'=>false]
           );
       ?>
       <?php
           echo $this->Html->link(
-            '<i class="fab fa-google mr-2"></i>'.__('Sign in using Google'),'#',
+            '<i class="fab fa-google mr-2"></i>'.__('Sign up using Google'),'#',
             ['class'=>'btn btn-block btn-danger', 'escape'=>false]
           );
       ?>
     </div>
     <!-- /.social-auth-links -->
 
-    <p class="mb-1">
-      <?= $this->Html->link(__('I forgot my password'), '#') ?>
-    </p>
-    <p class="mb-0">
-      <?= $this->Html->link(__('Register a new membership'), ['action' => 'register']) ?>
-    </p>
+    <?= $this->Html->link(__('I already have a membership'), ['action'=>'login']) ?>
   </div>
-  <!-- /.login-card-body -->
+  <!-- /.register-card-body -->
 </div>
