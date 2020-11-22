@@ -14,10 +14,13 @@
  */
 #}
 <?php
+
 /**
  * @var \{{ namespace }}\View\AppView $this
  */
 ?>
+
+<?php $this->layout = "CakeLte.login" ?>
 
 <div class="card">
   <div class="card-body login-card-body">
@@ -25,19 +28,20 @@
 
     <?= $this->Form->create() ?>
 
-      <?= $this->Form->control('username') ?>
-      <?= $this->Form->control('password') ?>
+    <?= $this->Form->control('username') ?>
+    <?= $this->Form->control('password') ?>
 
-      <div class="row">
-        <div class="col-8">
-          <?= $this->Form->control('remember_me', ['type'=>'checkbox']) ?>
-        </div>
-        <!-- /.col -->
-        <div class="col-4">
-          <?= $this->Form->control(__('Sign In'), ['type'=>'submit', 'class'=>'btn btn-primary btn-block']) ?>
-        </div>
-        <!-- /.col -->
+    <div class="row">
+      <div class="col-8">
+        <?= $this->Form->control('remember_me', ['type'=>'checkbox']) ?>
       </div>
+      <!-- /.col -->
+      <div class="col-4">
+        <?= $this->Form->control(__('Sign In'), ['type'=>'submit', 'class'=>'btn btn-primary btn-block']) ?>
+      </div>
+      <!-- /.col -->
+    </div>
+
     <?= $this->Form->end() ?>
 
     <div class="social-auth-links text-center mb-3">

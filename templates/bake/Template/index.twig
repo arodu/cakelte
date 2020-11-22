@@ -41,7 +41,7 @@ $this->assign('breadcrumb',
     <div class="card-toolbox">
       <?= $this->Paginator->limitControl([], null, [
             'label'=>false,
-            'templates' => 'CakeLte.app_paginator',
+            'class' => 'form-control-sm',
           ]); ?>
       <?= $this->Html->link(__('New {{ singularHumanName }}'), ['action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
