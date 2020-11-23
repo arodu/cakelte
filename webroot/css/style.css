@@ -6,7 +6,7 @@ th.actions,
 td.actions,
 th.narrow,
 td.narrow {
-  width: 0;
+  width: 1px;
 }
 
 th a::after {
