@@ -13,8 +13,6 @@
 
   <!-- Font Awesome Icons -->
   <?= $this->Html->css('CakeLte./AdminLTE/plugins/fontawesome-free/css/all.min.css') ?>
-  <!-- icheck bootstrap -->
-  <?= $this->Html->css('CakeLte./AdminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css') ?>
   <!-- Theme style -->
   <?= $this->Html->css('CakeLte./AdminLTE/dist/css/adminlte.min.css') ?>
   <!-- Google Font: Source Sans Pro -->
