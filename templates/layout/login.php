@@ -33,6 +33,7 @@
       </a>
     </div>
     <!-- /.login-logo -->
+    <?= $this->Flash->render() ?>
     <?= $this->fetch('content') ?>
 
   </div>
