@@ -3,10 +3,10 @@ layout: page
 title: Layout Plugin
 ---
 
-The layout plugin manages the layout in case of css failure to reset the height or width of the content. 
+The layout plugin manages the layout in case of css failure to reset the height or width of the content.
 
 ##### Usage
-This plugin is activated automatically upon window load. 
+This plugin is activated automatically upon window load.
 
 ##### Options
 {: .mt-4}
@@ -14,10 +14,12 @@ This plugin is activated automatically upon window load.
 |---
 | Name | Type | Default | Description
 |-|-|-|-
-|scrollbarTheme | Boolean | `os-theme-light` | Scrollbar Theme used while SideBar Fixed
-|scrollbarAutoHide | Boolean | `l` | Scrollbar auto-hide trigger
-|panelAutoHeight | Boolean|Numeric | true | Panel Height Correction (`true` = default correction on load/resize; numeric = offset the correction on load/resize)
-|loginRegisterAutoHeight | Boolean|Integer | true | Login & Register Height Correction (`true` = single correction on load; integer = correction with a interval based on the interger)
+|scrollbarTheme | String | `os-theme-light` | Scrollbar Theme used while SideBar Fixed
+|scrollbarAutoHide | String | `l` | Scrollbar auto-hide trigger
+|panelAutoHeight | Boolean\|Numeric | true | Panel Height Correction (`true` = default correction on load/resize; numeric = offset the correction on load/resize)
+|panelAutoHeightMode | String | `min-height` | Panel Height Mode (`min-height` = sets the `min-height`-attribute to the content-wrapper; `height` = sets `height`-attribute to the content-wrapper)
+|preloadDuration | Integer | 200 | Preloader Duration (Set in milliseconds)
+|loginRegisterAutoHeight | Boolean\|Integer | true | Login & Register Height Correction (`true` = single correction on load; integer = correction with a interval based on the interger)
 |---
 {: .table .table-bordered .bg-light}
 
