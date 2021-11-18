@@ -13,7 +13,7 @@ composer require arodu/cakelte
 ## Dependencies
 
 - [FriendsOfCake/bootstrap-ui](https://github.com/FriendsOfCake/bootstrap-ui), transparently use Bootstrap 4 with CakePHP 4.
-- [AdminLTE 3.0.5](https://adminlte.io/), bootstrap 4 admin theme.
+- [AdminLTE 3.1.0](https://adminlte.io/), bootstrap 4 admin theme.
 
 ## Configuration
 
