@@ -14,26 +14,19 @@
  */
 #}
 {% set fields = Bake.filterFields(fields, schema, modelObject) %}
-
-<?php $this->assign('title', __('{{ action|humanize }} {{ singularHumanName }}') ); ?>
-
 <?php
-$this->assign('breadcrumb',
-  $this->element('content/breadcrumb', [
-    'home' => true,
-    'breadcrumb' => [
-      'List {{ pluralHumanName }}' => ['action'=>'index'],
+$this->assign('title', __('{{ action|humanize }} {{ singularHumanName }}'));
+$this->Breadcrumbs->add([
+    ['title' => 'Home', 'url' => '/'],
+    ['title' => 'List {{ pluralHumanName }}', 'url' => ['action' => 'index']],
 {% if 'add' not in action %}
-      'View' => ['action'=>'view', ${{ singularVar }}->{{ primaryKey[0] }}],
-      'Edit',
+    ['title' => 'View', 'url' => ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}]],
+    ['title' => 'Edit'],
 {% else %}
-      'Add',
+    ['title' => 'Add'],
 {% endif %}
-    ]
-  ])
-);
+]);
 ?>
-
 
 <div class="card card-primary card-outline">
   <?= $this->Form->create(${{ singularVar }}) ?>
@@ -81,7 +74,7 @@ $this->assign('breadcrumb',
 {% endif %}
     <div class="ml-auto">
       <?= $this->Form->button(__('Save')) ?>
-      <?= $this->Html->link(__('Cancel'), ['action'=>'index'], ['class'=>'btn btn-default']) ?>
+      <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
     </div>
   </div>
 
