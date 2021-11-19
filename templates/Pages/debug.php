@@ -50,17 +50,12 @@ endif;
 $cakeDescription = 'CakePHP: the rapid development PHP framework';
 
 $this->assign('title', __('Debug'));
-
-$this->assign(
-    'breadcrumb',
-    $this->element('content/breadcrumb', [
-        'home' => true,
-        'breadcrumb' => [
-            'Debug',
-        ]
-    ])
-);
+$this->Breadcrumbs->add([
+    ['title' => 'Home', 'url' => '/'],
+    ['title' => 'Debug'],
+]);
 ?>
+
 <header>
     <div class="container text-center">
         <a href="https://cakephp.org/" target="_blank" rel="noopener">
