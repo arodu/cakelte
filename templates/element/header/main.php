@@ -10,7 +10,7 @@
 <!-- Right navbar links -->
 <ul class="navbar-nav ml-auto">
     <!-- Navbar Search -->
-    <?= $this->element('header/search') ?>
+    <?= $this->element('header/search-block') ?>
 
     <!-- Messages Dropdown Menu -->
     <?= $this->element('header/messages') ?>

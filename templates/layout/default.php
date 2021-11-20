@@ -10,7 +10,7 @@
     <?= $this->fetch('meta') ?>
 
     <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <?= $this->Html->css('CakeLte./AdminLTE/plugins/fontawesome-free/css/all.min.css') ?>
     <!-- Theme style -->
@@ -76,7 +76,6 @@
     </div>
     <!-- ./wrapper -->
 
-    <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
     <?= $this->Html->script('CakeLte./AdminLTE/plugins/jquery/jquery.min.js') ?>
     <!-- Bootstrap 4 -->
@@ -85,7 +84,6 @@
     <?= $this->Html->script('CakeLte./AdminLTE/dist/js/adminlte.min.js') ?>
 
     <?= $this->element('layout/script') ?>
-
     <?= $this->fetch('script') ?>
 </body>
 
