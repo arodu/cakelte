@@ -62,3 +62,7 @@ th a:hover::after {
   content: " *";
   color: tomato;
 }
+
+#url-rewriting-warning {
+  display: none;
+}

@@ -1,19 +1,5 @@
-{#
-/**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @since         2.0.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-#}
 <?php
+
 /**
  * @var \{{ namespace }}\View\AppView $this
  * @var \{{ entityClass }} ${{ singularVar }}
@@ -21,17 +7,12 @@
 ?>
 
 <?php
-$this->assign('title', __('{{ singularHumanName }}') );
-
-$this->assign('breadcrumb',
-  $this->element('content/breadcrumb', [
-    'home' => true,
-    'breadcrumb' => [
-      'List {{ pluralHumanName }}' => ['action'=>'index'],
-      'View',
-    ]
-  ])
-);
+$this->assign('title', __('{{ singularHumanName }}'));
+$this->Breadcrumbs->add([
+    ['title' => 'Home', 'url' => '/'],
+    ['title' => 'List {{ pluralHumanName }}', 'url' => ['action' => 'index']],
+    ['title' => 'View'],
+]);
 ?>
 
 {% set associations = {'BelongsTo': [], 'HasOne': [], 'HasMany': [], 'BelongsToMany': []}|merge(associations) %}
@@ -99,13 +80,13 @@ $this->assign('breadcrumb',
     <div class="">
       <?= $this->Form->postLink(
           __('Delete'),
-          ['action' => 'delete',  {{ pK|raw }}],
-          ['confirm' => __('Are you sure you want to delete # {0}?',  {{ pK|raw }}), 'class' => 'btn btn-danger']
+          ['action' => 'delete', {{ pK|raw }}],
+          ['confirm' => __('Are you sure you want to delete # {0}?', {{ pK|raw }}), 'class' => 'btn btn-danger']
       ) ?>
     </div>
     <div class="ml-auto">
-      <?= $this->Html->link(__('Edit'), ['action' => 'edit',  {{ pK|raw }}], ['class' => 'btn btn-secondary']) ?>
-      <?= $this->Html->link(__('Cancel'), ['action'=>'index'], ['class'=>'btn btn-default']) ?>
+      <?= $this->Html->link(__('Edit'), ['action' => 'edit', {{ pK|raw }}], ['class' => 'btn btn-secondary']) ?>
+      <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
     </div>
   </div>
 </div>
