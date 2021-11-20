@@ -1,95 +1,78 @@
-{#
-/**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @since         2.0.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-#}
 <?php
 
 /**
  * @var \{{ namespace }}\View\AppView $this
  */
+
+$this->layout = 'CakeLte.login';
 ?>
 
-<?php $this->layout = "CakeLte.login" ?>
-
 <div class="card">
-  <div class="card-body register-card-body">
-    <p class="login-box-msg"><?= __('Register a new membership') ?></p>
+    <div class="card-body register-card-body">
+        <p class="login-box-msg"><?= __('Register a new membership') ?></p>
 
-    <?= $this->Form->create() ?>
+        <?= $this->Form->create() ?>
 
-    <?= $this->Form->control('username', [
-      'placeholder' => __('Username'),
-      'label' => false,
-      'append' => '<i class="fas fa-user"></i>'
-    ]) ?>
-
-    <?= $this->Form->control('email', [
-      'placeholder' => __('Email'),
-      'label' => false,
-      'append' => '<i class="fas fa-envelope"></i>'
-    ]) ?>
-
-    <?= $this->Form->control('password', [
-      'placeholder' => __('Password'),
-      'label' => false,
-      'append' => '<i class="fas fa-lock"></i>'
-    ]) ?>
-
-    <?= $this->Form->control('password_confirm', [
-      'type' => 'password',
-      'placeholder' => __('Confirm Password'),
-      'label' => false,
-      'append' => '<i class="fas fa-lock"></i>'
-    ]) ?>
-
-    <div class="row">
-      <div class="col-8">
-        <?= $this->Form->control('agree_terms', [
-          'label' => 'I agree to the <a href="#">terms</a>',
-          'type' => 'checkbox',
-          'custom' => true,
-          'escape' => false
+        <?= $this->Form->control('username', [
+            'placeholder' => __('Username'),
+            'label' => false,
+            'append' => '<i class="fas fa-user"></i>',
         ]) ?>
-      </div>
-      <div class="col-4">
-        <?= $this->Form->control(__('Register'), [
-          'type'=>'submit',
-          'class'=>'btn btn-primary btn-block'
+
+        <?= $this->Form->control('email', [
+            'placeholder' => __('Email'),
+            'label' => false,
+            'append' => '<i class="fas fa-envelope"></i>',
         ]) ?>
-      </div>
+
+        <?= $this->Form->control('password', [
+            'placeholder' => __('Password'),
+            'label' => false,
+            'append' => '<i class="fas fa-lock"></i>',
+        ]) ?>
+
+        <?= $this->Form->control('password_confirm', [
+            'type' => 'password',
+            'placeholder' => __('Confirm Password'),
+            'label' => false,
+            'append' => '<i class="fas fa-lock"></i>',
+        ]) ?>
+
+        <div class="row">
+            <div class="col-8">
+                <?= $this->Form->control('agree_terms', [
+                    'label' => 'I agree to the <a href="#">terms</a>',
+                    'type' => 'checkbox',
+                    'custom' => true,
+                    'escape' => false,
+                ]) ?>
+            </div>
+            <div class="col-4">
+                <?= $this->Form->control(__('Register'), [
+                    'type' => 'submit',
+                    'class' => 'btn btn-primary btn-block',
+                ]) ?>
+            </div>
+        </div>
+
+        <?= $this->Form->end() ?>
+
+        <div class="social-auth-links text-center mb-3">
+            <p>- OR -</p>
+            <?= $this->Html->link(
+                '<i class="fab fa-facebook-f mr-2"></i>' . __('Sign up using Facebook'),
+                '#',
+                ['class' => 'btn btn-block btn-primary', 'escape' => false]
+            ) ?>
+            <?= $this->Html->link(
+                '<i class="fab fa-google mr-2"></i>' . __('Sign up using Google'),
+                '#',
+                ['class' => 'btn btn-block btn-danger', 'escape' => false]
+            ) ?>
+        </div>
+        <!-- /.social-auth-links -->
+
+        <?= $this->Html->link(__('I already have a membership'), ['action' => 'login']) ?>
     </div>
-
-    <?= $this->Form->end() ?>
-
-    <div class="social-auth-links text-center mb-3">
-      <p>- OR -</p>
-      <?php
-          echo $this->Html->link(
-            '<i class="fab fa-facebook-f mr-2"></i>'.__('Sign up using Facebook'),'#',
-            ['class'=>'btn btn-block btn-primary', 'escape'=>false]
-          );
-      ?>
-      <?php
-          echo $this->Html->link(
-            '<i class="fab fa-google mr-2"></i>'.__('Sign up using Google'),'#',
-            ['class'=>'btn btn-block btn-danger', 'escape'=>false]
-          );
-      ?>
-    </div>
-    <!-- /.social-auth-links -->
-
-    <?= $this->Html->link(__('I already have a membership'), ['action'=>'login']) ?>
-  </div>
-  <!-- /.register-card-body -->
+    <!-- /.register-card-body -->
 </div>
