@@ -7,8 +7,6 @@ use Cake\View\Helper;
 use CakeLte\View\Styles\Header;
 use CakeLte\View\Styles\Sidebar;
 
-//use CakeLte\View\Styles\Navbar;
-
 /**
  * CakeLte helper
  */
@@ -16,20 +14,42 @@ class CakeLteHelper extends Helper
 {
     /**
      * Default configuration.
+     *  'app-name' => 'Cake<b>LTE</b>',
+     *  'app-logo' => 'CakeLte.cake.icon.svg',
+     *  'small-text' => false,
+     *  'dark-mode' => false,
+     *  'layout-boxed' => false,
+     *  'header.fixed' => false,
+     *  'header.border' => true,
+     *  'header.style' => Header::STYLE_WHITE,
+     *  'header.dropdown-legacy' => false,
+     *  'sidebar.fixed' => true,
+     *  'sidebar.collapsed' => false,
+     *  'sidebar.mini' => true,
+     *  'sidebar.mini-md' => false,
+     *  'sidebar.mini-xs' => false,
+     *  'sidebar.style' => Sidebar::STYLE_DARK_PRIMARY,
+     *  'sidebar.flat-style' => false,
+     *  'sidebar.legacy-style' => false,
+     *  'sidebar.compact' => false,
+     *  'sidebar.child-indent' => false,
+     *  'sidebar.child-hide-collapse' => false,
+     *  'sidebar.disabled-auto-expand' => false,
+     *  'footer.fixed' => false,
      *
      * @var array
      */
     protected $_defaultConfig = [
-        'app-name' => 'Cake<b>LTE</b>',          // [string] default='Cake<b>LTE</b>'
-        'app-logo' => 'CakeLte.cake.icon.svg',   // [string] default='CakeLte.cake.icon.png'
+        'app-name' => 'Cake<b>LTE</b>',
+        'app-logo' => 'CakeLte.cake.icon.svg',
 
-        'small-text' => false,          //  options: true|false
-        'dark-mode' => false,           //  options: true|false
+        'small-text' => false,
+        'dark-mode' => false,
         'layout-boxed' => false,
 
         'header' => [
-            'fixed' => false,           //  options: true|false
-            'border' => true,           //  options: true|false
+            'fixed' => false,
+            'border' => true,
             'style' => Header::STYLE_WHITE,
             'dropdown-legacy' => false,
         ],
@@ -54,17 +74,14 @@ class CakeLteHelper extends Helper
         'footer' => [
             'fixed' => false,
         ],
-
-        'brand' => [
-            'style' => '',
-            'text-style' => '',
-        ],
-
     ];
 
     public $Header;
     public $Sidebar;
 
+    /**
+     * @inheritDoc
+     */
     public function initialize(array $config): void
     {
         parent::initialize($config);
@@ -95,7 +112,9 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 
-
+    /**
+     * @return string
+     */
     public function getHeaderClass(): string
     {
         $output = array_filter([
@@ -107,6 +126,9 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 
+    /**
+     * @return string
+     */
     public function getSidebarClass(): string
     {
         $output = array_filter([
@@ -119,6 +141,9 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 
+    /**
+     * @return string
+     */
     public function getMenuClass(): string
     {
         $output = array_filter([
@@ -131,6 +156,4 @@ class CakeLteHelper extends Helper
 
         return implode(' ', $output);
     }
-
-
 }

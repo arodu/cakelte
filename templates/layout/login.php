@@ -1,3 +1,12 @@
+<?php
+
+/**
+ * @var \App\View\AppView $this
+ * @var \CakeLte\View\Helper\CakeLteHelper $this->CakeLte
+ */
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

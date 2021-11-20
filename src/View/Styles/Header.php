@@ -20,7 +20,7 @@ class Header
     public const STYLE_WHITE = 'white';
     public const STYLE_BLACK = 'black';
 
-    protected $_styles= [
+    protected $_styles = [
         self::STYLE_PRIMARY => 'navbar-primary navbar-light',
         self::STYLE_SECONDARY => 'navbar-secondary navbar-light',
         self::STYLE_INFO => 'navbar-info navbar-light',
