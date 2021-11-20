@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $this->fetch('title') . ' | ' . strip_tags($this->settings['appName']) ?></title>
+    <title><?= $this->fetch('title') . ' | ' . strip_tags($this->CakeLte->getConfig('app-name')) ?></title>
 
     <?= $this->Html->meta('icon') ?>
     <?= $this->fetch('meta') ?>
@@ -20,32 +20,21 @@
     <?= $this->fetch('css') ?>
 </head>
 
-<body class="
-    hold-transition
-    sidebar-mini
-    <?= $this->settings['small-text'] ? 'text-sm' : '' ?>
-    <?= $this->settings['fixed-navbar'] ? 'layout-navbar-fixed' : '' ?>
-    <?= $this->settings['fixed-footer'] ? 'layout-footer-fixed' : '' ?>
-    <?= $this->settings['fixed-sidebar'] ? 'layout-fixed' : '' ?>
-    <?= $this->settings['collapsed-sidebar'] ? 'sidebar-collapse' : '' ?>
-    <?= $this->settings['boxed-layout'] ? 'layout-boxed' : '' ?>
-  ">
+<body class="hold-transition <?= $this->CakeLte->getBodyClass() ?>">
     <div class="wrapper">
-
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand <?= $this->navbar[$this->settings['navbar-style']] ?>">
+        <nav class="main-header navbar navbar-expand <?= $this->CakeLte->getHeaderClass() ?>">
             <?= $this->element('header/main') ?>
         </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar <?= $this->CakeLte->getSidebarClass() ?>">
             <!-- Brand Logo -->
             <a href="<?= $this->Url->build('/') ?>" class="brand-link">
-                <?= $this->Html->image($this->settings['appLogo'], ['alt' => $this->settings['appName'] . ' logo', 'class' => 'brand-image']) ?>
-                <span class="brand-text font-weight-light"><?= $this->settings['appName'] ?></span>
+                <?= $this->Html->image($this->CakeLte->getConfig('app-logo'), ['alt' => $this->CakeLte->getConfig('app-name') . ' logo', 'class' => 'brand-image']) ?>
+                <span class="brand-text font-weight-light"><?= $this->CakeLte->getConfig('app-name') ?></span>
             </a>
-
             <!-- Sidebar -->
             <div class="sidebar">
                 <?= $this->element('sidebar/main') ?>
