@@ -31,13 +31,13 @@ class Header
         self::STYLE_BLACK => 'navbar-black navbar-light',
     ];
 
-    private Helper $_helper;
-    private string $_name;
+    private $_helper;
+    private $_name;
 
     /**
      * @param Helper $helper
      */
-    public function __construct(Helper $helper)
+    public function __construct($helper)
     {
         $this->_helper = $helper;
         $this->_name = 'header';
