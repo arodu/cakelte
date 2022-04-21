@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace CakeLte\View\Helper;
 
+use Cake\Core\Configure;
 use Cake\View\Helper;
 use CakeLte\View\Styles\Header;
 use CakeLte\View\Styles\Sidebar;
@@ -12,68 +13,8 @@ use CakeLte\View\Styles\Sidebar;
  */
 class CakeLteHelper extends Helper
 {
-    /**
-     * Default configuration.
-     *  'app-name' => 'Cake<b>LTE</b>',
-     *  'app-logo' => 'CakeLte.cake.icon.svg',
-     *  'small-text' => false,
-     *  'dark-mode' => false,
-     *  'layout-boxed' => false,
-     *  'header.fixed' => false,
-     *  'header.border' => true,
-     *  'header.style' => Header::STYLE_WHITE,
-     *  'header.dropdown-legacy' => false,
-     *  'sidebar.fixed' => true,
-     *  'sidebar.collapsed' => false,
-     *  'sidebar.mini' => true,
-     *  'sidebar.mini-md' => false,
-     *  'sidebar.mini-xs' => false,
-     *  'sidebar.style' => Sidebar::STYLE_DARK_PRIMARY,
-     *  'sidebar.flat-style' => false,
-     *  'sidebar.legacy-style' => false,
-     *  'sidebar.compact' => false,
-     *  'sidebar.child-indent' => false,
-     *  'sidebar.child-hide-collapse' => false,
-     *  'sidebar.disabled-auto-expand' => false,
-     *  'footer.fixed' => false,
-     *
-     * @var array
-     */
     protected $_defaultConfig = [
-        'app-name' => 'Cake<b>LTE</b>',
-        'app-logo' => 'CakeLte.cake.icon.svg',
-
-        'small-text' => false,
-        'dark-mode' => false,
-        'layout-boxed' => false,
-
-        'header' => [
-            'fixed' => false,
-            'border' => true,
-            'style' => Header::STYLE_WHITE,
-            'dropdown-legacy' => false,
-        ],
-
-        'sidebar' => [
-            'fixed' => true,
-            'collapsed' => false,
-            'mini' => true,
-            'mini-md' => false,
-            'mini-xs' => false,
-            'style' => Sidebar::STYLE_DARK_PRIMARY,
-
-            'flat-style' => false,
-            'legacy-style' => false,
-            'compact' => false,
-            'child-indent' => false,
-            'child-hide-collapse' => false,
-
-            'disabled-auto-expand' => false,
-        ],
-
-        'footer' => [
-            'fixed' => false,
-        ],
+        'config' => 'CakeLte.cakelte',
     ];
 
     public $Header;
@@ -84,8 +25,9 @@ class CakeLteHelper extends Helper
      */
     public function initialize(array $config): void
     {
-        parent::initialize($config);
-
+        Configure::load($this->getConfig('config'));
+        $this->setConfig(Configure::read('CakeLte'));
+        $this->setConfig($config);
         $this->Header = new Header($this);
         $this->Sidebar = new Sidebar($this);
     }

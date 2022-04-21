@@ -9,7 +9,6 @@ namespace CakeLte\View\Styles;
  */
 trait StylesTrait
 {
-
     /**
      * @param string $key
      * @param string $style
@@ -29,7 +28,7 @@ trait StylesTrait
      * @param string|null $key
      * @return string|null
      */
-    public function getStyle(string $key = null): ?string
+    public function getStyle(?string $key = null): ?string
     {
         if (empty($key)) {
             $key = $this->_helper->getConfig($this->_name . '.style');
