@@ -42,4 +42,18 @@ class Header
         $this->_helper = $helper;
         $this->_name = 'header';
     }
+
+    public static function getStyles()
+    {
+        return [
+            self::STYLE_PRIMARY => 'navbar-primary navbar-light',
+            self::STYLE_SECONDARY => 'navbar-secondary navbar-light',
+            self::STYLE_INFO => 'navbar-info navbar-light',
+            self::STYLE_SUCCESS => 'navbar-success navbar-light',
+            self::STYLE_DANGER => 'navbar-danger navbar-light',
+            self::STYLE_WARNING => 'navbar-warning navbar-light',
+            self::STYLE_WHITE => 'navbar-white navbar-light',
+            self::STYLE_BLACK => 'navbar-black navbar-light',
+        ];
+    }
 }
