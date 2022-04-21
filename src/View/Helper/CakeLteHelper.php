@@ -14,22 +14,28 @@ use CakeLte\View\Styles\Sidebar;
 class CakeLteHelper extends Helper
 {
     protected $_defaultConfig = [
-        'config' => 'CakeLte.cakelte',
+        'configFile' => null,
     ];
 
-    public $Header;
-    public $Sidebar;
+    private $defaultConfigFile = 'CakeLte.cakelte';
+
+    public Header $Header;
+    public Sidebar $Sidebar;
 
     /**
      * @inheritDoc
      */
     public function initialize(array $config): void
     {
-        Configure::load($this->getConfig('config'));
+        Configure::load($this->defaultConfigFile);
+        if ($this->getConfig('configFile')) {
+            Configure::load($this->getConfig('configFile'));
+        }
         $this->setConfig(Configure::read('CakeLte'));
         $this->setConfig($config);
         $this->Header = new Header($this);
         $this->Sidebar = new Sidebar($this);
+        parent::initialize($config);
     }
 
     /**
