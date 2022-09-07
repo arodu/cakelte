@@ -125,9 +125,9 @@ bin/cake bake template [command] -t CakeLte recovery
 Replace the files elements
 
 - Layouts
-  - `src/templates/layout/default.php`
-  - `src/templates/layout/login.php`
-  - `src/templates/layout/top-nav.php`
+  - `templates/plugin/CakeLte/layout/default.php`
+  - `templates/plugin/CakeLte/layout/login.php`
+  - `templates/plugin/CakeLte/layout/top-nav.php`
 - Content
   - `src/templates/element/content/header.php`
 - Header navbar
