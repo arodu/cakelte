@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace CakeLte\View\Helper;
 
 use Cake\Core\Configure;
+use Cake\Core\Configure\Engine\PhpConfig;
+use Cake\Log\Log;
 use Cake\View\Helper;
 use CakeLte\View\Styles\Header;
 use CakeLte\View\Styles\Sidebar;
@@ -17,7 +19,8 @@ class CakeLteHelper extends Helper
         'configFile' => null,
     ];
 
-    private $defaultConfigFile = 'CakeLte.cakelte';
+    const DEFAULT_APP_CONFIG_FILE = 'cakelte';
+    const DEFAULT_PLUGIN_CONFIG_FILE = 'CakeLte.cakelte';
 
     public Header $Header;
     public Sidebar $Sidebar;
@@ -27,9 +30,11 @@ class CakeLteHelper extends Helper
      */
     public function initialize(array $config): void
     {
-        Configure::load($this->defaultConfigFile);
-        if ($this->getConfig('configFile')) {
-            Configure::load($this->getConfig('configFile'));
+        try {
+            Configure::load(static::DEFAULT_PLUGIN_CONFIG_FILE);
+            Configure::load($this->getConfig('configFile') ?? static::DEFAULT_APP_CONFIG_FILE);
+        } catch (\Throwable $th) {
+            Log::alert('App config file doesn`t exist');
         }
         $this->setConfig(Configure::read('CakeLte'));
         $this->setConfig($config);
@@ -105,3 +110,4 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 }
+
