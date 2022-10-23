@@ -5,7 +5,7 @@
 ### Dependencies
 
 - [FriendsOfCake/bootstrap-ui](https://github.com/FriendsOfCake/bootstrap-ui), transparently use Bootstrap 4 with CakePHP 4.
-- [AdminLTE 3.1.0](https://adminlte.io/), bootstrap 4 admin theme.
+- [AdminLTE 3.2](https://adminlte.io/), bootstrap 4 admin theme.
 
 ### Installing
 
