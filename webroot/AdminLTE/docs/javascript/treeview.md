@@ -16,9 +16,9 @@ Add `data-widget="treeview"` to any `ul` or `ol` element to activate the plugin.
 ```html
 <ul data-widget="treeview">
   <li><a href="#">One Level</a></li>
-  <li class="treeview">
-    <a href="#">Multilevel</a>
-    <ul class="treeview-menu">
+  <li class="nav-item">
+    <a class="nav-link" href="#">Multilevel</a>
+    <ul class="nav-treeview">
       <li><a href="#">Level 2</a></li>
     </ul>
   </li>
@@ -50,6 +50,14 @@ $('ul').Treeview(options)
 > <ul data-widget="treeview" data-accordion="false">...</ul>
 > ```
 {: .quote-info}
+
+> ##### IMPORTANT!
+> If you want to use a multiple treeview's beside the main-sidebar treeview, 
+> then you need to add to all treeview's a ID-tag.
+> ```html
+> <ul data-widget="treeview" id="someIdNameOrSo" data-accordion="false">...</ul>
+> ```
+{: .quote-danger}
 
 ##### Events
 {: .mt-4}
