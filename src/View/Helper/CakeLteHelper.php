@@ -4,11 +4,10 @@ declare(strict_types=1);
 namespace CakeLte\View\Helper;
 
 use Cake\Core\Configure;
-use Cake\Core\Configure\Engine\PhpConfig;
 use Cake\Log\Log;
 use Cake\View\Helper;
-use CakeLte\View\Styles\Header;
-use CakeLte\View\Styles\Sidebar;
+use CakeLte\Style\Header;
+use CakeLte\Style\Sidebar;
 
 /**
  * CakeLte helper
@@ -57,7 +56,6 @@ class CakeLteHelper extends Helper
             $this->getConfig('sidebar.mini') ? 'sidebar-mini' : null,
             $this->getConfig('sidebar.mini-md') ? 'sidebar-mini-md' : null,
             $this->getConfig('sidebar.mini-xs') ? 'sidebar-mini-xs' : null,
-
             $this->getConfig('sidebar.collapsed') ? 'sidebar-collapse' : null,
             $this->getConfig('footer.fixed') ? 'layout-footer-fixed' : null,
         ]);

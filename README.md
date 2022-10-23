@@ -36,8 +36,14 @@ public function bootstrap(){
 
 ## How to use
 
-use trait into `src/View/AppView.php` _(Recomended)_
+Copy the file `vendor/arodu/cakelte/config/cakelte.php` to `config/cakelte.php`
+```bash
+cp vendor/arodu/cakelte/config/cakelte.php config/cakelte.php
+```
+In this file you can change the cakelte configuration options
 
+
+use trait into `src/View/AppView.php` _(Recomended)_
 ```php
 namespace App\View;
 
@@ -51,7 +57,7 @@ class AppView extends View{
 
   public function initialize(): void{
       parent::initialize();
-      $this->initializeCakeLte($options = []);
+      $this->initializeCakeLte();
       //...
   }
 }
@@ -72,36 +78,6 @@ class AppView extends CakeLteView{
     //...
   }
 }
-```
-
-Inpunt options:
-
-```php
-  //initializeCakeLte() \$options
-  [
-    'app-name' => 'Cake<b>LTE</b>',
-    'app-logo' => 'CakeLte.cake.icon.svg',
-    'small-text' => false,
-    'dark-mode' => false,
-    'layout-boxed' => false,
-    'header.fixed' => false,
-    'header.border' => true,
-    'header.style' => \CakeLte\View\Styles\Header::STYLE_WHITE,
-    'header.dropdown-legacy' => false,
-    'sidebar.fixed' => true,
-    'sidebar.collapsed' => false,
-    'sidebar.mini' => true,
-    'sidebar.mini-md' => false,
-    'sidebar.mini-xs' => false,
-    'sidebar.style' => \CakeLte\View\Styles\Sidebar::STYLE_DARK_PRIMARY,
-    'sidebar.flat-style' => false,
-    'sidebar.legacy-style' => false,
-    'sidebar.compact' => false,
-    'sidebar.child-indent' => false,
-    'sidebar.child-hide-collapse' => false,
-    'sidebar.disabled-auto-expand' => false,
-    'footer.fixed' => false,
-  ];
 ```
 
 Options layouts

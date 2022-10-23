@@ -1,5 +1,8 @@
 <?php
 
+use CakeLte\Style\Header;
+use CakeLte\Style\Sidebar;
+
 return [
     'CakeLte' => [
         'app-name' => 'Cake<b>LTE</b>',
@@ -12,7 +15,7 @@ return [
         'header' => [
             'fixed' => false,
             'border' => true,
-            'style' => \CakeLte\View\Styles\Header::STYLE_WHITE,
+            'style' => Header::STYLE_WHITE,
             'dropdown-legacy' => false,
         ],
 
@@ -22,7 +25,7 @@ return [
             'mini' => true,
             'mini-md' => false,
             'mini-xs' => false,
-            'style' => \CakeLte\View\Styles\Sidebar::STYLE_DARK_PRIMARY,
+            'style' => Sidebar::STYLE_DARK_PRIMARY,
 
             'flat-style' => false,
             'legacy-style' => false,

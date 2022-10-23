@@ -2,13 +2,20 @@
 
 declare(strict_types=1);
 
-namespace CakeLte\View\Styles;
+namespace CakeLte\Style;
 
 /**
  * Styles trait
  */
-trait StylesTrait
+trait StyleTrait
 {
+    protected $custom_css_classes = [];
+
+    public function __construct($helper)
+    {
+        $this->_helper = $helper;
+    }
+
     /**
      * @param string $key
      * @param string $style
@@ -17,7 +24,7 @@ trait StylesTrait
      */
     public function addStyle(string $key, string $style, bool $autoload = true): void
     {
-        $this->_styles[$key] = $style;
+        $this->custom_css_classes[$key] = $style;
 
         if ($autoload) {
             $this->_helper->setConfig($this->_name . '.style', $key);
@@ -34,6 +41,17 @@ trait StylesTrait
             $key = $this->_helper->getConfig($this->_name . '.style');
         }
 
-        return $this->_styles[$key] ?? null;
+        return $this->getStyles()[$key] ?? null;
+    }
+
+    /**
+     * @return array
+     */
+    public function getStyles(): array
+    {
+        return array_merge(
+            static::CSS_CLASSES,
+            $this->custom_css_classes,
+        );
     }
 }
