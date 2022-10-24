@@ -50,6 +50,10 @@ class CopyFilesCommand extends Command
         'aside' => [
             'element/aside/main.php',
         ],
+        'extra' => [
+            'element/extra/css.php',
+            'element/extra/script.php',
+        ]
     ];
 
     /**
@@ -109,8 +113,8 @@ class CopyFilesCommand extends Command
             $files = $this->files[$type];
         }
 
-        $src = Configure::read('plugins.CakeLte') . 'templates/';
-        $dest = Configure::read('App.paths.templates.0');
+        $src = Configure::read('CakeLte.plugin-path') . 'templates/';
+        $dest = Configure::read('App.paths.templates.0') . 'plugin/CakeLte/';
 
         foreach ($files as $file) {
             $content = file_get_contents($src . $file);
@@ -130,3 +134,4 @@ class CopyFilesCommand extends Command
         return $output;
     }
 }
+

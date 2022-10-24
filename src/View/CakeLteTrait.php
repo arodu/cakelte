@@ -27,6 +27,7 @@ trait CakeLteTrait
      * @param array $options Options
      * @return string
      */
+    /*
     public function element(string $name, array $data = [], array $options = []): string
     {
         if ($this->_getElementFileName($name, false)) {
@@ -37,4 +38,5 @@ trait CakeLteTrait
 
         return parent::element($name, $data, $options);
     }
+    */
 }

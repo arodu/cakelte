@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace CakeLte;
 
 use Cake\Core\BasePlugin;
+use Cake\Core\Configure;
 use Cake\Core\PluginApplicationInterface;
 use Cake\Http\MiddlewareQueue;
 use Cake\Routing\RouteBuilder;
@@ -27,6 +28,8 @@ class Plugin extends BasePlugin
     public function bootstrap(PluginApplicationInterface $app): void
     {
         $app->addPlugin('BootstrapUI');
+
+        Configure::write('CakeLte.plugin-path', $this->getPath());
     }
 
     /**

@@ -25,7 +25,7 @@
     <!-- Theme style -->
     <?= $this->Html->css('CakeLte./AdminLTE/dist/css/adminlte.min.css') ?>
     <?= $this->Html->css('CakeLte.style') ?>
-    <?= $this->element('layout/css') ?>
+    <?php echo $this->element('CakeLte.extra/css') ?>
     <?= $this->fetch('css') ?>
 </head>
 
@@ -33,7 +33,7 @@
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand <?= $this->CakeLte->getHeaderClass() ?>">
-            <?= $this->element('header/main') ?>
+            <?= $this->element('CakeLte.header/main') ?>
         </nav>
         <!-- /.navbar -->
 
@@ -46,7 +46,7 @@
             </a>
             <!-- Sidebar -->
             <div class="sidebar">
-                <?= $this->element('sidebar/main') ?>
+                <?= $this->element('CakeLte.sidebar/main') ?>
             </div>
             <!-- /.sidebar -->
         </aside>
@@ -56,7 +56,7 @@
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                    <?= $this->element('content/header') ?>
+                    <?= $this->element('CakeLte.content/header') ?>
                 </div><!-- /.container-fluid -->
             </div>
 
@@ -74,13 +74,13 @@
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
-            <?= $this->element('aside/main') ?>
+            <?= $this->element('CakeLte.aside/main') ?>
         </aside>
         <!-- /.control-sidebar -->
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <?= $this->element('footer/main') ?>
+            <?= $this->element('CakeLte.footer/main') ?>
         </footer>
     </div>
     <!-- ./wrapper -->
@@ -92,7 +92,7 @@
     <!-- AdminLTE App -->
     <?= $this->Html->script('CakeLte./AdminLTE/dist/js/adminlte.min.js') ?>
 
-    <?= $this->element('layout/script') ?>
+    <?= $this->element('CakeLte.extra/script') ?>
     <?= $this->fetch('script') ?>
 </body>
 

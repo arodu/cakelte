@@ -25,7 +25,7 @@
     <!-- Theme style -->
     <?= $this->Html->css('CakeLte./AdminLTE/dist/css/adminlte.min.css') ?>
     <?= $this->Html->css('CakeLte.style') ?>
-    <?= $this->element('layout/css') ?>
+    <?= $this->element('CakeLte.extra/css') ?>
     <?= $this->fetch('css') ?>
 </head>
 
@@ -47,6 +47,7 @@
     <!-- AdminLTE App -->
     <?= $this->Html->script('CakeLte./AdminLTE/dist/js/adminlte.min.js') ?>
 
+    <?= $this->element('CakeLte.extra/script') ?>
     <?= $this->fetch('script') ?>
 </body>
 

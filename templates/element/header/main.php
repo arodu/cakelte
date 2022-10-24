@@ -4,19 +4,19 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
 
-    <?= $this->element('header/menu') ?>
+    <?= $this->element('CakeLte.header/menu') ?>
 </ul>
 
 <!-- Right navbar links -->
 <ul class="navbar-nav ml-auto">
     <!-- Navbar Search -->
-    <?= $this->element('header/search-block') ?>
+    <?= $this->element('CakeLte.header/search-block') ?>
 
     <!-- Messages Dropdown Menu -->
-    <?= $this->element('header/messages') ?>
+    <?= $this->element('CakeLte.header/messages') ?>
 
     <!-- Notifications Dropdown Menu -->
-    <?= $this->element('header/notifications') ?>
+    <?= $this->element('CakeLte.header/notifications') ?>
 
     <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">

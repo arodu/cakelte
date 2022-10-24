@@ -25,7 +25,7 @@
     <!-- Theme style -->
     <?= $this->Html->css('CakeLte./AdminLTE/dist/css/adminlte.min.css') ?>
     <?= $this->Html->css('CakeLte.style') ?>
-    <?= $this->element('layout/css') ?>
+    <?= $this->element('CakeLte.extra/css') ?>
     <?= $this->fetch('css') ?>
 </head>
 
@@ -46,20 +46,20 @@
                 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                     <!-- Left navbar links -->
                     <ul class="navbar-nav">
-                        <?php echo $this->element('header/menu') ?>
+                        <?php echo $this->element('CakeLte.header/menu') ?>
                     </ul>
 
                     <!-- SEARCH FORM -->
-                    <?php echo $this->element('header/search-default') ?>
+                    <?php echo $this->element('CakeLte.header/search-default') ?>
                 </div>
 
                 <!-- Right navbar links -->
                 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                     <!-- Messages Dropdown Menu -->
-                    <?php echo $this->element('header/messages') ?>
+                    <?php echo $this->element('CakeLte.header/messages') ?>
 
                     <!-- Notifications Dropdown Menu -->
-                    <?php echo $this->element('header/notifications') ?>
+                    <?php echo $this->element('CakeLte.header/notifications') ?>
 
 
                     <li class="nav-item">
@@ -82,7 +82,7 @@
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container">
-                    <?= $this->element('content/header') ?>
+                    <?= $this->element('CakeLte.content/header') ?>
                 </div><!-- /.container-fluid -->
             </div>
 
@@ -100,14 +100,14 @@
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
-            <?= $this->element('aside/main') ?>
+            <?= $this->element('CakeLte.aside/main') ?>
         </aside>
         <!-- /.control-sidebar -->
 
         <!-- Main Footer -->
         <footer class="main-footer">
             <div class="container">
-                <?= $this->element('footer/main') ?>
+                <?= $this->element('CakeLte.footer/main') ?>
             </div>
         </footer>
     </div>
@@ -120,7 +120,7 @@
     <!-- AdminLTE App -->
     <?= $this->Html->script('CakeLte./AdminLTE/dist/js/adminlte.min.js') ?>
 
-    <?= $this->element('layout/script') ?>
+    <?= $this->element('CakeLte.extra/script') ?>
     <?= $this->fetch('script') ?>
 </body>
 
