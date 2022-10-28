@@ -21,9 +21,9 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
-    <?= $this->Html->css('CakeLte./AdminLTE/plugins/fontawesome-free/css/all.min.css') ?>
+    <?= $this->Html->css('/adminlte/plugins/fontawesome-free/css/all.min.css') ?>
     <!-- Theme style -->
-    <?= $this->Html->css('CakeLte./AdminLTE/dist/css/adminlte.min.css') ?>
+    <?= $this->Html->css('/adminlte/dist/css/adminlte.min.css') ?>
     <?= $this->Html->css('CakeLte.style') ?>
     <?php echo $this->element('CakeLte.extra/css') ?>
     <?= $this->fetch('css') ?>
@@ -86,11 +86,11 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <?= $this->Html->script('CakeLte./AdminLTE/plugins/jquery/jquery.min.js') ?>
+    <?= $this->Html->script('/adminlte/plugins/jquery/jquery.min.js') ?>
     <!-- Bootstrap 4 -->
-    <?= $this->Html->script('CakeLte./AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>
+    <?= $this->Html->script('/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>
     <!-- AdminLTE App -->
-    <?= $this->Html->script('CakeLte./AdminLTE/dist/js/adminlte.min.js') ?>
+    <?= $this->Html->script('/adminlte/dist/js/adminlte.min.js') ?>
 
     <?= $this->element('CakeLte.extra/script') ?>
     <?= $this->fetch('script') ?>
