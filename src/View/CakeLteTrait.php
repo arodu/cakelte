@@ -5,6 +5,10 @@ namespace CakeLte\View;
 
 use BootstrapUI\View\UIViewTrait;
 
+/**
+ * @property \CakeLte\View\Helper\CakeLteHelper $CakeLte
+ * @property \CakeLte\View\Helper\MenuLteHelper $MenuLte
+ */
 trait CakeLteTrait
 {
     use UIViewTrait;
