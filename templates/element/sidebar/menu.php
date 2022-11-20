@@ -1,23 +1,28 @@
 <?php
 $menu = [
+    'mainHeader' => [
+        'label' => __('MAIN'),
+        'type' => $this->MenuLte::ITEM_TYPE_HEADER, // or 'header'
+    ],
     'startPages' => [
-        'label' => 'Start Pages',
+        'label' => __('Start Pages'),
         'icon' => 'fas fa-tachometer-alt',
         'dropdown' => [
             'activePage' => [
-                'label' => 'Active Page',
+                'label' => __('Active Page'),
                 'uri' => ['controller' => 'Pages', 'action' => 'display', 'home', 'plugin' => false],
             ],
             'inactivePage' => [
-                'label' => 'Inactive Page',
+                'label' => __('Inactive Page'),
                 'uri' => '#',
             ],
         ],
     ],
     'simpleLink' => [
-        'label' => 'Simple Link',
-        'extra' => '<span class="right badge badge-danger">New</span>',
+        'label' => __('Simple Link'),
+        'badge' => ['text' => __('New'), 'color' => 'danger'],
         'uri' => ['controller' => 'Pages', 'action' => 'display', 'home', 'plugin' => false],
+        'icon' => 'fas fa-th text-danger',
         'show' => function () {
             // logic condition to show item, return a bool
             return true;
@@ -28,7 +33,6 @@ $menu = [
 echo $this->MenuLte->render($menu);
 
 /*
-
 - To activate an item, you can pass the `active` variable, or use method `activeItem` from the template
     Example: 
         $this->MenuLte->activeItem('startPages.activePage');

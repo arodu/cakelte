@@ -4,14 +4,19 @@ declare(strict_types=1);
 namespace CakeLte\View\Helper;
 
 use Cake\View\Helper;
-use Cake\View\View;
+use Cake\View\StringTemplateTrait;
 
 /**
  * MenuLte helper
  */
 class MenuLteHelper extends Helper
 {
+    use StringTemplateTrait;
+
     public $helpers = ['Html', 'Url'];
+
+    public const ITEM_TYPE_HEADER = 'header';
+    public const ITEM_TYPE_DEFAULT = 'default';
 
     /**
      * Default configuration.
@@ -25,8 +30,28 @@ class MenuLteHelper extends Helper
             3 => 'far fa-dot-circle',
             'default' => 'fas fa-flag',
         ],
-        'dropdownIconDefault' => 'fas fa-angle-left',
+        'defaultDropdownIcon' => 'fas fa-angle-left',
+        'defaultBadgeColor' => 'secondary',
         'defaultShowItem' => true,
+        'cssClass' => [
+            'navItem' => 'nav-item',
+            'navLink' => 'nav-link',
+            'activeItem' => 'active',
+            'itemDropdown' => 'has-treeview',
+            'menuOpen' => 'menu-open',
+            'navHeader' => 'nav-header',
+            'dropdown' => 'nav nav-treeview',
+        ],
+        'templates' => [
+            'itemMenu' => '<li class="{{class}}">{{itemLink}}{{dropdownWrap}}</li>',
+            'itemLink' => '{{content}}',
+            'itemLinkTarget' => '{{itemIcon}}<p>{{label}}{{badge}}{{dropdownIcon}}</p>',
+            'itemIcon' => '<i class="nav-icon {{icon}}"></i>',
+            'dropdownWrap' => '<ul class="nav nav-treeview">{{items}}</ul>',
+            'dropdownIcon' => '<i class="right {{icon}}"></i>',
+            'badge' => '<span class="{{badgeClass}} right">{{text}}</span>',
+            'itemHeader' => '<li class="{{class}}">{{label}}</li>',
+        ],
     ];
 
     protected array $_activeItems = [];
@@ -65,9 +90,9 @@ class MenuLteHelper extends Helper
      * @param boolean $cache
      * @return string
      */
-    public function render(array $menu, $cache = false): string
+    public function render(array $menu): string
     {
-        //$menu = $this->checkTree($menu);
+        $this->checkActiveFromComponent();
 
         $output = '';
         foreach ($menu as $tag => $item) {
@@ -75,6 +100,32 @@ class MenuLteHelper extends Helper
         }
 
         return $output;
+    }
+
+    public function renderTopMenu(array $menu): string
+    {
+        $this->setConfig('cssClass', [
+            'navItem' => 'nav-item',
+            'navLink' => 'nav-link',
+            'activeItem' => 'active',
+            'itemDropdown' => 'has-treeview',
+            'menuOpen' => 'menu-open',
+            'navHeader' => 'nav-header',
+            'dropdown' => 'nav nav-treeview',
+        ], true);
+
+        $this->setTemplates([
+            'itemMenu' => '<li class="{{class}}">{{itemLink}}{{dropdownWrap}}</li>',
+            'itemLink' => '{{content}}',
+            'itemLinkTarget' => '{{itemIcon}}<p>{{label}}{{badge}}{{dropdownIcon}}</p>',
+            'itemIcon' => '<i class="nav-icon {{icon}}"></i>',
+            'dropdownWrap' => '<ul class="nav nav-treeview">{{items}}</ul>',
+            'dropdownIcon' => '<i class="right {{icon}}"></i>',
+            'badge' => '<span class="{{badgeClass}} right">{{text}}</span>',
+            'itemHeader' => '',
+        ]);
+
+        return $this->render($menu);
     }
     
     /**
@@ -89,63 +140,95 @@ class MenuLteHelper extends Helper
             return '';
         }
 
-        $classItem = ['nav-item'];
-        $classLink = ['nav-link'];
+        if(isset($item['type']) && $item['type'] === static::ITEM_TYPE_HEADER) {
+            return $this->formatItemHeader($tag, $item);
+        }
+
+        $classItem = [$this->getConfig('cssClass.navItem')];
+        $classLink = [$this->getConfig('cssClass.navLink')];
         $dropdownIcon = null;
-        $dropdown = '';
+        $dropdownWrap = null;
         $isActive = isset($item['active']) && $item['active'] || $this->checkActiveItem($tag);
         $isDropdown = isset($item['dropdown']) && is_array($item['dropdown']);
         
         if ($isActive) {
-            $classLink[] = 'active';
+            $classLink[] = $this->getConfig('cssClass.activeItem');
         }
 
         if ($isDropdown) {
-            $classItem[] = 'has-treeview';
-            $link = '#';
-            $dropdownIcon = $this->getConfig('dropdownIconDefault');
-            $dropdown = $this->renderDropdown($item['dropdown'], $level+1);
+            $classItem[] = $this->getConfig('cssClass.itemDropdown');
+            $dropdownIcon = $this->formatTemplate('dropdownIcon', ['icon' => $this->getConfig('defaultDropdownIcon')]);
+            $dropdownWrap = $this->formatTemplate('dropdownWrap', ['items' => $this->renderItems($item['dropdown'], $level+1)]);
             if ($isActive) {
-                $classItem[] = 'menu-open';
+                $classItem[] = $this->getConfig('cssClass.menuOpen');
             }
         }
-
-        $link = empty($item['uri']) ? '#' : $this->Url->build($item['uri']);
+        
         $icon = $item['icon'] ?? $this->getConfig('itemIcon')[$level] ?? $this->getConfig('itemIcon')['default'];
+        $itemIcon = $this->formatTemplate('itemIcon', ['icon' => $icon]);
+
         $label = $item['label'] ?? $tag;
 
-        // print
+        $itemLinkTarget = $this->formatTemplate('itemLinkTarget', [
+            'itemIcon' => $itemIcon,
+            'label' => $label,
+            'badge' => $this->formatBadge($item['badge'] ?? null),
+            'dropdownIcon' => $dropdownIcon,
+        ]);
+
+        $itemLink = $this->Html->link($itemLinkTarget, $item['uri'] ?? '#',[
+            'class' => $classLink,
+            'escape' => false
+        ]);
+
+        return $this->formatTemplate('itemMenu', [
+            'class' => implode(' ', $classItem),
+            'dropdownWrap' => $dropdownWrap,
+            'itemLink' => $itemLink,
+        ]);
+    }
+
+    protected function renderItems(array $items, int $level): string
+    {
         $output = '';
-        $output .= '<li class="' . implode(' ', $classItem) . '">';
-        $output .= '<a href="' . $link . '" class="' . implode(' ', $classLink) . '">';
-        $output .= '<i class="nav-icon ' . $icon . '"></i>';
-        $output .= '<p>' . $label;
-        $output .= $item['extra'] ?? '';
-        $output .= $dropdownIcon ? '<i class="right ' . $dropdownIcon . '"></i>' : '';
-        $output .= '</p>';
-        $output .= '</a>';
-        $output .= $dropdown;
-        $output .= '</li>';
-        // /print
+        foreach ($items as $tag => $item) {
+            $output .= $this->renderItem($tag, $item, $level);
+        }
 
         return $output;
     }
 
     /**
-     * @param array $items
-     * @param integer $level
+     * @param string|array|null $itemBadge
      * @return string
      */
-    protected function renderDropdown(array $items, int $level): string
+    protected function formatBadge(string|array $itemBadge = null): string
     {
-        $output = '';
-        $output .= '<ul class="nav nav-treeview">';
-        foreach ($items as $tag => $item) {
-            $output .= $this->renderItem($tag, $item, $level);
+        if (empty($itemBadge)) {
+            return '';
         }
-        $output .= '</ul>';
 
-        return $output;
+        $text = is_string($itemBadge) ? $itemBadge : $itemBadge['text'];
+        if (empty($text)) {
+            return '';
+        }
+
+        $badgeClass = 'badge badge-' . trim($itemBadge['color'] ?? $this->getConfig('defaultBadgeColor'));
+
+        return $this->formatTemplate('badge', [
+            'badgeClass' => $badgeClass,
+            'text' => $text,
+        ]);
+    }
+
+    protected function formatItemHeader($tag, $item): string
+    {
+        $label = $item['label'] ?? $tag;
+
+        return $this->formatTemplate('itemHeader', [
+            'class' => $this->getConfig('cssClass.navHeader'),
+            'label' => $label,
+        ]);
     }
 
     /**
@@ -168,9 +251,25 @@ class MenuLteHelper extends Helper
      * @param string $itemTag
      * @return void
      */
-    public function activeItem(string $itemTag): void
+    public function activeItem(string $itemTag, bool $reset = false): MenuLteHelper
     {
+        if ($reset) {
+            $this->resetActiveItem();
+        }
+
         array_push($this->_activeItems, $itemTag);
+
+        return $this;
+    }
+
+    /**
+     * @return void
+     */
+    public function resetActiveItem(): MenuLteHelper
+    {
+        $this->_activeItems = [];
+
+        return $this;
     }
 
     /**
@@ -187,5 +286,14 @@ class MenuLteHelper extends Helper
         }
         
         return false;
+    }
+
+    protected function checkActiveFromComponent(): void
+    {
+        $_menuActiveItem = $this->getView()->get('_menuActiveItem', null);
+
+        if (!empty($_menuActiveItem)) {
+            $this->activeItem($_menuActiveItem);
+        }
     }
 }
