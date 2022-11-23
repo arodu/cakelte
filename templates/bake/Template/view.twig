@@ -109,9 +109,9 @@ $this->Breadcrumbs->add([
 {% set otherSingularVar = alias|variable %}
 {% set otherPluralHumanName = details.controller|underscore|humanize %}
 <div class="related related-{{ otherSingularVar }} view card">
-  <div class="card-header d-sm-flex">
+  <div class="card-header d-flex">
     <h3 class="card-title"><?= __('Related {{ otherPluralHumanName }}') ?></h3>
-    <div class="card-toolbox">
+    <div class="ml-auto">
       <?= $this->Html->link(__('New'), ['controller' => '{{details.controller}}' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
       <?= $this->Html->link(__('List '), ['controller' => '{{details.controller}}' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
