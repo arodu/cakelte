@@ -202,7 +202,7 @@ class MenuLteHelper extends Helper
      * @param string|array|null $itemBadge
      * @return string
      */
-    protected function formatBadge(string|array $itemBadge = null): string
+    protected function formatBadge($itemBadge = null): string
     {
         if (empty($itemBadge)) {
             return '';
