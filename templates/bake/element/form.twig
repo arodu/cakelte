@@ -17,13 +17,13 @@
 <?php
 $this->assign('title', __('{{ action|humanize }} {{ singularHumanName }}'));
 $this->Breadcrumbs->add([
-    ['title' => 'Home', 'url' => '/'],
-    ['title' => 'List {{ pluralHumanName }}', 'url' => ['action' => 'index']],
+    ['title' => __('Home'), 'url' => '/'],
+    ['title' => __('List {{ pluralHumanName }}'), 'url' => ['action' => 'index']],
 {% if 'add' not in action %}
-    ['title' => 'View', 'url' => ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}]],
-    ['title' => 'Edit'],
+    ['title' => __('View'), 'url' => ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}]],
+    ['title' => __('Edit')],
 {% else %}
-    ['title' => 'Add'],
+    ['title' => __('Add')],
 {% endif %}
 ]);
 ?>
@@ -74,7 +74,12 @@ $this->Breadcrumbs->add([
 {% endif %}
     <div class="ml-auto">
       <?= $this->Form->button(__('Save')) ?>
+{% if 'add' not in action %}
+      <?= $this->Html->link(__('Cancel'), ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}], ['class' => 'btn btn-default']) ?>
+{% else %}
       <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
+{% endif %}
+
     </div>
   </div>
 
