@@ -5,8 +5,8 @@
   "license": "MIT",
   "require": {
     "almasaeed2010/adminlte": "~3.2",
-    "cakephp/cakephp": "^4.0",
-    "friendsofcake/bootstrap-ui": "^3.0"
+    "cakephp/cakephp": "^5.0",
+    "friendsofcake/bootstrap-ui": "^5.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^8.0"
