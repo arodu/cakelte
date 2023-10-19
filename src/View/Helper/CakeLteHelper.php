@@ -14,7 +14,7 @@ use CakeLte\Style\Sidebar;
  */
 class CakeLteHelper extends Helper
 {
-    protected $_defaultConfig = [
+    protected array $_defaultConfig = [
         'configFile' => null,
     ];
 

@@ -13,7 +13,7 @@ class MenuLteHelper extends Helper
 {
     use StringTemplateTrait;
 
-    public $helpers = ['Html', 'Url'];
+    public array $helpers = ['Html', 'Url'];
 
     public const ITEM_TYPE_HEADER = 'header';
     public const ITEM_TYPE_DEFAULT = 'default';
@@ -23,7 +23,7 @@ class MenuLteHelper extends Helper
      *
      * @var array<string, mixed>
      */
-    protected $_defaultConfig = [
+    protected array $_defaultConfig = [
         'itemIcon' => [
             1 => 'fas fa-circle',
             2 => 'far fa-circle',
