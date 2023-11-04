@@ -7,7 +7,7 @@ return [
     'CakeLte' => [
         'app-name' => 'Cake<b>LTE</b>',
         'app-logo' => 'CakeLte.cake.icon.svg',
-
+        'plugin-path' => 'plugins/CakeLte', //added
         'small-text' => false,
         'dark-mode' => false,
         'layout-boxed' => false,
