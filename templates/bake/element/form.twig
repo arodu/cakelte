@@ -27,7 +27,8 @@ $this->Breadcrumbs->add([
 {% endif %}
 ]);
 ?>
-
+<div class="row">
+    <div class="col-md-6">
 <div class="card card-primary card-outline">
   <?= $this->Form->create(${{ singularVar }}) ?>
   <div class="card-body">
@@ -62,7 +63,7 @@ $this->Breadcrumbs->add([
     ?>
   </div>
 
-  <div class="card-footer d-flex">
+  <div class="card-footer d-flex gap-2">
 {% if 'add' not in action %}
     <div class="">
       <?= $this->Form->postLink(
@@ -72,7 +73,7 @@ $this->Breadcrumbs->add([
       ) ?>
     </div>
 {% endif %}
-    <div class="ml-auto">
+    <div class="ml-auto d-flex gap-2">
       <?= $this->Form->button(__('Save')) ?>
 {% if 'add' not in action %}
       <?= $this->Html->link(__('Cancel'), ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}], ['class' => 'btn btn-default']) ?>
@@ -84,4 +85,6 @@ $this->Breadcrumbs->add([
   </div>
 
   <?= $this->Form->end() ?>
+</div>
+</div>
 </div>
