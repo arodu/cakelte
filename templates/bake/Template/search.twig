@@ -21,11 +21,22 @@ $this->Breadcrumbs->add([
             {{ pluralHumanName }}
         </h2>
         <div class="card-tools d-flex gap-4">
-            
+            <!------ PAGINATION SEARCH ------>
             <div class="box-tools gap-2 py-2">
-
+                <?= $this->Form->create(null, ['type' => 'get']); ?>
+                <div class="input-group input-group-sm" style="width: 100%;">
+                    <?php echo $this->Form->input('search_text', ['type'=>'search','placeholder' => 'search']
+                    ); ?>
+                    <div class="input-group-append border">
+                        <button type="submit" class="btn btn-default" style="padding:.175rem .75rem;"><i class="bi bi-search"></i></button>
+                    </div>
+                    <div class="input-group-append border">
+                        <button type="submit" class="btn btn-default" style="padding:.175rem .75rem;" name="action" value="clear"><i class="bi bi-eraser"></i></button>
+                    </div>
+                </div>
+                <?= $this->Form->end(); ?>
             </div>
-                    
+            <!------ PAGINATION SEARCH ------>        
             <?= $this->Paginator->limitControl([], null, [
                 'label' => false,
                 'class' => 'form-control-sm',
