@@ -20,83 +20,23 @@
      */
     public function index()
     {
-{% set belongsTo = Bake.aliasExtractor(modelObj, 'BelongsTo') %}
-{% if belongsTo %}
-        $query = $this->{{ currentModelName }}->find()
-            ->contain({{ Bake.exportArray(belongsTo)|raw }});
-{% else %}
+
         $query = $this->{{ currentModelName }}->find();
-{% endif %}
-        ${{ pluralName }} = $this->paginate($query);
+        
+        // Uncomment to enable Search Plugin 
+        // $this->loadComponent('CakeLte.Search');
+        // $finder_options = $this->Search->prep('{{ currentModelName }}');
+        // $query->find("search", $finder_options);
+        
 
-        $this->set(compact('{{ pluralName }}'));
-    }
-
-    {#
-/**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @since         2.0.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-#}
-    /**
-     * Search method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
-    public function search()
-    {
 {% set belongsTo = Bake.aliasExtractor(modelObj, 'BelongsTo') %}
 {% if belongsTo %}
-        $this->paginate = [
-            'contain' => {{ Bake.exportArray(belongsTo)|raw }},
-        ];
+        $query->contain({{ Bake.exportArray(belongsTo)|raw }});
 {% endif %}
-      
-
-        $session = $this->getRequest()->getSession();
-        $session_key = "{{ currentModelName }}.index.search"; 
-
-        $search = array_filter($this->request->getQuery(), function ($key_name) {
-            return strpos($key_name, "earch_");
-        }, ARRAY_FILTER_USE_KEY);
-
-
-        if (empty($search)) {
-            if ($session->check($session_key)) {
-                $search = $session->read($session_key);
-            } else {
-                $search = [];
-            }
-        } else {
-            if ($this->request->getQuery('action') && $this->request->getQuery('action') == 'clear') {
-                $this->set('search', []);
-                $search = [];
-                $session->delete($session_key);
-            } else {
-                $session->write($session_key, $this->request->getQuery());
-            }
-        }
-
-
-        if ($search != []) {
-            $this->set('search', $search);
-            $this->paginate['finder'] = ['search' => ['search_data' => $search]];
-        } else {
-            $this->paginate['finder'] = ['search' => []];
-        }
 
         try {
-            ${{ pluralName }} = $this->paginate($this->{{ currentModelName }});  
-        } catch (\Cake\Datasource\Exception\RecordNotFoundException $e) {
+            ${{ pluralName }} = $this->paginate($query);  
+        } catch (\Cake\Http\Exception\NotFoundException $e) {
             $params = $this->request->getParam('?');
             if (isset($params['page']) && $params['page'] != '1') {
                 return $this->redirect(['action' => 'index']);
@@ -104,5 +44,6 @@
         }
 
         $this->set(compact('{{ pluralName }}'));
-
     }
+
+    

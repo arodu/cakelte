@@ -40,5 +40,11 @@ th a:hover::after {
   text-decoration: none;
 }
 
+.search-date {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding: 0 2px 0 10px;
+}
+
 
 

@@ -63,4 +63,15 @@ class FormLteHelper extends Helper
         return $component;
     }
 
+
+    public function day($field, $parameters = [])
+    {
+        $component = '<div class="form-group d-flex gap-3">';
+        $component .= "<label class='p-1'>".($parameters['label']??ucwords($field))."</label>";
+        $component .= "<input type='date' class='search-date  lh-1' name='$field'>";
+
+        $component .= '</div>';
+        return $component;
+    }
+
 }

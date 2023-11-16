@@ -144,22 +144,17 @@ class {{ name }}Table extends Table
     }
 {% endif %}
 
-    public function findSearch(SelectQuery $query)
+    public function findSearch(SelectQuery $query, array $options)
     {
     
     /** This is a sample search function, you can use this as a template for your own search function 
-    * Each field from the search form will be available in the $options['search_data'] array
+    * Each field from the search form will be available in the $options array
     */
-      $options = $query->getOptions();
-      //  $query
-      //      ->select([
-      //          'Model fieldnames',
-      //  
-      //      ])->contain(['' => ['fields' => ['']]]);
+
 
         /** Standard Search Text field */
-       // if (isset($options['search_data']['search_text']) && $options['search_data']['search_text'] != '') {
-       //     $search_text = trim($options['search_data']['search_text']);
+       // if (isset($options['search_text']) && $options['search_text'] != '') {
+       //     $search_text = trim($options['search_text']);
        //     if (is_numeric($search_text)) {
        //         $query->where([
        //             '{{ name }}.id' => $search_text
