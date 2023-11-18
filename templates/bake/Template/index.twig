@@ -27,7 +27,16 @@ $this->Breadcrumbs->add([
             <div class="box-tools gap-2 py-2">
                 <?= $this->Form->create(null, ['type' => 'get']); ?>
                 <div class="input-group gap-2" style="width: 100%;">
-                    <?php echo $this->Form->input('search_text', ['type'=>'search','placeholder' => 'search', 'value' => $search['search_text']??'']); ?>
+
+                    <?php //echo $this->SearchLte->searchDay('search_date', ['label'=>'Date', 'value' => $search['search_date']??'']); ?>
+                    <?php //echo $this->SearchLte->searchDayRange('search_date', ['label'=>'Date', 
+                                    'value' => $search['search_date']??'', 
+                                    'value_from' => $search['search_date-from']??'',
+                                    'value_to' => $search['search_date-to']??'',
+                                    ]); ?>
+                    <?php //echo $this->SearchLte->longSelect('search_role', $roles , ['label'=>'Role', 'value' => $search['search_role']??'']); ?>
+                    <?php //echo $this->SearchLte->searchSelect('search_role', $roles , ['label'=>'Role', 'value' => $search['search_role']??'']); ?>
+                    <?php //echo $this->SearchLte->searchText('search_text', ['type'=>'search','label' => 'Search', 'value' => $search['search_text']??'']); ?>
                     <div class="input-group-append border">
                         <button type="submit" class="btn btn-default"><i class="bi bi-search"></i></button>
                     </div>
