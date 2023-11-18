@@ -28,6 +28,13 @@ $menu = [
             return true;
         }
     ],
+    'examples' => [
+        'label' => __('AdminLTE Examples'),
+        'uri' => '/adminlte/dist/pages/index.html',
+        'icon' => 'fas fa-th text-danger',
+
+    ],
+    
 ];
 
 echo $this->MenuLte->render($menu);

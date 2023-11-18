@@ -46,5 +46,26 @@ th a:hover::after {
   padding: 0 2px 0 10px;
 }
 
+.input-set input, .input-set, .input-set .dropdown, .input-set .dropdown .dropdown-toggle{
+  background-color: var(--bs-secondary-bg-subtle);
+  font-weight: 600;
+  border: none;
+}
+
+.bootstrap-select {
+  border: solid 1px lightgray;
+  border-radius: 3px;
+}
+
+.bootstrap-select .dropdown-toggle:focus, .bootstrap-select>select.mobile-device:focus+.dropdown-toggle {
+  outline: thin dotted #333!important;
+  /* outline: 5px auto -webkit-focus-ring-color!important; */
+  outline-offset: 0px; 
+}
+
+.search-text {
+  outline-offset: 0px;
+  border: 1px solid lightgray;
+}
 
 

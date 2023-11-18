@@ -24,6 +24,6 @@ trait CakeLteTrait
         $this->initializeUI();
         $this->loadHelper('CakeLte.CakeLte', $options);
         $this->loadHelper('CakeLte.MenuLte', $options['menu'] ?? []);
-        $this->loadHelper('CakeLte.FormLte', $options['form'] ?? []);
+        $this->loadHelper('CakeLte.SearchLte', $options['form'] ?? []);
     }
 }

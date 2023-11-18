@@ -26,13 +26,13 @@ $this->Breadcrumbs->add([
             <!-- REMOVE THIS COMMENT TO ENABLE SEARCH OR DELETE THIS SECTION
             <div class="box-tools gap-2 py-2">
                 <?= $this->Form->create(null, ['type' => 'get']); ?>
-                <div class="input-group input-group-sm gap-2" style="width: 100%;">
+                <div class="input-group gap-2" style="width: 100%;">
                     <?php echo $this->Form->input('search_text', ['type'=>'search','placeholder' => 'search', 'value' => $search['search_text']??'']); ?>
                     <div class="input-group-append border">
-                        <button type="submit" class="btn btn-default" style="padding:.175rem .75rem;"><i class="bi bi-search"></i></button>
+                        <button type="submit" class="btn btn-default"><i class="bi bi-search"></i></button>
                     </div>
                     <div class="input-group-append border">
-                        <button type="submit" class="btn btn-default" style="padding:.175rem .75rem;" name="action" value="clear"><i class="bi bi-eraser"></i></button>
+                        <button type="submit" class="btn btn-default" name="action" value="clear"><i class="bi bi-eraser"></i></button>
                     </div>
                 </div>
                 <?= $this->Form->end(); ?>
@@ -45,7 +45,7 @@ $this->Breadcrumbs->add([
                 'class' => 'form-control-sm',
                 'templates' => ['inputContainer' => '{{'{{content}}'}}']
             ]); ?>
-            <?= $this->Html->link(__('New {{ singularHumanName }}'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
+            <?= $this->Html->link(__('New {{ singularHumanName }}'), ['action' => 'add'], ['class' => 'btn btn-primary text-nowrap', 'style'=>'max-height:2.5rem;']) ?>
         </div>
     </div>
     <!-- /.card-header -->
