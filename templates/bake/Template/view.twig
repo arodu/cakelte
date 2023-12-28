@@ -14,7 +14,8 @@ $this->Breadcrumbs->add([
     ['title' => __('View')],
 ]);
 ?>
-
+<div class="row">
+    <div class="col-md-6">
 {% set associations = {'BelongsTo': [], 'HasOne': [], 'HasMany': [], 'BelongsToMany': []}|merge(associations) %}
 {% set fieldsData = Bake.getViewFieldsData(fields, schema, associations) %}
 {% set associationFields = fieldsData.associationFields %}
@@ -76,7 +77,7 @@ $this->Breadcrumbs->add([
 {% endif %}
     </table>
   </div>
-  <div class="card-footer d-flex">
+  <div class="card-footer  d-flex gap-2">
     <div class="">
       <?= $this->Form->postLink(
           __('Delete'),
@@ -84,7 +85,7 @@ $this->Breadcrumbs->add([
           ['confirm' => __('Are you sure you want to delete # {0}?', {{ pK|raw }}), 'class' => 'btn btn-danger']
       ) ?>
     </div>
-    <div class="ml-auto">
+    <div class="ml-auto d-flex gap-2">
       <?= $this->Html->link(__('Edit'), ['action' => 'edit', {{ pK|raw }}], ['class' => 'btn btn-secondary']) ?>
       <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
     </div>
@@ -109,9 +110,9 @@ $this->Breadcrumbs->add([
 {% set otherSingularVar = alias|variable %}
 {% set otherPluralHumanName = details.controller|underscore|humanize %}
 <div class="related related-{{ otherSingularVar }} view card">
-  <div class="card-header d-flex">
+  <div class="card-header d-flex gap-2">
     <h3 class="card-title"><?= __('Related {{ otherPluralHumanName }}') ?></h3>
-    <div class="ml-auto">
+    <div class="ml-auto d-flex gap-2">
       <?= $this->Html->link(__('New'), ['controller' => '{{details.controller}}' , 'action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
       <?= $this->Html->link(__('List '), ['controller' => '{{details.controller}}' , 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
     </div>
@@ -147,6 +148,8 @@ $this->Breadcrumbs->add([
       <?php } ?>
     </table>
   </div>
+</div>
+</div>
 </div>
 
 {% endfor %}

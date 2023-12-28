@@ -25,12 +25,15 @@ class MenuLteHelper extends Helper
      */
     protected array $_defaultConfig = [
         'itemIcon' => [
-            1 => 'fas fa-circle',
-            2 => 'far fa-circle',
-            3 => 'far fa-dot-circle',
-            'default' => 'fas fa-flag',
+            1 => 'bi bi-circle-fill',
+            2 => 'bi bi-circle',
+            3 => 'bi bi-clipboard-fill',
+            4 => 'bi bi-clipboard',
+            5 => 'bi bi-table',
+            6 => 'bi bi-speedometer',
+            'default' => 'bi bi-circle-fill',
         ],
-        'defaultDropdownIcon' => 'fas fa-angle-left',
+        'defaultDropdownIcon' => 'nav-arrow bi bi-chevron-right',
         'defaultBadgeColor' => 'secondary',
         'defaultShowItem' => true,
         'cssClass' => [
@@ -47,8 +50,8 @@ class MenuLteHelper extends Helper
             'itemLink' => '{{content}}',
             'itemLinkTarget' => '{{itemIcon}}<p>{{label}}{{badge}}{{dropdownIcon}}</p>',
             'itemIcon' => '<i class="nav-icon {{icon}}"></i>',
-            'dropdownWrap' => '<ul class="nav nav-treeview">{{items}}</ul>',
-            'dropdownIcon' => '<i class="right {{icon}}"></i>',
+            'dropdownWrap' => '<ul class="nav nav-treeview" style="box-sizing: border-box; display: none;">{{items}}</ul>',
+            'dropdownIcon' => '<i class="{{icon}}"></i>',
             'badge' => '<span class="{{badgeClass}} right">{{text}}</span>',
             'itemHeader' => '<li class="{{class}}">{{label}}</li>',
         ],
@@ -119,8 +122,8 @@ class MenuLteHelper extends Helper
             'itemLink' => '{{content}}',
             'itemLinkTarget' => '{{itemIcon}}<p>{{label}}{{badge}}{{dropdownIcon}}</p>',
             'itemIcon' => '<i class="nav-icon {{icon}}"></i>',
-            'dropdownWrap' => '<ul class="nav nav-treeview">{{items}}</ul>',
-            'dropdownIcon' => '<i class="right {{icon}}"></i>',
+            'dropdownWrap' => '<ul class="nav nav-treeview" style="box-sizing: border-box; display: none;">{{items}}</ul>',
+            'dropdownIcon' => '<i class="{{icon}}"></i>',
             'badge' => '<span class="{{badgeClass}} right">{{text}}</span>',
             'itemHeader' => '',
         ]);

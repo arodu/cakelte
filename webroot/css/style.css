@@ -6,8 +6,8 @@ td.narrow {
 }
 
 th a::after {
-  font-family: "Font Awesome 5 Free";
-  content: "\f0dc";
+  font-family: "bootstrap-icons" !important;
+  content: "\f229";
   display: inline-block;
   margin-left: 0.2rem;
   opacity: 0.3;
@@ -16,14 +16,14 @@ th a::after {
 
 th a.desc::after,
 th a.asc:hover::after {
-  content: "\f0dd";
+  content: "\f229";
   opacity: 1;
 }
 
 th a.asc::after,
 th a.desc:hover::after,
 th a:hover::after {
-  content: "\f0de";
+  content: "\f235";
   opacity: 1;
 }
 
@@ -35,3 +35,37 @@ th a:hover::after {
 #url-rewriting-warning {
   display: none;
 }
+
+.lte-sortable a {
+  text-decoration: none;
+}
+
+.search-date {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding: 0 2px 0 10px;
+}
+
+.input-set input, .input-set, .input-set .dropdown, .input-set .dropdown .dropdown-toggle{
+  background-color: var(--bs-secondary-bg-subtle);
+  font-weight: 600;
+  border: none;
+}
+
+.bootstrap-select {
+  border: solid 1px lightgray;
+  border-radius: 3px;
+}
+
+.bootstrap-select .dropdown-toggle:focus, .bootstrap-select>select.mobile-device:focus+.dropdown-toggle {
+  outline: thin dotted #333!important;
+  /* outline: 5px auto -webkit-focus-ring-color!important; */
+  outline-offset: 0px; 
+}
+
+.search-text {
+  outline-offset: 0px;
+  border: 1px solid lightgray;
+}
+
+

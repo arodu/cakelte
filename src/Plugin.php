@@ -8,6 +8,7 @@ use Cake\Core\Configure;
 use Cake\Core\PluginApplicationInterface;
 use Cake\Http\MiddlewareQueue;
 use Cake\Routing\RouteBuilder;
+use Cake\Console\CommandCollection;
 
 define('CAKELTE_VERSION', '2.x');
 
@@ -65,5 +66,21 @@ class Plugin extends BasePlugin
         // Add your middlewares here
 
         return $middlewareQueue;
+    }
+
+        /**
+     * Add commands for the plugin.
+     *
+     * @param \Cake\Console\CommandCollection $commands The command collection to update.
+     * @return \Cake\Console\CommandCollection
+     */
+
+    public function console(CommandCollection $commands): CommandCollection
+    {
+        // Add your commands here
+
+        $commands = parent::console($commands);
+
+        return $commands;
     }
 }

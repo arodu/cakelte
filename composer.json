@@ -1,10 +1,11 @@
 {
   "name": "arodu/cakelte",
-  "description": "CakeLTE: AdminLTE plugin for CakePHP 4.x",
+  "description": "CakeLTE: AdminLTE plugin for CakePHP 5.x",
+  "minimum-stability": "dev",
   "type": "cakephp-plugin",
   "license": "MIT",
   "require": {
-    "almasaeed2010/adminlte": "4.0.0-alpha2",
+    "almasaeed2010/adminlte": "master",
     "cakephp/cakephp": "^5.0",
     "friendsofcake/bootstrap-ui": "^5.0"
   },

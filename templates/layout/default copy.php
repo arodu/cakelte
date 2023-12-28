@@ -20,28 +20,27 @@
     <?= $this->fetch('css') ?>
 </head>
 
-<body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
-    <div class="app-wrapper"> <!--begin::Header-->
+<body class="hold-transition <?= $this->CakeLte->getBodyClass() ?>">
+    <div class="wrapper">
         <!-- Navbar -->
-        <nav class="app-header navbar navbar-expand bg-body <?= $this->CakeLte->getHeaderClass() ?>">
-            <div class="container-fluid"> <!--begin::Start Navbar Links-->
-                <?= $this->element('CakeLte.header/main') ?>
-            </div> <!--end::Container-->
+        <nav class="main-header navbar navbar-expand <?= $this->CakeLte->getHeaderClass() ?>">
+            <?= $this->element('CakeLte.header/main') ?>
         </nav>
         <!-- /.navbar -->
 
-        <!--begin::Sidebar-->
+        <!-- Main Sidebar Container -->
+
         <aside class="app-sidebar bg-body-secondary shadow <?= $this->CakeLte->getSidebarClass() ?>" data-bs-theme="dark">
             <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="<?= $this->Url->build('/') ?>" class="brand-link">
-                    <!--begin::Brand Image-->
-                    <?= $this->Html->image(
-                        $this->CakeLte->getConfig('app-logo'),
-                        ['alt' => $this->CakeLte->getConfig('app-name') . ' logo', 'class' => 'brand-image  opacity-75 shadow']
-                    ) ?>
-
+                    <!--begin::Brand Image--> 
+                    <?= $this->Html->image($this->CakeLte->getConfig('app-logo'),
+                     ['alt' => $this->CakeLte->getConfig('app-name') . ' logo', 'class' => 'brand-image  opacity-75 shadow']) ?>
+                   
                     <span class="brand-text fw-light"><?= $this->CakeLte->getConfig('app-name') ?></span> <!--end::Brand Text-->
                 </a> <!--end::Brand Link-->
-            </div> <!--end::Sidebar Brand-->
+            </div> <!--end::Sidebar Brand--> 
+            
+
 
             <!-- Sidebar -->
             <div class="sidebar-wrapper">
@@ -49,27 +48,40 @@
             </div>
             <!-- /.sidebar -->
         </aside>
-        <!--end::Sidebar-->
 
-        <!--begin::App Main-->
-        <main class="app-main"> <!--begin::App Content Header-->
-                        <!--begin::App Content-->
-            <?= $this->Flash->render() ?>
-            <div class="app-content"> 
-                <!--begin::Container-->
-            <?= $this->fetch('content') ?>
-            </div> <!--end::Container-->
-        </main> <!--end::App Main--> <!--begin::Footer-->
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline">Anything you want</div> <!--end::To the end--> <!--begin::Copyright--> <strong>
-                Copyright &copy; 2014-2023&nbsp;
-                <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
-            </strong>
-            All rights reserved.
-            <!--end::Copyright-->
-        </footer> <!--end::Footer-->
-    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <?= $this->element('CakeLte.content/header') ?>
+                </div><!-- /.container-fluid -->
+            </div>
 
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <?= $this->Flash->render() ?>
+
+                    <?= $this->fetch('content') ?>
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+            <?= $this->element('CakeLte.aside/main') ?>
+        </aside>
+        <!-- /.control-sidebar -->
+
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <?= $this->element('CakeLte.footer/main') ?>
+        </footer>
+    </div>
     <!-- ./wrapper -->
 
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->

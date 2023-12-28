@@ -11,6 +11,8 @@ trait StyleTrait
 {
     protected $custom_css_classes = [];
 
+    protected $_helper = '';
+
     public function __construct($helper)
     {
         $this->_helper = $helper;

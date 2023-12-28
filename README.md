@@ -4,8 +4,8 @@
 
 ### Dependencies
 
-- [FriendsOfCake/bootstrap-ui](https://github.com/FriendsOfCake/bootstrap-ui), transparently use Bootstrap 4 with CakePHP 4.
-- [AdminLTE 3.2](https://adminlte.io/), bootstrap 4 admin theme.
+- [FriendsOfCake/bootstrap-ui](https://github.com/FriendsOfCake/bootstrap-ui), transparently use Bootstrap 5 with CakePHP 5.
+- [AdminLTE 4](https://adminlte.io/), bootstrap 5 admin theme. (as at Jan 2023 needs to be built from source)
 
 ### Installing
 
@@ -58,7 +58,7 @@ use CakeLte\View\CakeLteTrait;
 class AppView extends View{
   use CakeLteTrait;
 
-  public $layout = 'CakeLte.default';
+  public string $layout = 'CakeLte.default';
 
   public function initialize(): void{
       parent::initialize();
