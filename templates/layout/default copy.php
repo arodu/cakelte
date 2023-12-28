@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title><?= strip_tags($this->fetch('title') . ' | ' . $this->CakeLte->getConfig('app-name')) ?></title>
@@ -28,14 +29,21 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar <?= $this->CakeLte->getSidebarClass() ?>">
-            <!-- Brand Logo -->
-            <a href="<?= $this->Url->build('/') ?>" class="brand-link">
-                <?= $this->Html->image($this->CakeLte->getConfig('app-logo'), ['alt' => $this->CakeLte->getConfig('app-name') . ' logo', 'class' => 'brand-image']) ?>
-                <span class="brand-text font-weight-light"><?= $this->CakeLte->getConfig('app-name') ?></span>
-            </a>
+
+        <aside class="app-sidebar bg-body-secondary shadow <?= $this->CakeLte->getSidebarClass() ?>" data-bs-theme="dark">
+            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="<?= $this->Url->build('/') ?>" class="brand-link">
+                    <!--begin::Brand Image--> 
+                    <?= $this->Html->image($this->CakeLte->getConfig('app-logo'),
+                     ['alt' => $this->CakeLte->getConfig('app-name') . ' logo', 'class' => 'brand-image  opacity-75 shadow']) ?>
+                   
+                    <span class="brand-text fw-light"><?= $this->CakeLte->getConfig('app-name') ?></span> <!--end::Brand Text-->
+                </a> <!--end::Brand Link-->
+            </div> <!--end::Sidebar Brand--> 
+            
+
+
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar-wrapper">
                 <?= $this->element('CakeLte.sidebar/main') ?>
             </div>
             <!-- /.sidebar -->
@@ -122,7 +130,7 @@
         });
     </script> <!-- apexcharts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js" integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8=" crossorigin="anonymous"></script> <!-- ChartJS -->
-    
+
 
     <?= $this->element('CakeLte.extra/script') ?>
     <?= $this->fetch('script') ?>
