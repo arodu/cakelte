@@ -16,7 +16,7 @@ class MenuLteComponent extends Component
      *
      * @var array<string, mixed>
      */
-    protected $_defaultConfig = [];
+    protected array $_defaultConfig = [];
 
     public function activeItem(string $itemTag): void
     {

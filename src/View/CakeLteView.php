@@ -9,7 +9,7 @@ class CakeLteView extends View
 {
     use CakeLteTrait;
 
-    public $layout = 'CakeLte.default';
+    public string $layout = 'CakeLte.default';
 
     /**
      * @inheritDoc
