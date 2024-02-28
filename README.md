@@ -58,7 +58,7 @@ use CakeLte\View\CakeLteTrait;
 class AppView extends View{
   use CakeLteTrait;
 
-  public $layout = 'CakeLte.default';
+  public string $layout = 'CakeLte.default';
 
   public function initialize(): void{
       parent::initialize();
