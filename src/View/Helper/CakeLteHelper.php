@@ -8,6 +8,7 @@ use Cake\Log\Log;
 use Cake\View\Helper;
 use CakeLte\Style\Header;
 use CakeLte\Style\Sidebar;
+use Throwable;
 
 /**
  * CakeLte helper
@@ -18,8 +19,8 @@ class CakeLteHelper extends Helper
         'configFile' => null,
     ];
 
-    const DEFAULT_APP_CONFIG_FILE = 'cakelte';
-    const DEFAULT_PLUGIN_CONFIG_FILE = 'CakeLte.cakelte';
+    public const DEFAULT_APP_CONFIG_FILE = 'cakelte';
+    public const DEFAULT_PLUGIN_CONFIG_FILE = 'CakeLte.cakelte';
 
     public Header $Header;
     public Sidebar $Sidebar;
@@ -32,7 +33,7 @@ class CakeLteHelper extends Helper
         try {
             Configure::load(static::DEFAULT_PLUGIN_CONFIG_FILE);
             Configure::load($this->getConfig('configFile') ?? static::DEFAULT_APP_CONFIG_FILE);
-        } catch (\Throwable $th) {
+        } catch (Throwable $th) {
             Log::alert('App config file doesn`t exist');
         }
         $this->setConfig(Configure::read('CakeLte'));
@@ -108,4 +109,3 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 }
-

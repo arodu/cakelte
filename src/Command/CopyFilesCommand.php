@@ -8,20 +8,21 @@ use Cake\Console\Arguments;
 use Cake\Console\ConsoleIo;
 use Cake\Console\ConsoleOptionParser;
 use Cake\Core\Configure;
-use Exception;
 
 /**
  * Cakelte command.
  */
 class CopyFilesCommand extends Command
 {
-
+    /**
+     * @return string
+     */
     public static function defaultName(): string
     {
         return 'cakelte copy_files';
     }
 
-    protected $files = [
+    protected array $files = [
         'layout' => [
             'layout/default.php',
             'layout/login.php',
@@ -53,7 +54,7 @@ class CopyFilesCommand extends Command
         'extra' => [
             'element/extra/css.php',
             'element/extra/script.php',
-        ]
+        ],
     ];
 
     /**
@@ -89,13 +90,13 @@ class CopyFilesCommand extends Command
 
     /**
      * Implement this method with your command's logic.
-     *termail
+     * termail
 
      * @param \Cake\Console\Arguments $args The command arguments.
      * @param \Cake\Console\ConsoleIo $io The console io
-     * @return null|void|int The exit code or null for success
+     * @return int|null The exit code or null for success
      */
-    public function execute(Arguments $args, ConsoleIo $io)
+    public function execute(Arguments $args, ConsoleIo $io): ?int
     {
         // @todo if all files
         $all = $args->getOption('all');
@@ -104,6 +105,7 @@ class CopyFilesCommand extends Command
 
         if (!$all && empty($type)) {
             $io->err('Error: Need to add a type argument or --all option, excecute `cakelte copy_files -h` for help.');
+
             return 1;
         }
 
@@ -122,7 +124,10 @@ class CopyFilesCommand extends Command
         }
     }
 
-    protected function getAllFiles()
+    /**
+     * @return array
+     */
+    protected function getAllFiles(): array
     {
         $output = [];
         foreach ($this->files as $categories) {
@@ -134,4 +139,3 @@ class CopyFilesCommand extends Command
         return $output;
     }
 }
-

@@ -9,7 +9,8 @@
     "friendsofcake/bootstrap-ui": "^5.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^8.0"
+    "cakephp/cakephp-codesniffer": "^5.0",
+    "phpunit/phpunit": "^10.1.0"
   },
   "autoload": {
     "psr-4": {
@@ -25,6 +26,19 @@
   "scripts": {
     "post-install-cmd": [
       "bin/cake cakelte install"
-    ]
+    ],
+    "check": [
+      "@test",
+      "@cs-check"
+    ],
+    "cs-check": "phpcs --colors -p",
+    "cs-fix": "phpcbf --colors -p",
+    "stan": "phpstan analyse",
+    "test": "phpunit --colors=always"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
   }
 }

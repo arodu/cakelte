@@ -1,17 +1,21 @@
 <?php
-
 declare(strict_types=1);
 
 namespace CakeLte\Style;
+
+use Cake\View\Helper;
 
 /**
  * Styles trait
  */
 trait StyleTrait
 {
-    protected $custom_css_classes = [];
+    protected array $custom_css_classes = [];
 
-    public function __construct($helper)
+    /**
+     * @param \Cake\View\Helper $helper
+     */
+    public function __construct(Helper $helper)
     {
         $this->_helper = $helper;
     }
@@ -19,7 +23,7 @@ trait StyleTrait
     /**
      * @param string $key
      * @param string $style
-     * @param boolean $autoload
+     * @param bool $autoload
      * @return void
      */
     public function addStyle(string $key, string $style, bool $autoload = true): void

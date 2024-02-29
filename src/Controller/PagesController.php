@@ -5,7 +5,10 @@ namespace CakeLte\Controller;
 
 class PagesController extends AppController
 {
-    public function debug()
+    /**
+     * @return void
+     */
+    public function debug(): void
     {
     }
 }

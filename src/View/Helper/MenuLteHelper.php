@@ -54,12 +54,14 @@ class MenuLteHelper extends Helper
         ],
     ];
 
+    /**
+     * @var array
+     */
     protected array $_activeItems = [];
 
     /**
-     * @todo set cache
-     * 
      * Menu Example
+     *
      * $menu = [
      *     'startPages' => [
      *         'label' => 'Start Pages',
@@ -85,9 +87,9 @@ class MenuLteHelper extends Helper
      *         }
      *     ],
      * ];
-     * 
+     *
      * @param array $menu
-     * @param boolean $cache
+     * @param bool $cache
      * @return string
      */
     public function render(array $menu): string
@@ -102,6 +104,10 @@ class MenuLteHelper extends Helper
         return $output;
     }
 
+    /**
+     * @param array $menu
+     * @return string
+     */
     public function renderTopMenu(array $menu): string
     {
         $this->setConfig('cssClass', [
@@ -127,20 +133,20 @@ class MenuLteHelper extends Helper
 
         return $this->render($menu);
     }
-    
+
     /**
      * @param string $tag
      * @param array $item
-     * @param integer $level
+     * @param int $level
      * @return string
      */
     protected function renderItem(string $tag, array $item, int $level): string
     {
-        if(!$this->checkShowCondition($item['show'] ?? $this->getConfig('defaultShowItem'))) {
+        if (!$this->checkShowCondition($item['show'] ?? $this->getConfig('defaultShowItem'))) {
             return '';
         }
 
-        if(isset($item['type']) && $item['type'] === static::ITEM_TYPE_HEADER) {
+        if (isset($item['type']) && $item['type'] === static::ITEM_TYPE_HEADER) {
             return $this->formatItemHeader($tag, $item);
         }
 
@@ -150,7 +156,7 @@ class MenuLteHelper extends Helper
         $dropdownWrap = null;
         $isActive = isset($item['active']) && $item['active'] || $this->checkActiveItem($tag);
         $isDropdown = isset($item['dropdown']) && is_array($item['dropdown']);
-        
+
         if ($isActive) {
             $classLink[] = $this->getConfig('cssClass.activeItem');
         }
@@ -158,12 +164,12 @@ class MenuLteHelper extends Helper
         if ($isDropdown) {
             $classItem[] = $this->getConfig('cssClass.itemDropdown');
             $dropdownIcon = $this->formatTemplate('dropdownIcon', ['icon' => $this->getConfig('defaultDropdownIcon')]);
-            $dropdownWrap = $this->formatTemplate('dropdownWrap', ['items' => $this->renderItems($item['dropdown'], $level+1)]);
+            $dropdownWrap = $this->formatTemplate('dropdownWrap', ['items' => $this->renderItems($item['dropdown'], $level + 1)]);
             if ($isActive) {
                 $classItem[] = $this->getConfig('cssClass.menuOpen');
             }
         }
-        
+
         $icon = $item['icon'] ?? $this->getConfig('itemIcon')[$level] ?? $this->getConfig('itemIcon')['default'];
         $itemIcon = $this->formatTemplate('itemIcon', ['icon' => $icon]);
 
@@ -176,9 +182,9 @@ class MenuLteHelper extends Helper
             'dropdownIcon' => $dropdownIcon,
         ]);
 
-        $itemLink = $this->Html->link($itemLinkTarget, $item['uri'] ?? '#',[
+        $itemLink = $this->Html->link($itemLinkTarget, $item['uri'] ?? '#', [
             'class' => $classLink,
-            'escape' => false
+            'escape' => false,
         ]);
 
         return $this->formatTemplate('itemMenu', [
@@ -188,6 +194,11 @@ class MenuLteHelper extends Helper
         ]);
     }
 
+    /**
+     * @param array $items
+     * @param int $level
+     * @return string
+     */
     protected function renderItems(array $items, int $level): string
     {
         $output = '';
@@ -199,10 +210,10 @@ class MenuLteHelper extends Helper
     }
 
     /**
-     * @param string|array|null $itemBadge
+     * @param array|string|null $itemBadge
      * @return string
      */
-    protected function formatBadge($itemBadge = null): string
+    protected function formatBadge(string|array|null $itemBadge = null): string
     {
         if (empty($itemBadge)) {
             return '';
@@ -221,7 +232,12 @@ class MenuLteHelper extends Helper
         ]);
     }
 
-    protected function formatItemHeader($tag, $item): string
+    /**
+     * @param string $tag
+     * @param array $item
+     * @return string
+     */
+    protected function formatItemHeader(string $tag, array $item): string
     {
         $label = $item['label'] ?? $tag;
 
@@ -232,10 +248,10 @@ class MenuLteHelper extends Helper
     }
 
     /**
-     * @param bool|callable $show
-     * @return boolean
+     * @param callable|bool $show
+     * @return bool
      */
-    protected function checkShowCondition($show): bool
+    protected function checkShowCondition(bool|callable $show): bool
     {
         if (is_bool($show)) {
             return $show;
@@ -249,9 +265,10 @@ class MenuLteHelper extends Helper
 
     /**
      * @param string $itemTag
-     * @return void
+     * @param bool $reset
+     * @return self
      */
-    public function activeItem(string $itemTag, bool $reset = false): MenuLteHelper
+    public function activeItem(string $itemTag, bool $reset = false): self
     {
         if ($reset) {
             $this->resetActiveItem();
@@ -263,9 +280,9 @@ class MenuLteHelper extends Helper
     }
 
     /**
-     * @return void
+     * @return self
      */
-    public function resetActiveItem(): MenuLteHelper
+    public function resetActiveItem(): self
     {
         $this->_activeItems = [];
 
@@ -274,7 +291,7 @@ class MenuLteHelper extends Helper
 
     /**
      * @param string $tag
-     * @return boolean
+     * @return bool
      */
     protected function checkActiveItem(string $tag): bool
     {
@@ -284,10 +301,13 @@ class MenuLteHelper extends Helper
                 return true;
             }
         }
-        
+
         return false;
     }
 
+    /**
+     * @return void
+     */
     protected function checkActiveFromComponent(): void
     {
         $_menuActiveItem = $this->getView()->get('_menuActiveItem', null);

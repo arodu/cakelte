@@ -1,16 +1,13 @@
 <?php
-
 declare(strict_types=1);
 
 namespace CakeLte\Style;
-
-use CakeLte\Style\StyleTrait;
 
 class Sidebar implements StyleInterface
 {
     use StyleTrait;
 
-    private $_name = 'sidebar';
+    private string $_name = 'sidebar';
 
     public const STYLE_DARK_PRIMARY = 'dark-primary';
     public const STYLE_DARK_SECONDARY = 'dark-secondary';
@@ -50,7 +47,10 @@ class Sidebar implements StyleInterface
         self::STYLE_LIGHT_BLACK => 'sidebar-light-black',
     ];
 
-    public static function getDarkStyles()
+    /**
+     * @return array
+     */
+    public static function getDarkStyles(): array
     {
         return [
             static::STYLE_DARK_PRIMARY => static::CSS_CLASSES[static::STYLE_DARK_PRIMARY],
@@ -64,7 +64,10 @@ class Sidebar implements StyleInterface
         ];
     }
 
-    public static function getLightStyles()
+    /**
+     * @return array
+     */
+    public static function getLightStyles(): array
     {
         return [
             static::STYLE_LIGHT_PRIMARY => static::CSS_CLASSES[static::STYLE_LIGHT_PRIMARY],

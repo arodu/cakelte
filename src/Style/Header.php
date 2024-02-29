@@ -1,15 +1,13 @@
 <?php
-
 declare(strict_types=1);
 
 namespace CakeLte\Style;
 
-use CakeLte\Style\StyleTrait;
-
 class Header implements StyleInterface
 {
     use StyleTrait;
-    private $_name = 'header';
+
+    private string $_name = 'header';
 
     public const STYLE_PRIMARY = 'primary';
     public const STYLE_SECONDARY = 'secondary';
