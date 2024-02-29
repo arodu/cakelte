@@ -72,17 +72,17 @@ class MenuLteHelperTest extends TestCase
                 'label' => 'Simple Link',
                 'extra' => '<span class="right badge badge-danger">New</span>',
                 'uri' => 'https://github.com/arodu/cakelte',
-                'show' => function() {
+                'show' => function () {
                     return true;
-                }
+                },
             ],
             'hiddenLink' => [
                 'label' => 'Hidden Link',
                 'extra' => '<span class="right badge badge-danger">New</span>',
                 'uri' => 'https://github.com/arodu/cakelte',
-                'show' => function() {
+                'show' => function () {
                     return false;
-                }
+                },
             ],
         ];
 
