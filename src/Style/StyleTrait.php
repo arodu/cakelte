@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace CakeLte\Style;
 
 use Cake\View\Helper;
+use PHPUnit\TextUI\Help;
 
 /**
  * Styles trait
@@ -12,12 +13,14 @@ trait StyleTrait
 {
     protected array $custom_css_classes = [];
 
+    protected Helper $helper;
+
     /**
      * @param \Cake\View\Helper $helper
      */
     public function __construct(Helper $helper)
     {
-        $this->_helper = $helper;
+        $this->helper = $helper;
     }
 
     /**
@@ -31,7 +34,7 @@ trait StyleTrait
         $this->custom_css_classes[$key] = $style;
 
         if ($autoload) {
-            $this->_helper->setConfig($this->_name . '.style', $key);
+            $this->helper->setConfig($this->_name . '.style', $key);
         }
     }
 
@@ -42,7 +45,7 @@ trait StyleTrait
     public function getStyle(?string $key = null): ?string
     {
         if (empty($key)) {
-            $key = $this->_helper->getConfig($this->_name . '.style');
+            $key = $this->helper->getConfig($this->_name . '.style');
         }
 
         return $this->getStyles()[$key] ?? null;

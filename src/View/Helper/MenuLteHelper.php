@@ -8,6 +8,9 @@ use Cake\View\StringTemplateTrait;
 
 /**
  * MenuLte helper
+ * 
+ * @property \Cake\View\Helper\HtmlHelper $Html
+ * @property \Cake\View\Helper\UrlHelper $Url
  */
 class MenuLteHelper extends Helper
 {
@@ -89,7 +92,6 @@ class MenuLteHelper extends Helper
      * ];
      *
      * @param array $menu
-     * @param bool $cache
      * @return string
      */
     public function render(array $menu): string

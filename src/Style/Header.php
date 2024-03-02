@@ -20,7 +20,7 @@ class Header implements StyleInterface
     /** @deprecated STYLE_BLACK is deprecated, use STYLE_DARK insted*/
     public const STYLE_BLACK = self::STYLE_DARK;
 
-    private const CSS_CLASSES = [
+    protected const CSS_CLASSES = [
         self::STYLE_PRIMARY => 'navbar-primary navbar-light',
         self::STYLE_SECONDARY => 'navbar-secondary navbar-light',
         self::STYLE_INFO => 'navbar-info navbar-light',

@@ -27,7 +27,8 @@ class Sidebar implements StyleInterface
     public const STYLE_LIGHT_WHITE = 'light-white';
     public const STYLE_LIGHT_BLACK = 'light-black';
 
-    private const CSS_CLASSES = [
+    protected const CSS_CLASSES = [
+        // Dark
         self::STYLE_DARK_PRIMARY => 'sidebar-dark-primary',
         self::STYLE_DARK_SECONDARY => 'sidebar-dark-secondary',
         self::STYLE_DARK_INFO => 'sidebar-dark-info',
@@ -37,6 +38,7 @@ class Sidebar implements StyleInterface
         self::STYLE_DARK_WHITE => 'sidebar-dark-white',
         self::STYLE_DARK_BLACK => 'sidebar-dark-black',
 
+        // Light
         self::STYLE_LIGHT_PRIMARY => 'sidebar-light-primary',
         self::STYLE_LIGHT_SECONDARY => 'sidebar-light-secondary',
         self::STYLE_LIGHT_INFO => 'sidebar-light-info',

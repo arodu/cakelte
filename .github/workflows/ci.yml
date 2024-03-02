@@ -83,7 +83,6 @@ jobs:
 
       - name: Run PHP CodeSniffer
         run: composer cs-check
-        continue-on-error: true
 
       - name: Run psalm
         if: success() || failure()
