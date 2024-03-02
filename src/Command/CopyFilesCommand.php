@@ -100,7 +100,7 @@ class CopyFilesCommand extends Command
     {
         // @todo if all files
         $all = $args->getOption('all');
-        $forceOverwrite = (bool) $args->getOption('force');
+        $forceOverwrite = (bool)$args->getOption('force');
         $type = $args->getArgument('type');
 
         if (!$all && empty($type)) {
@@ -119,7 +119,7 @@ class CopyFilesCommand extends Command
         $dest = Configure::read('App.paths.templates.0') . 'plugin/CakeLte/';
 
         foreach ($files as $file) {
-            $content = (string) file_get_contents($src . $file);
+            $content = (string)file_get_contents($src . $file);
             $io->createFile($dest . $file, $content, $forceOverwrite);
         }
 

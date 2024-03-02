@@ -8,7 +8,7 @@ use Cake\View\StringTemplateTrait;
 
 /**
  * MenuLte helper
- * 
+ *
  * @property \Cake\View\Helper\HtmlHelper $Html
  * @property \Cake\View\Helper\UrlHelper $Url
  */

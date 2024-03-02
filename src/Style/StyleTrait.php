@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace CakeLte\Style;
 
 use Cake\View\Helper;
-use PHPUnit\TextUI\Help;
 
 /**
  * Styles trait
