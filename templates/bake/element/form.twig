@@ -29,26 +29,25 @@ $this->Breadcrumbs->add([
 ?>
 
 <div class="card card-primary card-outline">
-  <?= $this->Form->create(${{ singularVar }}) ?>
-  <div class="card-body">
-    <?php
+    <?= $this->Form->create(${{ singularVar }}) ?>
+    <div class="card-body">
 {% for field in fields %}
 {%- if field not in primaryKey %}
 {%- if keyFields[field] %}
 {%- set fieldData = Bake.columnData(field, schema) %}
 {%- if fieldData.null %}
-      echo $this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'empty' => true]);
+        <?= $this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'empty' => true, 'class' => 'form-control']) ?>
 {% else %}
-      echo $this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}]);
+        <?= $this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'class' => 'form-control']) ?>
 {% endif %}
 {%- elseif field not in ['created', 'modified', 'updated'] %}
 {%- set fieldData = Bake.columnData(field, schema) %}
 {%- if fieldData.type in ['date', 'datetime', 'time'] and fieldData.null %}
-      echo $this->Form->control('{{ field }}', ['empty' => true]);
+        <?= $this->Form->control('{{ field }}', ['empty' => true]) ?>
 {% elseif fieldData.type in ['boolean'] %}
-      echo $this->Form->control('{{ field }}', ['custom' => true]);
+        <?= $this->Form->control('{{ field }}', ['custom' => true]) ?>
 {% else %}
-      echo $this->Form->control('{{ field }}');
+        <?= $this->Form->control('{{ field }}') ?>
 {% endif %}
 {%- endif %}
 {%- endif %}
@@ -56,32 +55,28 @@ $this->Breadcrumbs->add([
 
 {%- if associations.BelongsToMany %}
 {%- for assocName, assocData in associations.BelongsToMany %}
-        echo $this->Form->control('{{ assocData.property }}._ids', ['options' => ${{ assocData.variable }}]);
+        <?= $this->Form->control('{{ assocData.property }}._ids', ['options' => ${{ assocData.variable }}]) ?>
 {% endfor %}
 {% endif %}
-    ?>
-  </div>
-
-  <div class="card-footer d-flex">
-{% if 'add' not in action %}
-    <div class="">
-      <?= $this->Form->postLink(
-          __('Delete'),
-          ['action' => 'delete', ${{ singularVar }}->{{ primaryKey[0] }}],
-          ['confirm' => __('Are you sure you want to delete # {0}?', ${{ singularVar }}->{{ primaryKey[0] }}), 'class' => 'btn btn-danger']
-      ) ?>
     </div>
-{% endif %}
-    <div class="ml-auto">
-      <?= $this->Form->button(__('Save')) ?>
+    <div class="card-footer d-flex">
 {% if 'add' not in action %}
-      <?= $this->Html->link(__('Cancel'), ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}], ['class' => 'btn btn-default']) ?>
+        <div class="mr-auto">
+            <?= $this->Form->postLink(
+                __('Delete'),
+                ['action' => 'delete', ${{ singularVar }}->{{ primaryKey[0] }}],
+                ['confirm' => __('Are you sure you want to delete # {0}?', ${{ singularVar }}->{{ primaryKey[0] }}), 'class' => 'btn btn-danger']
+            ) ?>
+        </div>
+{% endif %}
+        <div class="ml-auto">
+            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-primary']) ?>
+{% if 'add' not in action %}
+            <?= $this->Html->link(__('Cancel'), ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}], ['class' => 'btn btn-default']) ?>
 {% else %}
-      <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
+            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
 {% endif %}
-
+        </div>
     </div>
-  </div>
-
-  <?= $this->Form->end() ?>
+    <?= $this->Form->end() ?>
 </div>

@@ -24,7 +24,7 @@ $this->Breadcrumbs->add([
         <div class="d-flex ml-auto">
             <?= $this->Paginator->limitControl([], null, [
                 'label' => false,
-                'class' => 'form-control-sm',
+                'class' => 'form-control form-control-sm',
                 'templates' => ['inputContainer' => '{{'{{content}}'}}']
             ]); ?>
             <?= $this->Html->link(__('New {{ singularHumanName }}'), ['action' => 'add'], ['class' => 'btn btn-primary btn-sm ml-2']) ?>
