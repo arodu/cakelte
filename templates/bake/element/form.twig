@@ -29,7 +29,11 @@ $this->Breadcrumbs->add([
 ?>
 
 <div class="card card-primary card-outline">
+{% if 'add' not in action %}
     <?= $this->Form->create(${{ singularVar }}) ?>
+{% else %}
+    <?= $this->Form->create(${{ singularVar }}, ['valueSources' => ['query', 'context']]) ?>
+{% endif %}
     <div class="card-body">
 {% for field in fields %}
 {%- if field not in primaryKey %}
