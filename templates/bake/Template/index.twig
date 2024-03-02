@@ -4,6 +4,7 @@
  * @var \{{ entityClass }}[]|\Cake\Collection\CollectionInterface ${{ pluralVar }}
  */
 ?>
+
 <?php
 $this->assign('title', __('{{ pluralHumanName }}'));
 $this->Breadcrumbs->add([
@@ -76,7 +77,6 @@ $this->Breadcrumbs->add([
         </table>
     </div>
     <!-- /.card-body -->
-
     <div class="card-footer d-flex flex-column flex-md-row">
         <div class="text-muted">
             <?= $this->Paginator->counter(__('Page {{ '{{' }}page{{ '}}' }} of {{ '{{' }}pages{{ '}}' }}, showing {{ '{{' }}current{{ '}}' }} record(s) out of {{ '{{' }}count{{ '}}' }} total')) ?>
