@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace CakeLte\View\Helper;
@@ -10,6 +9,7 @@ use Cake\Log\Log;
 use Cake\View\Helper;
 use CakeLte\Style\Header;
 use CakeLte\Style\Sidebar;
+use Composer\Json\JsonFile;
 use Exception;
 
 /**
@@ -117,7 +117,7 @@ class CakeLteHelper extends Helper
     public function version(): string
     {
         return Cache::remember('cakelte_version', function () {
-            $lockFile = new \Composer\Json\JsonFile(ROOT . DIRECTORY_SEPARATOR . 'composer.lock');
+            $lockFile = new JsonFile(ROOT . DIRECTORY_SEPARATOR . 'composer.lock');
             if ($lockFile->exists()) {
                 $lockContent = $lockFile->read();
                 foreach ($lockContent['packages'] as $package) {
