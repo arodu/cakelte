@@ -81,16 +81,11 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ steps.key-date.outputs.date }}-${{ hashFiles('composer.json') }}-${{ matrix.prefer-lowest }}
 
-      - name: composer install
+      - name: Composer install
         run: composer install
 
       - name: Run PHP CodeSniffer
         run: composer cs-check
-
-      - name: Run psalm
-        if: success() || failure()
-        run: composer psalm
-        continue-on-error: true
 
       - name: Run phpstan
         if: success() || failure()

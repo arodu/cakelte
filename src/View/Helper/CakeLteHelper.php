@@ -8,7 +8,7 @@ use Cake\Log\Log;
 use Cake\View\Helper;
 use CakeLte\Style\Header;
 use CakeLte\Style\Sidebar;
-use Throwable;
+use Exception;
 
 /**
  * CakeLte helper
@@ -33,7 +33,7 @@ class CakeLteHelper extends Helper
         try {
             Configure::load(static::DEFAULT_PLUGIN_CONFIG_FILE);
             Configure::load($this->getConfig('configFile') ?? static::DEFAULT_APP_CONFIG_FILE);
-        } catch (Throwable $th) {
+        } catch (Exception $e) {
             Log::alert('App config file doesn`t exist');
         }
         $this->setConfig(Configure::read('CakeLte'));

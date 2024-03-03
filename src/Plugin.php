@@ -9,8 +9,6 @@ use Cake\Core\PluginApplicationInterface;
 use Cake\Http\MiddlewareQueue;
 use Cake\Routing\RouteBuilder;
 
-define('CAKELTE_VERSION', '2.x');
-
 /**
  * Plugin for CakeLte
  */

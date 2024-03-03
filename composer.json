@@ -36,7 +36,8 @@
     "cs-check": "phpcs --colors -p",
     "cs-fix": "phpcbf --colors -p",
     "stan": "phpstan analyse",
-    "test": "phpunit --colors=always"
+    "test": "phpunit --colors=always",
+    "test-coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html webroot/coverage --colors=always"
   },
   "config": {
     "allow-plugins": {
