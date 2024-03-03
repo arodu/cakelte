@@ -100,13 +100,13 @@ class CopyFilesCommand extends Command
     {
         // @todo if all files
         $all = $args->getOption('all');
-        $forceOverwrite = $args->getOption('force');
+        $forceOverwrite = (bool)$args->getOption('force');
         $type = $args->getArgument('type');
 
         if (!$all && empty($type)) {
             $io->err('Error: Need to add a type argument or --all option, excecute `cakelte copy_files -h` for help.');
 
-            return 1;
+            return static::CODE_ERROR;
         }
 
         if ($all) {
@@ -119,9 +119,11 @@ class CopyFilesCommand extends Command
         $dest = Configure::read('App.paths.templates.0') . 'plugin/CakeLte/';
 
         foreach ($files as $file) {
-            $content = file_get_contents($src . $file);
+            $content = (string)file_get_contents($src . $file);
             $io->createFile($dest . $file, $content, $forceOverwrite);
         }
+
+        return static::CODE_SUCCESS;
     }
 
     /**

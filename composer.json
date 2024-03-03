@@ -10,7 +10,9 @@
   },
   "require-dev": {
     "cakephp/cakephp-codesniffer": "^5.0",
-    "phpunit/phpunit": "^10.1.0"
+    "phpunit/phpunit": "^10.1.0",
+    "phpstan/phpstan": "^1.10",
+    "cakedc/cakephp-phpstan": "^3.1"
   },
   "autoload": {
     "psr-4": {
@@ -34,7 +36,8 @@
     "cs-check": "phpcs --colors -p",
     "cs-fix": "phpcbf --colors -p",
     "stan": "phpstan analyse",
-    "test": "phpunit --colors=always"
+    "test": "phpunit --colors=always",
+    "test-coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html webroot/coverage --colors=always"
   },
   "config": {
     "allow-plugins": {

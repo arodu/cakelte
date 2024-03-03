@@ -2,3 +2,6 @@
 /phpunit.xml
 /vendor
 config/Migrations/schema-dump-default.lock
+.phpunit.cache
+/webroot/coverage
+/.phpunit.cache

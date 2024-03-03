@@ -8,6 +8,9 @@ use Cake\View\StringTemplateTrait;
 
 /**
  * MenuLte helper
+ *
+ * @property \Cake\View\Helper\HtmlHelper $Html
+ * @property \Cake\View\Helper\UrlHelper $Url
  */
 class MenuLteHelper extends Helper
 {
@@ -60,6 +63,15 @@ class MenuLteHelper extends Helper
     protected array $_activeItems = [];
 
     /**
+     * @inheritDoc
+     */
+    public function initialize(array $config): void
+    {
+        parent::initialize($config);
+        $this->checkActiveFromComponent();
+    }
+
+    /**
      * Menu Example
      *
      * $menu = [
@@ -89,13 +101,10 @@ class MenuLteHelper extends Helper
      * ];
      *
      * @param array $menu
-     * @param bool $cache
      * @return string
      */
     public function render(array $menu): string
     {
-        $this->checkActiveFromComponent();
-
         $output = '';
         foreach ($menu as $tag => $item) {
             $output .= $this->renderItem($tag, $item, 1);
@@ -253,14 +262,11 @@ class MenuLteHelper extends Helper
      */
     protected function checkShowCondition(bool|callable $show): bool
     {
-        if (is_bool($show)) {
-            return $show;
-        }
         if (is_callable($show)) {
             return $show();
         }
 
-        return $this->getConfig('defaultShowItem');
+        return $show;
     }
 
     /**

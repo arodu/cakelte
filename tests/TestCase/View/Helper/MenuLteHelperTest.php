@@ -28,6 +28,7 @@ class MenuLteHelperTest extends TestCase
     {
         parent::setUp();
         $view = new View();
+        $view->set('_menuActiveItem', 'startPages.activePage');
         $this->MenuLteHelper = new MenuLteHelper($view);
     }
 
@@ -51,13 +52,28 @@ class MenuLteHelperTest extends TestCase
      */
     public function testRender(): void
     {
-        $this->MenuLteHelper->activeItem('startPages.activePage');
+        // test simple link
+        $menu = [
+            'simpleLink' => [
+                'label' => 'Simple Link',
+                'extra' => '<span class="right badge badge-danger">New</span>',
+                'uri' => 'https://github.com/arodu/cakelte',
+            ],
+        ];
+        $result = $this->MenuLteHelper->render($menu);
+        $this->assertTextContains('<li class="nav-item"><a href="https://github.com/arodu/cakelte" class="nav-link"><i class="nav-icon fas fa-circle"></i><p>Simple Link</p></a></li>', $result);
 
+        // test dropdown menu
         $menu = [
             'startPages' => [
                 'label' => 'Start Pages',
                 'icon' => 'fas fa-tachometer-alt',
+                'badge' => 'new',
                 'dropdown' => [
+                    'title' => [
+                        'label' => 'Sample',
+                        'type' => $this->MenuLteHelper::ITEM_TYPE_HEADER,
+                    ],
                     'activePage' => [
                         'label' => 'Active Page',
                         'uri' => 'https://github.com/arodu/cakelte',
@@ -68,31 +84,55 @@ class MenuLteHelperTest extends TestCase
                     ],
                 ],
             ],
-            'simpleLink' => [
-                'label' => 'Simple Link',
-                'extra' => '<span class="right badge badge-danger">New</span>',
-                'uri' => 'https://github.com/arodu/cakelte',
-                'show' => function () {
-                    return true;
-                },
-            ],
-            'hiddenLink' => [
-                'label' => 'Hidden Link',
-                'extra' => '<span class="right badge badge-danger">New</span>',
-                'uri' => 'https://github.com/arodu/cakelte',
-                'show' => function () {
-                    return false;
-                },
+        ];
+        $this->MenuLteHelper->activeItem('startPages.activePage', true);
+        $result = $this->MenuLteHelper->render($menu);
+
+        $this->assertTextContains('has-treeview', $result);
+        $this->assertTextContains('nav-treeview', $result);
+        $this->assertTextContains('nav-link active', $result);
+        $this->assertTextContains('Active Page', $result);
+        $this->assertTextContains('Inactive Page', $result);
+        $this->assertTextContains('<li class="nav-header">Sample</li>', $result);
+        $this->assertTextContains('<span class="badge badge-secondary right">new</span>', $result);
+
+        $this->MenuLteHelper->resetActiveItem();
+        $menu = [
+            'startPages' => [
+                'label' => 'Start Pages',
+                'icon' => 'fas fa-tachometer-alt',
+                'badge' => 'new',
+                'dropdown' => [
+                    'title' => [
+                        'label' => 'Sample',
+                        'type' => $this->MenuLteHelper::ITEM_TYPE_HEADER,
+                    ],
+                    'activePage' => [
+                        'label' => 'Active Page',
+                        'uri' => 'https://github.com/arodu/cakelte',
+                        'badge' => [
+                            'text' => null,
+                        ],
+                        'show' => function () {
+                            return true;
+                        },
+                    ],
+                    'inactivePage' => [
+                        'label' => 'Inactive Page',
+                        'uri' => 'https://github.com/arodu/cakelte',
+                        'show' => function () {
+                            return false;
+                        },
+                    ],
+                ],
             ],
         ];
 
         $result = $this->MenuLteHelper->render($menu);
 
-        $this->assertTextContains('Start Pages', $result);
-        $this->assertTextContains('Simple Link', $result);
-        $this->assertTextContains('<a href="https://github.com/arodu/cakelte" class="nav-link active"><i class="nav-icon far fa-circle"></i><p>Active Page</p></a>', $result);
-        $this->assertTextContains('<a href="https://github.com/arodu/cakelte" class="nav-link"><i class="nav-icon far fa-circle"></i><p>Inactive Page</p></a>', $result);
-        $this->assertTextNotContains('Hidden Link', $result);
+        $this->assertTextContains('Active Page', $result);
+        $this->assertTextNotContains('Inactive Page', $result);
+        $this->assertTextNotContains('nav-link active', $result);
     }
 
     /**
@@ -103,72 +143,15 @@ class MenuLteHelperTest extends TestCase
      */
     public function testRenderTopMenu(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+        $menu = [
+            'simpleLink' => [
+                'label' => 'Simple Link',
+                'extra' => '<span class="right badge badge-danger">New</span>',
+                'uri' => 'https://github.com/arodu/cakelte',
+            ],
+        ];
+        $result = $this->MenuLteHelper->renderTopMenu($menu);
 
-    /**
-     * Test activeItem method
-     *
-     * @return void
-     * @uses \CakeLte\View\Helper\MenuLteHelper::activeItem()
-     */
-    public function testActiveItem(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test resetActiveItem method
-     *
-     * @return void
-     * @uses \CakeLte\View\Helper\MenuLteHelper::resetActiveItem()
-     */
-    public function testResetActiveItem(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test setTemplates method
-     *
-     * @return void
-     * @uses \CakeLte\View\Helper\MenuLteHelper::setTemplates()
-     */
-    public function testSetTemplates(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test getTemplates method
-     *
-     * @return void
-     * @uses \CakeLte\View\Helper\MenuLteHelper::getTemplates()
-     */
-    public function testGetTemplates(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test formatTemplate method
-     *
-     * @return void
-     * @uses \CakeLte\View\Helper\MenuLteHelper::formatTemplate()
-     */
-    public function testFormatTemplate(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test templater method
-     *
-     * @return void
-     * @uses \CakeLte\View\Helper\MenuLteHelper::templater()
-     */
-    public function testTemplater(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->assertTextContains('<li class="nav-item"><a href="https://github.com/arodu/cakelte" class="nav-link"><i class="nav-icon fas fa-circle"></i><p>Simple Link</p></a></li>', $result);
     }
 }

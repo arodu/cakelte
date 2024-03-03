@@ -3,12 +3,14 @@ declare(strict_types=1);
 
 namespace CakeLte\View\Helper;
 
+use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Log\Log;
 use Cake\View\Helper;
 use CakeLte\Style\Header;
 use CakeLte\Style\Sidebar;
-use Throwable;
+use Composer\Json\JsonFile;
+use Exception;
 
 /**
  * CakeLte helper
@@ -33,7 +35,7 @@ class CakeLteHelper extends Helper
         try {
             Configure::load(static::DEFAULT_PLUGIN_CONFIG_FILE);
             Configure::load($this->getConfig('configFile') ?? static::DEFAULT_APP_CONFIG_FILE);
-        } catch (Throwable $th) {
+        } catch (Exception $e) {
             Log::alert('App config file doesn`t exist');
         }
         $this->setConfig(Configure::read('CakeLte'));
@@ -107,5 +109,25 @@ class CakeLteHelper extends Helper
         ]);
 
         return implode(' ', $output);
+    }
+
+    /**
+     * @return string
+     */
+    public function version(): string
+    {
+        return Cache::remember('cakelte_version', function () {
+            $lockFile = new JsonFile(ROOT . DIRECTORY_SEPARATOR . 'composer.lock');
+            if ($lockFile->exists()) {
+                $lockContent = $lockFile->read();
+                foreach ($lockContent['packages'] as $package) {
+                    if ($package['name'] === 'arodu/cakelte') {
+                        return $package['version'];
+                    }
+                }
+            }
+
+            return 'unknow version';
+        });
     }
 }
