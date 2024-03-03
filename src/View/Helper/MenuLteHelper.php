@@ -62,7 +62,6 @@ class MenuLteHelper extends Helper
      */
     protected array $_activeItems = [];
 
-
     /**
      * @inheritDoc
      */

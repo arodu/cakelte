@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace CakeLte\Test\TestCase\View\Helper;
@@ -116,14 +115,14 @@ class MenuLteHelperTest extends TestCase
                         ],
                         'show' => function () {
                             return true;
-                        }
+                        },
                     ],
                     'inactivePage' => [
                         'label' => 'Inactive Page',
                         'uri' => 'https://github.com/arodu/cakelte',
                         'show' => function () {
                             return false;
-                        }
+                        },
                     ],
                 ],
             ],

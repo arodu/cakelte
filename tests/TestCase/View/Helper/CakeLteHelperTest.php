@@ -53,7 +53,7 @@ class CakeLteHelperTest extends TestCase
     {
         $result = $this->CakeLteHelper->getBodyClass();
         $this->assertTextContains('layout-fixed sidebar-mini', $result);
-        
+
         $this->CakeLteHelper->setConfig([
             'sidebar.fixed' => true,
             'sidebar.collapsed' => true,
@@ -74,7 +74,7 @@ class CakeLteHelperTest extends TestCase
     {
         $result = $this->CakeLteHelper->getHeaderClass();
         $this->assertTextContains('navbar-white navbar-light', $result);
-        
+
         $this->CakeLteHelper->setConfig([
             'header.border' => false,
             'header.dropdown-legacy' => true,
@@ -93,7 +93,7 @@ class CakeLteHelperTest extends TestCase
     {
         $result = $this->CakeLteHelper->getSidebarClass();
         $this->assertTextContains('sidebar-dark-primary elevation-4 layout-fixed', $result);
-        
+
         $this->CakeLteHelper->setConfig([
             'sidebar.fixed' => false,
             'sidebar.disabled-auto-expand' => true,
@@ -112,7 +112,7 @@ class CakeLteHelperTest extends TestCase
     {
         $result = $this->CakeLteHelper->getMenuClass();
         $this->assertTextEquals('', $result);
-        
+
         $this->CakeLteHelper->setConfig([
             'sidebar.flat-style' => true,
             'sidebar.legacy-style' => true,
