@@ -1,4 +1,4 @@
-# CakeLTE: AdminLTE plugin for CakePHP 4.x
+# CakeLTE: AdminLTE plugin for CakePHP 5.x
 
 ## Getting Started
 
@@ -23,15 +23,6 @@ You can load the plugin using the shell command:
 
 ```bash
 bin/cake plugin load CakeLte
-```
-
-Or you can manually add the loading statement in the `src/Application.php` file of your application:
-
-```php
-public function bootstrap(){
-    parent::bootstrap();
-    $this->addPlugin('CakeLte');
-}
 ```
 
 add AdminLTE symlink to webroot
@@ -101,7 +92,7 @@ bin/cake bake template [command] -t CakeLte register
 bin/cake bake template [command] -t CakeLte recovery
 ```
 
-### To modify the template you can copy one or all the files within your project, copying the following files in the folder `templates/plugin/CakeLte/` and keeping the same structure of `templates/`
+To modify the template you can copy one or all the files within your project, copying the following files in the folder `templates/plugin/CakeLte/` and keeping the same structure of `templates/`
 
 Replace the files elements
 
