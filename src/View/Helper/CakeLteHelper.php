@@ -1,8 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace CakeLte\View\Helper;
 
+use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Log\Log;
 use Cake\View\Helper;
@@ -107,5 +109,25 @@ class CakeLteHelper extends Helper
         ]);
 
         return implode(' ', $output);
+    }
+
+    /**
+     * @return string
+     */
+    public function version(): string
+    {
+        return Cache::remember('cakelte_version', function () {
+            $lockFile = new \Composer\Json\JsonFile(ROOT . DIRECTORY_SEPARATOR . 'composer.lock');
+            if ($lockFile->exists()) {
+                $lockContent = $lockFile->read();
+                foreach ($lockContent['packages'] as $package) {
+                    if ($package['name'] === 'arodu/cakelte') {
+                        return $package['version'];
+                    }
+                }
+            }
+
+            return 'unknow version';
+        });
     }
 }
