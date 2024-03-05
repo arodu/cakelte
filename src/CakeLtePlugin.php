@@ -12,8 +12,13 @@ use Cake\Routing\RouteBuilder;
 /**
  * Plugin for CakeLte
  */
-class Plugin extends BasePlugin
+class CakeLtePlugin extends BasePlugin
 {
+
+    const LAYOUT_DEFAULT = 'CakeLte.default';
+    const LAYOUT_LOGIN = 'CakeLte.login';
+    const LAYOUT_TOP_NAV = 'CakeLte.top-nav';
+
     /**
      * Load all the plugin configuration and bootstrap logic.
      *
