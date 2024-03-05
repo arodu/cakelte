@@ -106,7 +106,7 @@ class CopyFilesCommand extends Command
         if (!$all && empty($type)) {
             $io->err('Error: Need to add a type argument or --all option, excecute `cakelte copy_files -h` for help.');
 
-            return static::CODE_ERROR;
+            return self::CODE_ERROR;
         }
 
         if ($all) {
@@ -123,7 +123,7 @@ class CopyFilesCommand extends Command
             $io->createFile($dest . $file, $content, $forceOverwrite);
         }
 
-        return static::CODE_SUCCESS;
+        return self::CODE_SUCCESS;
     }
 
     /**
