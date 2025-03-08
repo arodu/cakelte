@@ -17,7 +17,8 @@ You can install this plugin into your CakePHP application using [composer](https
 The recommended way to install composer packages is:
 
 ```bash
-composer require arodu/cakelte
+composer require almasaeed2010/adminlte:v4.0.0-beta3
+composer require arodu/cakelte:dev-3.next-cake5_dev
 ```
 
 ## Configuration
