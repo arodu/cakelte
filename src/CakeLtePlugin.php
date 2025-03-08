@@ -30,7 +30,8 @@ class CakeLtePlugin extends BasePlugin
     public function bootstrap(PluginApplicationInterface $app): void
     {
         $app->addPlugin('BootstrapUI');
-        $app->addPlugin('BsUtils');
+        $app->addPlugin('BootstrapTools');
+        $app->addPlugin('UtilityKit');
 
         Configure::write('CakeLte.plugin-path', $this->getPath());
     }

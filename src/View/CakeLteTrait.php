@@ -8,8 +8,8 @@ use BootstrapUI\View\UIViewTrait;
 
 /**
  * @property \CakeLte\View\Helper\CakeLteHelper $CakeLte
- * @property \BsUtils\View\Helper\MenuHelper $MenuLte
- * @property \BsUtils\View\Helper\MenuHelper $Menu
+ * @property \BootstrapTools\View\Helper\MenuHelper $MenuLte
+ * @property \BootstrapTools\View\Helper\MenuHelper $Menu
  */
 trait CakeLteTrait
 {
@@ -25,9 +25,9 @@ trait CakeLteTrait
     {
         $this->initializeUI();
         $this->loadHelper('CakeLte.CakeLte', $options);
-        $this->loadHelper('BsUtils.Menu');
+        $this->loadHelper('BootstrapTools.Menu');
         $this->loadHelper('MenuLte', [
-            'className' => 'BsUtils.Menu',
+            'className' => 'BootstrapTools.Menu',
             'nestClass' => null,
             'activeClass' => 'active',
             'dropdownOpenClass' => 'menu-open',
