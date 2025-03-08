@@ -4,6 +4,63 @@ declare(strict_types=1);
 
 namespace CakeLte\View\Helper;
 
+use BootstrapTools\View\Trait\ThemeSettingsTrait;
+use Cake\View\Helper;
+use CakeLte\CakeLte;
+use UtilityKit\Utility\Common;
+
+/**
+ * CakeLte helper
+ */
+class CakeLteHelper extends Helper
+{
+    use ThemeSettingsTrait;
+
+    /**
+     * Default configuration.
+     *
+     * @var array<string, mixed>
+     */
+    protected array $_defaultConfig = [
+        'configKey' => CakeLte::NAME,
+        'settings' => [
+            'appName' => 'CakeLte',
+            'appLogo' => 'M',
+            'copyright' => '© CakeLte ' . Common::getCopyrigthYear(2020),
+        ],
+        'autoRenderAssets' => false,
+        'meta' => [],
+        'css' => [
+            //'Mazer./mazer/assets/compiled/css/app',
+            //'Mazer./mazer/assets/compiled/css/app-dark',
+            //'Mazer.style',
+        ],
+        'scripts' => [
+            //'Mazer./mazer/assets/static/js/initTheme',
+            //'Mazer./mazer/assets/static/js/components/dark',
+            //'Mazer./mazer/assets/extensions/perfect-scrollbar/perfect-scrollbar.min',
+            //'Mazer./mazer/assets/compiled/js/app',
+        ],
+    ];
+
+    /**
+     * @inheritDoc
+     */
+    public function initialize(array $config): void
+    {
+        $this->themeSettingsInitialize($config);
+    }
+}
+
+
+/*
+
+<?php
+
+declare(strict_types=1);
+
+namespace CakeLte\View\Helper;
+
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Log\Log;
@@ -14,9 +71,7 @@ use CakeLte\Style\Sidebar;
 use Composer\Json\JsonFile;
 use Exception;
 
-/**
- * CakeLte helper
- */
+
 class CakeLteHelper extends Helper
 {
     protected array $_defaultConfig = [
@@ -29,9 +84,7 @@ class CakeLteHelper extends Helper
     public Header $Header;
     public Sidebar $Sidebar;
 
-    /**
-     * @inheritDoc
-     */
+    
     public function initialize(array $config): void
     {
         try {
@@ -47,9 +100,7 @@ class CakeLteHelper extends Helper
         parent::initialize($config);
     }
 
-    /**
-     * @return string
-     */
+    
     public function getBodyClass(): string
     {
         $layout = match (true) {
@@ -76,9 +127,7 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 
-    /**
-     * @return string|null
-     */
+    
     public function rtl(): ?string
     {
         if ($this->getConfig('rtl') ?? false) {
@@ -88,9 +137,7 @@ class CakeLteHelper extends Helper
         return null;
     }
 
-    /**
-     * @return string
-     */
+    
     public function getHeaderClass(): string
     {
         $output = array_filter([
@@ -102,9 +149,7 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 
-    /**
-     * @return string
-     */
+    
     public function getSidebarClass(): string
     {
         $output = array_filter([
@@ -117,9 +162,7 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 
-    /**
-     * @return string
-     */
+    
     public function getMenuClass(): string
     {
         $output = array_filter([
@@ -133,9 +176,7 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 
-    /**
-     * @return string
-     */
+    
     public function version(): string
     {
         return Cache::remember('cakelte_version', function () {
@@ -153,3 +194,4 @@ class CakeLteHelper extends Helper
         });
     }
 }
+*/
