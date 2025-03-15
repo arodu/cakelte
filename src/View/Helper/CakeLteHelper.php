@@ -8,6 +8,7 @@ use BootstrapTools\View\Trait\ThemeSettingsTrait;
 use Cake\View\Helper;
 use CakeLte\CakeLte;
 use UtilityKit\Utility\Common;
+use CakeLte\Enum\Layout;
 
 /**
  * CakeLte helper
@@ -26,20 +27,20 @@ class CakeLteHelper extends Helper
         'settings' => [
             'appName' => 'CakeLte',
             'appLogo' => 'M',
-            'copyright' => '© CakeLte ' . Common::getCopyrigthYear(2020),
         ],
         'autoRenderAssets' => false,
         'meta' => [],
         'css' => [
-            //'Mazer./mazer/assets/compiled/css/app',
-            //'Mazer./mazer/assets/compiled/css/app-dark',
-            //'Mazer.style',
+            'https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css',
+            'https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/styles/overlayscrollbars.min.css',
+            'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css',
+            '/adminlte/dist/css/adminlte'
         ],
         'scripts' => [
-            //'Mazer./mazer/assets/static/js/initTheme',
-            //'Mazer./mazer/assets/static/js/components/dark',
-            //'Mazer./mazer/assets/extensions/perfect-scrollbar/perfect-scrollbar.min',
-            //'Mazer./mazer/assets/compiled/js/app',
+            'https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js',
+            'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js',
+            'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js',
+            '/adminlte/dist/js/adminlte',
         ],
     ];
 
@@ -49,6 +50,35 @@ class CakeLteHelper extends Helper
     public function initialize(array $config): void
     {
         $this->themeSettingsInitialize($config);
+    }
+
+    public function version(): string
+    {
+        return Common::packageVersion('arodu/cakelte');
+    }
+
+    public function rtl(): ?string
+    {
+        if ($this->get('rtl') ?? false) {
+            return 'dir="rtl"';
+        }
+
+        return null;
+    }
+
+    public function getBodyClass(): string
+    {
+        $layout = match (true) {
+            $this->getConfig('layout') instanceof Layout => $this->getConfig('layout')->getCssClass(),
+            is_string($this->getConfig('layout')) => $this->getConfig('layout'),
+            default => null,
+        };
+
+        $output = array_filter([
+            $layout,
+        ]);
+
+        return implode(' ', $output);
     }
 }
 
