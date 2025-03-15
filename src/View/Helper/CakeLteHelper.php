@@ -58,6 +58,19 @@ class CakeLteHelper extends Helper
         return Common::packageVersion('arodu/cakelte');
     }
 
+    public function getLogo(): ?string
+    {
+        $logo = $this->get('appLogo');
+
+        if (empty($logo)) {
+            return null;
+        }
+
+        return $this->Url->image($logo, ['alt' => $this->get('appName'), 'class' => 'brand-image']);
+    }
+
+
+
     public function rtl(): ?string
     {
         if ($this->get('rtl') ?? false) {

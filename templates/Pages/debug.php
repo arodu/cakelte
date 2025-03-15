@@ -22,6 +22,12 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Http\Exception\NotFoundException;
 
+$this->assign('title', 'Debug');
+$this->Breadcrumbs->add([
+    ['title' => 'Home', 'url' => '/'],
+    ['title' => 'Debug'],
+]);
+
 $checkConnection = function (string $name) {
     $error = null;
     $connected = false;
