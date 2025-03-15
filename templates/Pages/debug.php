@@ -22,8 +22,6 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Http\Exception\NotFoundException;
 
-$this->MenuLte->activeItem('startPages.activePage');
-
 $checkConnection = function (string $name) {
     $error = null;
     $connected = false;
@@ -57,6 +55,7 @@ if (!Configure::read('debug')) :
         'Please replace templates/Pages/home.php with your own version or re-enable debug mode.'
     );
 endif;
+
 ?>
 
 <header>
@@ -80,8 +79,8 @@ endif;
     <div class="container">
         <div class="content">
             <div class="row">
-                <div class="col">
-                    <div class="alert alert-info">
+                <div class="column">
+                    <div class="message default text-center alert alert-info">
                         <small>Please be aware that this page will not be shown if you turn off debug mode unless you replace templates/Pages/home.php with your own version.</small>
                     </div>
                     <div id="url-rewriting-warning" style="padding: 1rem; background: #fcebea; color: #cc1f1a; border-color: #ef5753;">
@@ -114,16 +113,18 @@ endif;
 
                         <?php if (extension_loaded('openssl')) : ?>
                             <li class="bullet success">Your version of PHP has the openssl extension loaded.</li>
-                        <?php elseif (extension_loaded('mcrypt')) : ?>
-                            <li class="bullet success">Your version of PHP has the mcrypt extension loaded.</li>
                         <?php else : ?>
-                            <li class="bullet problem">Your version of PHP does NOT have the openssl or mcrypt extension loaded.</li>
+                            <li class="bullet problem">Your version of PHP does NOT have the openssl extension loaded.</li>
                         <?php endif; ?>
 
                         <?php if (extension_loaded('intl')) : ?>
                             <li class="bullet success">Your version of PHP has the intl extension loaded.</li>
                         <?php else : ?>
                             <li class="bullet problem">Your version of PHP does NOT have the intl extension loaded.</li>
+                        <?php endif; ?>
+
+                        <?php if (ini_get('zend.assertions') !== '1') : ?>
+                            <li class="bullet problem">You should set <code>zend.assertions</code> to <code>1</code> in your <code>php.ini</code> for your development environment.</li>
                         <?php endif; ?>
                     </ul>
                 </div>
@@ -142,7 +143,7 @@ endif;
                             <li class="bullet problem">Your logs directory is NOT writable.</li>
                         <?php endif; ?>
 
-                        <?php $settings = Cache::getConfig('_cake_core_'); ?>
+                        <?php $settings = Cache::getConfig('_cake_translations_'); ?>
                         <?php if (!empty($settings)) : ?>
                             <li class="bullet success">The <em><?= h($settings['className']) ?></em> is being used for core caching. To change the config edit config/app.php</li>
                         <?php else : ?>
@@ -151,113 +152,108 @@ endif;
                     </ul>
                 </div>
             </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col">
-                <h4>Database</h4>
-                <?php
-                $result = $checkConnection('default');
-                ?>
-                <ul>
-                    <?php if ($result['connected']) : ?>
-                        <li class="bullet success">CakePHP is able to connect to the database.</li>
-                    <?php else : ?>
-                        <li class="bullet problem">CakePHP is NOT able to connect to the database.<br /><?= h($result['error']) ?></li>
-                    <?php endif; ?>
-                </ul>
-            </div>
-            <div class="col">
-                <h4>DebugKit</h4>
-                <ul>
-                    <?php if (Plugin::isLoaded('DebugKit')) : ?>
-                        <li class="bullet success">DebugKit is loaded.</li>
-                        <?php
-                        $result = $checkConnection('debug_kit');
-                        ?>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <h4>Database</h4>
+                    <?php
+                    $result = $checkConnection('default');
+                    ?>
+                    <ul>
                         <?php if ($result['connected']) : ?>
-                            <li class="bullet success">DebugKit can connect to the database.</li>
+                            <li class="bullet success">CakePHP is able to connect to the database.</li>
                         <?php else : ?>
-                            <li class="bullet problem">There are configuration problems present which need to be fixed:<br /><?= $result['error'] ?></li>
+                            <li class="bullet problem">CakePHP is NOT able to connect to the database.<br /><?= h($result['error']) ?></li>
                         <?php endif; ?>
-                    <?php else : ?>
-                        <li class="bullet problem">DebugKit is <strong>not</strong> loaded.</li>
-                    <?php endif; ?>
-                </ul>
-
+                    </ul>
+                </div>
+                <div class="col">
+                    <h4>DebugKit</h4>
+                    <ul>
+                        <?php if (Plugin::isLoaded('DebugKit')) : ?>
+                            <li class="bullet success">DebugKit is loaded.</li>
+                            <?php
+                            $result = $checkConnection('debug_kit');
+                            ?>
+                            <?php if ($result['connected']) : ?>
+                                <li class="bullet success">DebugKit can connect to the database.</li>
+                            <?php else : ?>
+                                <li class="bullet problem">There are configuration problems present which need to be fixed:<br /><?= $result['error'] ?></li>
+                            <?php endif; ?>
+                        <?php else : ?>
+                            <li class="bullet problem">DebugKit is <strong>not</strong> loaded.</li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col links">
+                    <h3>Getting Started</h3>
+                    <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/en/">CakePHP Documentation</a>
+                    <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/en/tutorials-and-examples/cms/installation.html">The 20 min CMS Tutorial</a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col links">
+                    <h3>Help and Bug Reports</h3>
+                    <a target="_blank" rel="noopener" href="https://slack-invite.cakephp.org/">Slack</a>
+                    <a target="_blank" rel="noopener" href="https://github.com/cakephp/cakephp/issues">CakePHP Issues</a>
+                    <a target="_blank" rel="noopener" href="https://discourse.cakephp.org/">CakePHP Forum</a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col links">
+                    <h3>Docs and Downloads</h3>
+                    <a target="_blank" rel="noopener" href="https://api.cakephp.org/">CakePHP API</a>
+                    <a target="_blank" rel="noopener" href="https://bakery.cakephp.org">The Bakery</a>
+                    <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/en/">CakePHP Documentation</a>
+                    <a target="_blank" rel="noopener" href="https://plugins.cakephp.org">CakePHP plugins repo</a>
+                    <a target="_blank" rel="noopener" href="https://github.com/cakephp/">CakePHP Code</a>
+                    <a target="_blank" rel="noopener" href="https://github.com/FriendsOfCake/awesome-cakephp">CakePHP Awesome List</a>
+                    <a target="_blank" rel="noopener" href="https://www.cakephp.org">CakePHP</a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col links">
+                    <h3>Training and Certification</h3>
+                    <a target="_blank" rel="noopener" href="https://cakefoundation.org/">Cake Software Foundation</a>
+                    <a target="_blank" rel="noopener" href="https://training.cakephp.org/">CakePHP Training</a>
+                </div>
             </div>
         </div>
-        <hr>
-        <div class="row">
-            <div class="column links">
-                <h3>Getting Started</h3>
-                <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/en/">CakePHP Documentation</a>
-                <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/en/tutorials-and-examples/cms/installation.html">The 20 min CMS Tutorial</a>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="column links">
-                <h3>Help and Bug Reports</h3>
-                <a target="_blank" rel="noopener" href="https://slack-invite.cakephp.org/">Slack</a>
-                <a target="_blank" rel="noopener" href="https://github.com/cakephp/cakephp/issues">CakePHP Issues</a>
-                <a target="_blank" rel="noopener" href="https://discourse.cakephp.org/">CakePHP Forum</a>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="column links">
-                <h3>Docs and Downloads</h3>
-                <a target="_blank" rel="noopener" href="https://api.cakephp.org/">CakePHP API</a>
-                <a target="_blank" rel="noopener" href="https://bakery.cakephp.org">The Bakery</a>
-                <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/en/">CakePHP Documentation</a>
-                <a target="_blank" rel="noopener" href="https://plugins.cakephp.org">CakePHP plugins repo</a>
-                <a target="_blank" rel="noopener" href="https://github.com/cakephp/">CakePHP Code</a>
-                <a target="_blank" rel="noopener" href="https://github.com/FriendsOfCake/awesome-cakephp">CakePHP Awesome List</a>
-                <a target="_blank" rel="noopener" href="https://www.cakephp.org">CakePHP</a>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="column links">
-                <h3>Training and Certification</h3>
-                <a target="_blank" rel="noopener" href="https://cakefoundation.org/">Cake Software Foundation</a>
-                <a target="_blank" rel="noopener" href="https://training.cakephp.org/">CakePHP Training</a>
-            </div>
-        </div>
-    </div>
     </div>
 </main>
 
-<style media="screen">
-    ul {
-        list-style-type: none;
-    }
-
-    .column a {
-        display: inline-block;
-        margin-right: 0.5rem;
-    }
-
-    .bullet::before {
-        font-family: "bootstrap-icons";
-        font-weight: 900;
-        font-size: 18px;
-        display: inline-block;
-        margin-left: -1.3em;
-        width: 1.2em;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        vertical-align: -1px;
+<style>
+    .bullet {
+        display: block;
+        margin-bottom: 1rem;
     }
 
     .bullet.success::before {
-        color: #88c671;
-        content: "\F26A";
+        font-family: 'bootstrap-icons';
+        content: '✔';
+        color: #28a745;
+        margin-right: 0.5rem;
     }
 
     .bullet.problem::before {
-        color: #d33d44;
-        content: "\F622";
+        font-family: 'bootstrap-icons';
+        content: '✘';
+        color: #dc3545;
+        margin-right: 0.5rem;
+    }
+
+    .links a {
+        margin-right: 2rem;
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
     }
 </style>

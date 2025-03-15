@@ -26,7 +26,7 @@ class CakeLteHelper extends Helper
         'configKey' => CakeLte::NAME,
         'settings' => [
             'appName' => 'CakeLte',
-            'appLogo' => 'M',
+            'appLogo' => 'CakeLte.cake.icon.svg',
         ],
         'autoRenderAssets' => false,
         'meta' => [],
@@ -34,7 +34,8 @@ class CakeLteHelper extends Helper
             'https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css',
             'https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/styles/overlayscrollbars.min.css',
             'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css',
-            '/adminlte/dist/css/adminlte'
+            '/adminlte/dist/css/adminlte',
+            'CakeLte.style',
         ],
         'scripts' => [
             'https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js',
