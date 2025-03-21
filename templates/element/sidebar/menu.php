@@ -1,3 +1,16 @@
+<?php
+
+/**
+ * @var \App\View\AppView $this
+ */
+
+$menu = $this->MenuLte->menuFromFile();
+
+echo $this->MenuLte->render($menu);
+?>
+
+
+<?php /*
 <!--begin::Sidebar Menu-->
 <ul
     class="nav sidebar-menu flex-column"
@@ -418,3 +431,6 @@
     </li>
 </ul>
 <!--end::Sidebar Menu-->
+
+
+*/

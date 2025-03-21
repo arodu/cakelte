@@ -8,7 +8,7 @@
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
     <!--begin::Sidebar Brand-->
     <div class="sidebar-brand">
-        <a href="../index.html" class="brand-link">
+        <a href="<?= $this->Url->build('/') ?>" class="brand-link">
             <?= $this->Html->image($this->CakeLte->get('appLogo'), [
                 'alt' => $this->CakeLte->get('appName'),
                 'class' => 'brand-image opacity-75 shadow'
