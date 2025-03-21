@@ -22,7 +22,7 @@
     <!--begin::Sidebar Wrapper-->
     <div class="sidebar-wrapper">
         <nav class="mt-2">
-            <?= $this->element('sidebar/menu') ?>
+            <?= $this->element('CakeLte.sidebar/menu') ?>
         </nav>
     </div>
     <!--end::Sidebar Wrapper-->

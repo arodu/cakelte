@@ -18,15 +18,15 @@
 <body class="sidebar-expand-lg bg-body-tertiary">
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
-        <?= $this->element('header/main') ?>
-        <?= $this->element('sidebar/main') ?>
+        <?= $this->element('CakeLte.header/main') ?>
+        <?= $this->element('CakeLte.sidebar/main') ?>
         <!--begin::App Main-->
         <main class="app-main">
             <!--begin::App Content Header-->
             <div class="app-content-header">
                 <!--begin::Container-->
                 <div class="container-fluid">
-                    <?= $this->element('content/header') ?>
+                    <?= $this->element('CakeLte.content/header') ?>
                 </div>
                 <!--end::Container-->
             </div>
@@ -42,7 +42,7 @@
             <!--end::App Content-->
         </main>
         <!--end::App Main-->
-        <?= $this->element('footer/main') ?>
+        <?= $this->element('CakeLte.footer/main') ?>
     </div>
     <!--end::App Wrapper-->
     <!--begin::Script-->
