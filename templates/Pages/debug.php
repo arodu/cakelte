@@ -23,6 +23,7 @@ use Cake\Error\Debugger;
 use Cake\Http\Exception\NotFoundException;
 
 $this->assign('title', 'Debug');
+$this->MenuLte->activeItem('debug');
 $this->Breadcrumbs->add([
     ['title' => 'Home', 'url' => '/'],
     ['title' => 'Debug'],

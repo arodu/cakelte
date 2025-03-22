@@ -4,7 +4,8 @@
  * @var \App\View\AppView $this
  */
 
-//$this->Menu->activeItem('firstItem');
+
+ $this->MenuLte->activeItem('sample');
 $this->Menu->activeItem('0.1');
 
 $navbar = [
