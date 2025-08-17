@@ -53,9 +53,9 @@ class CakeLteHelper extends Helper
         $this->themeSettingsInitialize($config);
     }
 
-    public function version(): string
+    public function version(): ?string
     {
-        return Common::packageVersion('arodu/cakelte');
+        return Common::getPackageVersion('arodu/cakelte');
     }
 
     public function getLogo(): ?string
