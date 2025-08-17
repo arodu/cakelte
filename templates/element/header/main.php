@@ -33,10 +33,7 @@
                         <!--begin::Message-->
                         <div class="d-flex">
                             <div class="flex-shrink-0">
-                                <img
-                                    src="../../../dist/assets/img/user1-128x128.jpg"
-                                    alt="User Avatar"
-                                    class="img-size-50 rounded-circle me-3" />
+                                <?= $this->Html->image('/adminlte/dist/assets/img/user1-128x128.jpg', ['alt' => 'User Avatar', 'class' => 'img-size-50 rounded-circle me-3']) ?>
                             </div>
                             <div class="flex-grow-1">
                                 <h3 class="dropdown-item-title">
@@ -56,10 +53,7 @@
                         <!--begin::Message-->
                         <div class="d-flex">
                             <div class="flex-shrink-0">
-                                <img
-                                    src="../../../dist/assets/img/user8-128x128.jpg"
-                                    alt="User Avatar"
-                                    class="img-size-50 rounded-circle me-3" />
+                                <?= $this->Html->image('/adminlte/dist/assets/img/user8-128x128.jpg', ['alt' => 'User Avatar', 'class' => 'img-size-50 rounded-circle me-3']) ?>
                             </div>
                             <div class="flex-grow-1">
                                 <h3 class="dropdown-item-title">
@@ -81,10 +75,7 @@
                         <!--begin::Message-->
                         <div class="d-flex">
                             <div class="flex-shrink-0">
-                                <img
-                                    src="../../../dist/assets/img/user3-128x128.jpg"
-                                    alt="User Avatar"
-                                    class="img-size-50 rounded-circle me-3" />
+                                <?= $this->Html->image('/adminlte/dist/assets/img/user3-128x128.jpg', ['alt' => 'User Avatar', 'class' => 'img-size-50 rounded-circle me-3']) ?>
                             </div>
                             <div class="flex-grow-1">
                                 <h3 class="dropdown-item-title">
@@ -145,19 +136,13 @@
             <!--begin::User Menu Dropdown-->
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                    <img
-                        src="../../../dist/assets/img/user2-160x160.jpg"
-                        class="user-image rounded-circle shadow"
-                        alt="User Image" />
+                    <?= $this->Html->image('/adminlte/dist/assets/img/user2-160x160.jpg', ['alt' => 'User Image', 'class' => 'user-image rounded-circle shadow']) ?>
                     <span class="d-none d-md-inline">Alexander Pierce</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                     <!--begin::User Image-->
                     <li class="user-header text-bg-primary">
-                        <img
-                            src="../../../dist/assets/img/user2-160x160.jpg"
-                            class="rounded-circle shadow"
-                            alt="User Image" />
+                        <?= $this->Html->image('/adminlte/dist/assets/img/user2-160x160.jpg', ['alt' => 'User Image', 'class' => 'rounded-circle shadow']) ?>
                         <p>
                             Alexander Pierce - Web Developer
                             <small>Member since Nov. 2023</small>
