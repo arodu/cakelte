@@ -26,16 +26,16 @@ return [
             'url' => '/cakelte/debug',
             'icon' => 'bi bi-grid-fill',
         ],
-        [
-            'label' => __('Theme'),
-            'url' => '/adminlte',
-            'icon' => 'bi bi-grid-fill',
-            'target' => '_blank',
-        ],
         'sample' => [
             'label' => __('Sample'),
             'url' => '/cakelte/sample',
             'icon' => 'bi bi-grid-fill',
+        ],
+        [
+            'label' => __('Theme'),
+            'url' => '/adminlte/dist/index.html',
+            'icon' => 'bi bi-grid-fill',
+            'target' => '_blank',
         ],
         [
             'label' => __('Level 1'),

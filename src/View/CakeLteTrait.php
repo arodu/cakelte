@@ -27,7 +27,6 @@ trait CakeLteTrait
     public function initializeCakeLte(array $options = []): void
     {
         $this->initializeUI();
-        $this->addHelper('BootstrapTools.Bs');
         $this->addHelper('CakeLte.CakeLte', $options);
         $this->addHelper('BootstrapTools.Menu');
         $this->loadMenuHelper('MenuLte', CakeLte::MENU_CONFIG);
