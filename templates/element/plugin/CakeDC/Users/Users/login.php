@@ -76,20 +76,42 @@ $registrationActive = Configure::read('Users.Registration.active');
 
 <style>
     .btn-google {
-        background-color: #db4437;
-        color: white;
+        background-color: #db4437 !important;
+        color: white !important;
     }
-    .btn-google:hover {
-        background-color: #c33d2e;
-        color: white;
-    }
-
     .btn-github {
-        background-color: #333;
-        color: white;
+        background-color: #333 !important;
+        color: white !important;
     }
-    .btn-github:hover {
-        background-color: #292b2c;
-        color: white;
+    .btn-facebook {
+        background-color: #3b5998 !important;
+        color: white !important;
+    }
+    .btn-twitter {
+        background-color: #1da1f2 !important;
+        color: white !important;
+    }
+    .btn-linkedin {
+        background-color: #0077b5 !important;
+        color: white !important;
+    }
+    .btn-instagram {
+        background-color: #e1306c !important;
+        color: white !important;
+    }
+    .btn-amazon {
+        background-color: #ff9900 !important;
+        color: white !important;
+    }
+    .btn-cognito {
+        background-color: #f9a825 !important;
+        color: white !important;
+    }
+    .btn-azure {
+        background-color: #0072c6 !important;
+        color: white !important;
+    }
+    .btn-social:hover {
+        opacity: 0.8;
     }
 </style>

@@ -24,6 +24,7 @@
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
+                <?= $this->Flash->render() ?>
                 <?= $this->fetch('content') ?>
             </div>
             <!-- /.login-card-body -->
