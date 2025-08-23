@@ -74,7 +74,6 @@ $registrationActive = Configure::read('Users.Registration.active');
     <?php endif; ?>
 <?php endif; ?>
 
-
 <style>
     .btn-google {
         background-color: #db4437;
