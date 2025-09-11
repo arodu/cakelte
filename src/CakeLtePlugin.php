@@ -14,6 +14,8 @@ use Cake\Routing\RouteBuilder;
  */
 class CakeLtePlugin extends BasePlugin
 {
+    public const DEFAULT_PLUGIN_CONFIG_FILE = 'CakeLte.cakelte';
+
     /**
      * Load all the plugin configuration and bootstrap logic.
      *
@@ -27,7 +29,11 @@ class CakeLtePlugin extends BasePlugin
     {
         $app->addPlugin('BootstrapUI');
         $app->addPlugin('BootstrapTools');
-        //Configure::write('CakeLte.plugin-path', $this->getPath());
+
+        Configure::load(static::DEFAULT_PLUGIN_CONFIG_FILE);
+        if (file_exists(CONFIG . 'cakelte.php')) {
+            Configure::load('cakelte');
+        }
     }
 
     /**

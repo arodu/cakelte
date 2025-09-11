@@ -1,13 +1,14 @@
 <?php
 
+use CakeLte\CakeLte;
 use CakeLte\Enum\Layout;
 use CakeLte\Style\Header;
 use CakeLte\Style\Sidebar;
 
 return [
-    'CakeLte' => [
-        'app-name' => 'CakeLTE',
-        'app-logo' => 'CakeLte.cake.icon.svg',
+    CakeLte::NAME => [
+        'appName' => 'CakeLTE22',
+        'appLogo' => 'CakeLte.cake.icon.svg',
 
         'layout' => Layout::FIXED_SIDEBAR,
         'rtl' => false,
