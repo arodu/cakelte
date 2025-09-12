@@ -2,7 +2,26 @@
 /**
  * @var \{{ namespace }}\View\AppView $this
  * @var \{{ entityClass }} ${{ singularVar }}
+        {{- "\n" }}
+{%- if associations.BelongsTo is defined %}
+    {%- for assocName, assocData in associations.BelongsTo %}
+ * @var \Cake\Collection\CollectionInterface|string[] ${{ assocData.variable }}
+        {{- "\n" }}
+    {%- endfor %}
+{% endif %}
+{%- if associations.BelongsToMany is defined %}
+    {%- for assocName, assocData in associations.BelongsToMany %}
+ * @var \Cake\Collection\CollectionInterface|string[] ${{ assocData.variable }}
+        {{- "\n" }}
+    {%- endfor %}
+{% endif %}
  */
-?>
 
-{{ element('form') }}
+$this->assign('title', __('{{ pluralHumanName }}'));
+$this->Breadcrumbs->add([
+    ['title' => __('Home'), 'url' => '/'],
+    ['title' => __('List {{ pluralHumanName }}'), 'url' => ['action' => 'index']],
+    ['title' => __('Add {{ singularHumanName }}')],
+]);
+?>
+{{ element('Bake.form') }}

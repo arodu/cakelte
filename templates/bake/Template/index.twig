@@ -3,9 +3,7 @@
  * @var \{{ namespace }}\View\AppView $this
  * @var \{{ entityClass }}[]|\Cake\Collection\CollectionInterface ${{ pluralVar }}
  */
-?>
 
-<?php
 $this->assign('title', __('{{ pluralHumanName }}'));
 $this->Breadcrumbs->add([
     ['title' => __('Home'), 'url' => '/'],
@@ -15,21 +13,18 @@ $this->Breadcrumbs->add([
 
 {%- set fields = Bake.filterFields(fields, schema, modelObject, indexColumns, ['binary', 'text']) %}
 
+
 <div class="card card-primary card-outline">
-    <div class="card-header d-flex flex-column flex-md-row">
+    <div class="card-header d-flex align-items-center">
         <h2 class="card-title">
-            <!-- -->
+            <?= $this->Html->link('<i class="bi bi-caret-left-fill"></i>', $redirect ?? '/', ['escape' => false]) ?>
+            <?= __('List {{ pluralHumanName }}') ?>
         </h2>
-        <div class="d-flex ml-auto">
-            <?= $this->Paginator->limitControl([], null, [
-                'label' => false,
-                'class' => 'form-control form-control-sm',
-                'templates' => ['inputContainer' => '{{'{{content}}'}}']
-            ]); ?>
-            <?= $this->Html->link(__('New {{ singularHumanName }}'), ['action' => 'add'], ['class' => 'btn btn-primary btn-sm ml-2']) ?>
+        <div class="ms-auto d-flex gap-1">
+            <?= $this->Paginator->limitControl([], null, ['label' => false, 'spacing' => 'mb-0']) ?>
+            <?= $this->Html->link(__('Add {{ singularHumanName }}'), ['action' => 'add'], ['class' => 'btn btn-success']) ?>
         </div>
     </div>
-    <!-- /.card-header -->
     <div class="card-body table-responsive p-0">
         <table class="table table-hover text-nowrap">
             <thead>
@@ -66,27 +61,25 @@ $this->Breadcrumbs->add([
 {% endfor %}
 {% set pk = '$' ~ singularVar ~ '->' ~ primaryKey[0] %}
                         <td class="actions">
-                            <?= $this->Html->link(__('View'), ['action' => 'view', {{ pk|raw }}], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', {{ pk|raw }}], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', {{ pk|raw }}], ['class' => 'btn btn-xs btn-outline-danger', 'escape' => false, 'confirm' => __('Are you sure you want to delete # {0}?', {{ pk|raw }})]) ?>
+                            <?= $this->Html->link(__('View'), ['action' => 'view', {{ pk|raw }}], ['class' => 'btn btn-info btn-sm', 'escape' => false]) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', {{ pk|raw }}], ['class' => 'btn btn-warning btn-sm', 'escape' => false]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', {{ pk|raw }}], ['class' => 'btn btn-danger btn-sm', 'escape' => false, 'confirm' => __('Are you sure you want to delete # {0}?', {{ pk|raw }})]) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
-    <!-- /.card-body -->
-    <div class="card-footer d-flex flex-column flex-md-row">
+    <div class="card-footer d-flex flex-column flex-md-row align-items-center">
         <div class="text-muted">
             <?= $this->Paginator->counter(__('Page {{ '{{' }}page{{ '}}' }} of {{ '{{' }}pages{{ '}}' }}, showing {{ '{{' }}current{{ '}}' }} record(s) out of {{ '{{' }}count{{ '}}' }} total')) ?>
         </div>
-        <ul class="pagination pagination-sm mb-0 ml-auto">
-            <?= $this->Paginator->first('<i class="fas fa-angle-double-left"></i>', ['escape' => false]) ?>
-            <?= $this->Paginator->prev('<i class="fas fa-angle-left"></i>', ['escape' => false]) ?>
+        <ul class="pagination pagination-sm mb-0 ms-auto">
+            <?= $this->Paginator->first('<i class="bi bi-chevron-bar-left"></i>', ['escape' => false]) ?>
+            <?= $this->Paginator->prev('<i class="bi bi-chevron-left"></i>', ['escape' => false]) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next('<i class="fas fa-angle-right"></i>', ['escape' => false]) ?>
-            <?= $this->Paginator->last('<i class="fas fa-angle-double-right"></i>', ['escape' => false]) ?>
+            <?= $this->Paginator->next('<i class="bi bi-chevron-right"></i>', ['escape' => false]) ?>
+            <?= $this->Paginator->last('<i class="bi bi-chevron-bar-right"></i>', ['escape' => false]) ?>
         </ul>
     </div>
-    <!-- /.card-footer -->
 </div>

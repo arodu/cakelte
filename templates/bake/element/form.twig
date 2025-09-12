@@ -1,34 +1,26 @@
-{#
-/**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @since         2.0.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-#}
 {% set fields = Bake.filterFields(fields, schema, modelObject) %}
-<?php
-$this->assign('title', __('{{ action|humanize }} {{ singularHumanName }}'));
-$this->Breadcrumbs->add([
-    ['title' => __('Home'), 'url' => '/'],
-    ['title' => __('List {{ pluralHumanName }}'), 'url' => ['action' => 'index']],
-{% if 'add' not in action %}
-    ['title' => __('View'), 'url' => ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}]],
-    ['title' => __('Edit')],
-{% else %}
-    ['title' => __('Add')],
-{% endif %}
-]);
-?>
-
 <div class="card card-primary card-outline">
+    <div class="card-header d-flex align-items-center">
+        <h2 class="card-title">
+            <?= $this->Html->link('<i class="bi bi-caret-left-fill"></i>', $redirect ?? '/', ['escape' => false]) ?>
+            <?= __('{{ action|humanize }} {{ singularHumanName }}') ?>
+        </h2>
+        <div class="ms-auto d-flex gap-1">
+            <?= $this->Html->link(
+                __('List {{ pluralHumanName }}'),
+                ['action' => 'index'],
+                ['class' => 'btn btn-light']
+            ) ?>
+{% if 'add' not in action %}
+            <?= $this->Html->link(
+                __('View {{ singularHumanName }}'),
+                ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}],
+                ['class' => 'btn btn-info']
+            ) ?>
+{% endif %}
+        </div>
+    </div>
+
 {% if 'add' not in action %}
     <?= $this->Form->create(${{ singularVar }}) ?>
 {% else %}
@@ -65,21 +57,20 @@ $this->Breadcrumbs->add([
     </div>
     <div class="card-footer d-flex">
 {% if 'add' not in action %}
-        <div class="mr-auto">
+        <div class="me-auto">
             <?= $this->Form->postLink(
-                __('Delete'),
+                __('Delete {{ singularHumanName }}'),
                 ['action' => 'delete', ${{ singularVar }}->{{ primaryKey[0] }}],
-                ['confirm' => __('Are you sure you want to delete # {0}?', ${{ singularVar }}->{{ primaryKey[0] }}), 'class' => 'btn btn-danger']
+                [
+                    'confirm' => __('Are you sure you want to delete # {0}?', ${{ singularVar }}->{{ primaryKey[0] }}),
+                    'class' => 'btn btn-danger',
+                ]
             ) ?>
         </div>
 {% endif %}
-        <div class="ml-auto">
-            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-primary']) ?>
-{% if 'add' not in action %}
-            <?= $this->Html->link(__('Cancel'), ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}], ['class' => 'btn btn-default']) ?>
-{% else %}
-            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
-{% endif %}
+        <div class="ms-auto d-flex gap-1">
+            <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
+            <?= $this->Html->link(__('Cancel'), $redirect ?? ['action' => 'index'], ['class' => 'btn btn-secondary']) ?>
         </div>
     </div>
     <?= $this->Form->end() ?>
