@@ -123,12 +123,21 @@ $this->Breadcrumbs->add([
 {% set otherPluralHumanName = alias|underscore|humanize %}
 {% set otherSingularHumanName = alias|singularize|underscore|humanize %}
 
-<div class="related related-{{ otherSingularVar }} view card mt-4">
-    <div class="card-header d-flex">
+<div class="view related related-{{ otherSingularVar }} card mt-4">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><?= __('Related {{ otherPluralHumanName }}') ?></h3>
-        <div class="ms-auto">
-            <?= $this->Html->link(__('New {{ otherSingularHumanName }}'), ['controller' => '{{details.controller}}', 'action' => 'add', '?' => ['{{ details.foreignKey }}' => {{ pK }}]], ['class' => 'btn btn-success']) ?>
+        <div class="ms-auto d-flex gap-1">
             <?= $this->Html->link(__('List {{ otherPluralHumanName }}'), ['controller' => '{{details.controller}}', 'action' => 'index'], ['class' => 'btn btn-light']) ?>
+            <?= $this->Html->link(__('Add {{ otherSingularHumanName }}'), [
+                'controller' => '{{details.controller}}',
+                'action' => 'add',
+                '?' => [
+                    '{{ details.foreignKey }}' => {{ pK }},
+                    'redirect' => $this->getRequest()->getPath() . '#related-{{ alias|underscore }}',
+                ]
+            ], [
+                'class' => 'btn btn-success',
+            ]) ?>
         </div>
     </div>
     <div class="card-body table-responsive p-0">
