@@ -3,10 +3,8 @@
  * @var \{{ namespace }}\View\AppView $this
  * @var \{{ entityClass }} ${{ singularVar }}
  */
-?>
 
-<?php
-$this->assign('title', __('{{ singularHumanName }}'));
+$this->assign('title', __('{{ pluralHumanName }}'));
 $this->Breadcrumbs->add([
     ['title' => __('Home'), 'url' => '/'],
     ['title' => __('List {{ pluralHumanName }}'), 'url' => ['action' => 'index']],
@@ -20,8 +18,23 @@ $this->Breadcrumbs->add([
 {% set groupedFields = fieldsData.groupedFields %}
 {% set pK = '$' ~ singularVar ~ '->' ~ primaryKey[0] %}
 <div class="view card card-primary card-outline">
-    <div class="card-header d-sm-flex">
-        <h2 class="card-title"><?= h(${{ singularVar }}->{{ displayField }}) ?></h2>
+    <div class="card-header d-flex align-items-center">
+        <h2 class="card-title">
+            <?= $this->Html->link('<i class="bi bi-caret-left-fill"></i>', $redirect ?? '/', ['escape' => false]) ?>
+            <?= h(${{ singularVar }}->{{ displayField }}) ?>
+        </h2>
+        <div class="ms-auto d-flex gap-1">
+            <?= $this->Html->link(
+                __('List {{ pluralHumanName }}'),
+                ['action' => 'index', '?' => ['redirect' => $this->getRequest()->getPath()]],
+                ['class' => 'btn btn-light']
+            ) ?>
+            <?= $this->Html->link(
+                __('Edit {{ singularHumanName }}'),
+                ['action' => 'edit', {{ pK|raw }}, '?' => ['redirect' => $this->getRequest()->getPath()]],
+                ['class' => 'btn btn-warning']
+            ) ?>
+        </div>
     </div>
     <div class="card-body table-responsive p-0">
         <table class="table table-hover text-nowrap">
@@ -76,23 +89,25 @@ $this->Breadcrumbs->add([
         </table>
     </div>
     <div class="card-footer d-flex">
-        <div class="mr-auto">
+        <div class="me-auto">
             <?= $this->Form->postLink(
-                __('Delete'),
+                __('Delete {{ singularHumanName }}'),
                 ['action' => 'delete', {{ pK|raw }}],
-                ['confirm' => __('Are you sure you want to delete # {0}?', {{ pK|raw }}), 'class' => 'btn btn-danger']
+                [
+                    'confirm' => __('Are you sure you want to delete {0}?', ${{ singularVar }}->{{ displayField }}),
+                    'class' => 'btn btn-danger',
+                ]
             ) ?>
         </div>
-        <div class="ml-auto">
-            <?= $this->Html->link(__('Edit'), ['action' => 'edit', {{ pK|raw }}], ['class' => 'btn btn-secondary']) ?>
-            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
+        <div class="ms-auto">
+            <?= $this->Html->link(__('Cancel'), $redirect ?? ['action' => 'index'], ['class' => 'btn btn-secondary']) ?>
         </div>
     </div>
 </div>
 {% if groupedFields.text %}
 {% for field in groupedFields.text %}
 
-<div class="view text card">
+<div class="view text card mt-4">
     <div class="card-header">
         <h3 class="card-title"><?= __('{{ field|humanize }}') ?></h3>
     </div>
@@ -108,12 +123,12 @@ $this->Breadcrumbs->add([
 {% set otherPluralHumanName = alias|underscore|humanize %}
 {% set otherSingularHumanName = alias|singularize|underscore|humanize %}
 
-<div class="related related-{{ otherSingularVar }} view card">
+<div class="related related-{{ otherSingularVar }} view card mt-4">
     <div class="card-header d-flex">
         <h3 class="card-title"><?= __('Related {{ otherPluralHumanName }}') ?></h3>
-        <div class="ml-auto">
-            <?= $this->Html->link(__('New {{ otherSingularHumanName }}'), ['controller' => '{{details.controller}}', 'action' => 'add', '?' => ['{{ details.foreignKey }}' => {{ pK }}]], ['class' => 'btn btn-primary btn-sm']) ?>
-            <?= $this->Html->link(__('List {{ otherPluralHumanName }}'), ['controller' => '{{details.controller}}', 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
+        <div class="ms-auto">
+            <?= $this->Html->link(__('New {{ otherSingularHumanName }}'), ['controller' => '{{details.controller}}', 'action' => 'add', '?' => ['{{ details.foreignKey }}' => {{ pK }}]], ['class' => 'btn btn-success']) ?>
+            <?= $this->Html->link(__('List {{ otherPluralHumanName }}'), ['controller' => '{{details.controller}}', 'action' => 'index'], ['class' => 'btn btn-light']) ?>
         </div>
     </div>
     <div class="card-body table-responsive p-0">
@@ -138,9 +153,9 @@ $this->Breadcrumbs->add([
 {% endfor %}
 {% set otherPk = '$' ~ otherSingularVar ~ '->' ~ details.primaryKey[0] %}
                         <td class="actions">
-                            <?= $this->Html->link(__('View'), ['controller' => '{{ details.controller }}', 'action' => 'view', {{ otherPk|raw }}], ['class' => 'btn btn-xs btn-outline-primary']) ?>
-                            <?= $this->Html->link(__('Edit'), ['controller' => '{{ details.controller }}', 'action' => 'edit', {{ otherPk|raw }}], ['class' => 'btn btn-xs btn-outline-primary']) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['controller' => '{{ details.controller }}', 'action' => 'delete', {{ otherPk|raw }}], ['class' => 'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', {{ otherPk|raw }})]) ?>
+                            <?= $this->Html->link(__('View'), ['controller' => '{{ details.controller }}', 'action' => 'view', {{ otherPk|raw }}], ['class' => 'btn btn-info btn-sm']) ?>
+                            <?= $this->Html->link(__('Edit'), ['controller' => '{{ details.controller }}', 'action' => 'edit', {{ otherPk|raw }}], ['class' => 'btn btn-warning btn-sm']) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['controller' => '{{ details.controller }}', 'action' => 'delete', {{ otherPk|raw }}], ['class' => 'btn btn-danger btn-sm', 'confirm' => __('Are you sure you want to delete # {0}?', {{ otherPk|raw }})]) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

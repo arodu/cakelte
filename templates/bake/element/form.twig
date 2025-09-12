@@ -1,5 +1,5 @@
 {% set fields = Bake.filterFields(fields, schema, modelObject) %}
-<div class="card card-primary card-outline">
+<div class="{{ action }} card card-primary card-outline">
     <div class="card-header d-flex align-items-center">
         <h2 class="card-title">
             <?= $this->Html->link('<i class="bi bi-caret-left-fill"></i>', $redirect ?? '/', ['escape' => false]) ?>
