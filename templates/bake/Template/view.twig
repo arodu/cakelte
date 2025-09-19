@@ -127,7 +127,13 @@ $this->Breadcrumbs->add([
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><?= __('Related {{ otherPluralHumanName }}') ?></h3>
         <div class="ms-auto d-flex gap-1">
-            <?= $this->Html->link(__('List {{ otherPluralHumanName }}'), ['controller' => '{{details.controller}}', 'action' => 'index'], ['class' => 'btn btn-light']) ?>
+            <?= $this->Html->link(__('List {{ otherPluralHumanName }}'), [
+                'controller' => '{{details.controller}}',
+                'action' => 'index',
+                '?' => ['redirect' => $this->getRequest()->getPath() . '#related-{{ alias|underscore }}'],
+            ], [
+                'class' => 'btn btn-light',
+            ]) ?>
             <?= $this->Html->link(__('Add {{ otherSingularHumanName }}'), [
                 'controller' => '{{details.controller}}',
                 'action' => 'add',
