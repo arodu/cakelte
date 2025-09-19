@@ -11,7 +11,7 @@
                 ['action' => 'index'],
                 ['class' => 'btn btn-light']
             ) ?>
-{% if 'add' not in action %}
+{% if 'edit' in action %}
             <?= $this->Html->link(
                 __('View {{ singularHumanName }}'),
                 ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}],
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-{% if 'add' not in action %}
+{% if 'edit' in action %}
     <?= $this->Form->create(${{ singularVar }}) ?>
 {% else %}
     <?= $this->Form->create(${{ singularVar }}, ['valueSources' => ['query', 'context']]) ?>
@@ -29,7 +29,7 @@
     <div class="card-body">
 {% for field in fields %}
 {%- if field not in primaryKey %}
-{%- if keyFields[field] %}
+{%- if keyFields[field] is defined %}
 {%- set fieldData = Bake.columnData(field, schema) %}
 {%- if fieldData.null %}
         <?= $this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'empty' => true, 'class' => 'form-control']) ?>
@@ -49,14 +49,14 @@
 {%- endif %}
 {%- endfor %}
 
-{%- if associations.BelongsToMany %}
+{%- if associations.BelongsToMany is defined %}
 {%- for assocName, assocData in associations.BelongsToMany %}
         <?= $this->Form->control('{{ assocData.property }}._ids', ['options' => ${{ assocData.variable }}]) ?>
 {% endfor %}
 {% endif %}
     </div>
     <div class="card-footer d-flex">
-{% if 'add' not in action %}
+{% if 'edit' in action %}
         <div class="me-auto">
             <?= $this->Form->postLink(
                 __('Delete {{ singularHumanName }}'),
