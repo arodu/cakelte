@@ -2,7 +2,7 @@
 <div class="{{ action }} card card-primary card-outline">
     <div class="card-header d-flex align-items-center">
         <h2 class="card-title">
-            <?= $this->Html->link('<i class="bi bi-caret-left-fill"></i>', $redirect ?? '/', ['escape' => false]) ?>
+            <?= $this->Html->link('<i class="bi bi-caret-left-fill"></i>', $redirect ?? ['action' => 'index'], ['escape' => false]) ?>
             <?= __('{{ action|humanize }} {{ singularHumanName }}') ?>
         </h2>
         <div class="ms-auto d-flex gap-1">

@@ -20,7 +20,7 @@ $this->Breadcrumbs->add([
 <div class="view card card-primary card-outline">
     <div class="card-header d-flex align-items-center">
         <h2 class="card-title">
-            <?= $this->Html->link('<i class="bi bi-caret-left-fill"></i>', $redirect ?? '/', ['escape' => false]) ?>
+            <?= $this->Html->link('<i class="bi bi-caret-left-fill"></i>', $redirect ?? ['action' => 'index'], ['escape' => false]) ?>
             <?= h(${{ singularVar }}->{{ displayField }}) ?>
         </h2>
         <div class="ms-auto d-flex gap-1">
@@ -187,9 +187,31 @@ $this->Breadcrumbs->add([
 {% endfor %}
 {% set otherPk = '$' ~ otherSingularVar ~ '->' ~ details.primaryKey[0] %}
                         <td class="actions">
-                            <?= $this->Html->link(__('View'), ['controller' => '{{ details.controller }}', 'action' => 'view', {{ otherPk|raw }}], ['class' => 'btn btn-info btn-sm']) ?>
-                            <?= $this->Html->link(__('Edit'), ['controller' => '{{ details.controller }}', 'action' => 'edit', {{ otherPk|raw }}], ['class' => 'btn btn-warning btn-sm']) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['controller' => '{{ details.controller }}', 'action' => 'delete', {{ otherPk|raw }}], ['class' => 'btn btn-danger btn-sm', 'confirm' => __('Are you sure you want to delete # {0}?', {{ otherPk|raw }})]) ?>
+                            <?= $this->Html->link(__('View'), [
+                                'controller' => '{{ details.controller }}',
+                                'action' => 'view',
+                                {{ otherPk|raw }},
+                                '?' => ['redirect' => $this->getRequest()->getPath() . '#related-{{ alias|underscore }}'],
+                            ], [
+                                'class' => 'btn btn-info btn-sm',
+                            ]) ?>
+                            <?= $this->Html->link(__('Edit'), [
+                                'controller' => '{{ details.controller }}',
+                                'action' => 'edit',
+                                {{ otherPk|raw }},
+                                '?' => ['redirect' => $this->getRequest()->getPath() . '#related-{{ alias|underscore }}'],
+                            ], [
+                                'class' => 'btn btn-warning btn-sm',
+                            ]) ?>
+                            <?= $this->Form->postLink(__('Delete'), [
+                                'controller' => '{{ details.controller }}',
+                                'action' => 'delete',
+                                {{ otherPk|raw }},
+                                '?' => ['redirect' => $this->getRequest()->getPath() . '#related-{{ alias|underscore }}'],
+                            ], [
+                                'class' => 'btn btn-danger btn-sm',
+                                'confirm' => __('Are you sure you want to delete # {0}?', {{ otherPk|raw }})
+                            ]) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
