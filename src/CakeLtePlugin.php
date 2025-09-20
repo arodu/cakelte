@@ -53,7 +53,7 @@ class CakeLtePlugin extends BasePlugin
             function (RouteBuilder $builder): void {
                 $builder->connect('/debug', ['controller' => 'Pages', 'action' => 'debug']);
                 $builder->connect('/sample', ['controller' => 'Pages', 'action' => 'sample']);
-            }
+            },
         );
         parent::routes($routes);
     }

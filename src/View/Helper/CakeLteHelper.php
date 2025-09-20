@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace CakeLte\View\Helper;
@@ -7,8 +6,8 @@ namespace CakeLte\View\Helper;
 use BootstrapTools\View\Trait\ThemeSettingsTrait;
 use Cake\View\Helper;
 use CakeLte\CakeLte;
-use UtilityKit\Utility\Common;
 use CakeLte\Enum\Layout;
+use UtilityKit\Utility\Common;
 
 /**
  * CakeLte helper
@@ -69,8 +68,6 @@ class CakeLteHelper extends Helper
         return $this->Url->image($logo, ['alt' => $this->get('appName'), 'class' => 'brand-image']);
     }
 
-
-
     public function rtl(): ?string
     {
         if ($this->get('rtl') ?? false) {
@@ -95,7 +92,6 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 }
-
 
 /*
 
@@ -128,7 +124,7 @@ class CakeLteHelper extends Helper
     public Header $Header;
     public Sidebar $Sidebar;
 
-    
+
     public function initialize(array $config): void
     {
         try {
@@ -144,7 +140,7 @@ class CakeLteHelper extends Helper
         parent::initialize($config);
     }
 
-    
+
     public function getBodyClass(): string
     {
         $layout = match (true) {
@@ -171,7 +167,7 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 
-    
+
     public function rtl(): ?string
     {
         if ($this->getConfig('rtl') ?? false) {
@@ -181,7 +177,7 @@ class CakeLteHelper extends Helper
         return null;
     }
 
-    
+
     public function getHeaderClass(): string
     {
         $output = array_filter([
@@ -193,7 +189,7 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 
-    
+
     public function getSidebarClass(): string
     {
         $output = array_filter([
@@ -206,7 +202,7 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 
-    
+
     public function getMenuClass(): string
     {
         $output = array_filter([
@@ -220,7 +216,7 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 
-    
+
     public function version(): string
     {
         return Cache::remember('cakelte_version', function () {
