@@ -52,11 +52,17 @@ class CakeLteHelper extends Helper
         $this->themeSettingsInitialize($config);
     }
 
+    /**
+     * @return string|null
+     */
     public function version(): ?string
     {
         return Common::getPackageVersion('arodu/cakelte');
     }
 
+    /**
+     * @return string|null
+     */
     public function getLogo(): ?string
     {
         $logo = $this->get('appLogo');
@@ -68,6 +74,9 @@ class CakeLteHelper extends Helper
         return $this->Url->image($logo, ['alt' => $this->get('appName'), 'class' => 'brand-image']);
     }
 
+    /**
+     * @return string|null
+     */
     public function rtl(): ?string
     {
         if ($this->get('rtl') ?? false) {
@@ -77,6 +86,9 @@ class CakeLteHelper extends Helper
         return null;
     }
 
+    /**
+     * @return string
+     */
     public function getBodyClass(): string
     {
         $layout = match (true) {

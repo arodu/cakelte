@@ -5,32 +5,32 @@ namespace CakeLte\Enum;
 
 enum Color: string
 {
-    case DEFAULT = 'default';
+    case Default = 'default';
 
-    case PRIMARY = 'primary';
-    case SECONDARY = 'secondary';
-    case INFO = 'info';
-    case SUCCESS = 'success';
-    case WARNING = 'warning';
-    case DANGER = 'danger';
+    case Primary = 'primary';
+    case Secondary = 'secondary';
+    case Info = 'info';
+    case Success = 'success';
+    case Warning = 'warning';
+    case Danger = 'danger';
 
-    case BLACK = 'black';
-    case GRAY_DARK = 'gray-dark';
-    case GRAY = 'gray';
-    case LIGHT = 'light';
-    case DARK = 'dark';
+    case Black = 'black';
+    case GrayDark = 'gray-dark';
+    case Gray = 'gray';
+    case Light = 'light';
+    case Dark = 'dark';
 
-    case INDIGO = 'indigo';
-    case LIGHTBLUE = 'lightblue';
-    case NAVY = 'navy';
-    case PURPLE = 'purple';
-    case FUCHSIA = 'fuchsia';
-    case PINK = 'pink';
-    case MAROON = 'maroon';
-    case ORANGE = 'orange';
-    case LIME = 'lime';
-    case TEAL = 'teal';
-    case OLIVE = 'olive';
+    case Indigo = 'indigo';
+    case LightBlue = 'lightblue';
+    case Navy = 'navy';
+    case Purple = 'purple';
+    case Fuchsia = 'fuchsia';
+    case Pink = 'pink';
+    case Maroon = 'maroon';
+    case Orange = 'orange';
+    case Lime = 'lime';
+    case Teal = 'teal';
+    case Olive = 'olive';
 
     /**
      * @param string $prefix

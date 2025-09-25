@@ -17,7 +17,9 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
 
-        $this->Flash->warning('You are running this application in debug mode. Do not use debug mode in production environment.');
+        $this->Flash->warning(
+            __('You are running this application in debug mode. Do not use debug mode in production environment.'),
+        );
     }
 
     /**
@@ -29,6 +31,8 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
 
-        $this->Flash->warning('You are running this application in debug mode. Do not use debug mode in production environment.');
+        $this->Flash->warning(
+            __('You are running this application in debug mode. Do not use debug mode in production environment.'),
+        );
     }
 }
