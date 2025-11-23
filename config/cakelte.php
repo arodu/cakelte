@@ -2,12 +2,10 @@
 
 use CakeLte\CakeLte;
 use CakeLte\Enum\Layout;
-use CakeLte\Style\Header;
-use CakeLte\Style\Sidebar;
 
 return [
     CakeLte::NAME => [
-        'appName' => 'CakeLTE22',
+        'appName' => 'CakeLTE',
         'appLogo' => 'CakeLte.cake.icon.svg',
 
         'layout' => Layout::FIXED_SIDEBAR,
