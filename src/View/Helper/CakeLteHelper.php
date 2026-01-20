@@ -55,10 +55,10 @@ class CakeLteHelper extends Helper
     /**
      * @return string|null
      */
-    public function version(): ?string
-    {
-        return Common::getPackageVersion('arodu/cakelte');
-    }
+    //public function version(): ?string
+    //{
+    //    return Common::getPackageVersion('arodu/cakelte');
+    //}
 
     /**
      * @return string|null
