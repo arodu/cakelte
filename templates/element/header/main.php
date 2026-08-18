@@ -10,6 +10,7 @@
             <?php echo $this->element('CakeLte.header/messages') ?>
             <?php echo $this->element('CakeLte.header/notifications') ?>
             <?php echo $this->element('CakeLte.header/fullscreen') ?>
+            <?php echo $this->element('CakeLte.header/color-mode') ?>
             <?php echo $this->element('CakeLte.header/user') ?>
         </ul>
         <!--end::End Navbar Links-->
