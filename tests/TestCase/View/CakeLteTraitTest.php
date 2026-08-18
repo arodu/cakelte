@@ -3,17 +3,12 @@ declare(strict_types=1);
 
 namespace CakeLte\Test\TestCase\View;
 
+use BootstrapTools\View\Helper\MenuHelper;
 use Cake\TestSuite\TestCase;
-use Cake\View\View;
-use CakeLte\View\CakeLteTrait;
+use CakeLte\Test\View\CakeLteTestView;
+use CakeLte\View\Helper\CakeLteHelper;
 
-/**
- * Test view class that uses the CakeLteTrait
- */
-class CakeLteTestView extends View
-{
-    use CakeLteTrait;
-}
+require_once dirname(__DIR__, 2) . '/stubs/CakeLteTestView.php';
 
 /**
  * CakeLte\View\CakeLteTrait Test Case
@@ -35,10 +30,10 @@ class CakeLteTraitTest extends TestCase
         $helpers = $view->helpers();
 
         $this->assertTrue($helpers->has('CakeLte'));
-        $this->assertInstanceOf(\CakeLte\View\Helper\CakeLteHelper::class, $helpers->get('CakeLte'));
+        $this->assertInstanceOf(CakeLteHelper::class, $helpers->get('CakeLte'));
         $this->assertTrue($helpers->has('Menu'));
-        $this->assertInstanceOf(\BootstrapTools\View\Helper\MenuHelper::class, $helpers->get('Menu'));
+        $this->assertInstanceOf(MenuHelper::class, $helpers->get('Menu'));
         $this->assertTrue($helpers->has('MenuLte'));
-        $this->assertInstanceOf(\BootstrapTools\View\Helper\MenuHelper::class, $helpers->get('MenuLte'));
+        $this->assertInstanceOf(MenuHelper::class, $helpers->get('MenuLte'));
     }
 }

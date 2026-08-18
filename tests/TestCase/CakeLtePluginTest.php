@@ -6,6 +6,7 @@ namespace CakeLte\Test\TestCase;
 use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Core\PluginApplicationInterface;
+use Cake\Http\MiddlewareQueue;
 use Cake\Http\ServerRequest;
 use Cake\Routing\RouteBuilder;
 use Cake\Routing\RouteCollection;
@@ -96,5 +97,47 @@ class CakeLtePluginTest extends TestCase
         $this->assertSame('Pages', $sample['controller']);
         $this->assertSame('sample', $sample['action']);
         $this->assertSame('CakeLte', $sample['plugin']);
+    }
+
+    /**
+     * Test middleware method returns the queue untouched
+     *
+     * @return void
+     * @uses \CakeLte\CakeLtePlugin::middleware()
+     */
+    public function testMiddlewareReturnsQueue(): void
+    {
+        $queue = new MiddlewareQueue();
+
+        $this->assertSame($queue, $this->plugin->middleware($queue));
+    }
+
+    /**
+     * Test bootstrap loads an application-level cakelte.php config when present
+     *
+     * @return void
+     * @uses \CakeLte\CakeLtePlugin::bootstrap()
+     */
+    public function testBootstrapLoadsAppConfig(): void
+    {
+        $configDir = CONFIG;
+        if (!is_dir($configDir)) {
+            mkdir($configDir, 0777, true);
+        }
+        $configFile = $configDir . 'cakelte.php';
+        file_put_contents($configFile, '<?php return ["CakeLte" => ["appName" => "FromAppConfig"]];');
+
+        try {
+            $app = $this->createMock(PluginApplicationInterface::class);
+            $app->method('addPlugin')->willReturn($app);
+
+            $this->plugin->bootstrap($app);
+
+            $this->assertSame('FromAppConfig', Configure::read('CakeLte.appName'));
+        } finally {
+            if (file_exists($configFile)) {
+                unlink($configFile);
+            }
+        }
     }
 }

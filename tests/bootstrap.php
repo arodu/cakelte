@@ -33,6 +33,13 @@ require_once $root . '/vendor/autoload.php';
  */
 require_once $root . '/vendor/cakephp/cakephp/tests/bootstrap.php';
 
+/**
+ * Load the CakePHP global functions (__(), __n(), etc.).
+ * In a standalone plugin checkout there is no app config/bootstrap.php to
+ * require `src/functions.php`, so they are loaded here.
+ */
+require_once $root . '/vendor/cakephp/cakephp/src/functions.php';
+
 if (file_exists($root . '/config/bootstrap.php')) {
     require $root . '/config/bootstrap.php';
 

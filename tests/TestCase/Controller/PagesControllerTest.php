@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace CakeLte\Test\TestCase\Controller;
 
 use Cake\Core\Configure;
-use Cake\Event\EventManager;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\ServerRequest;
 use Cake\Routing\Router;
@@ -83,7 +82,7 @@ class PagesControllerTest extends TestCase
 
         $messages = $controller->getRequest()->getSession()->read('Flash.flash');
         $this->assertNotEmpty($messages);
-        $this->assertSame('warning', $messages[0]['element']);
+        $this->assertSame('flash/warning', $messages[0]['element']);
     }
 
     /**
@@ -101,6 +100,6 @@ class PagesControllerTest extends TestCase
 
         $messages = $controller->getRequest()->getSession()->read('Flash.flash');
         $this->assertNotEmpty($messages);
-        $this->assertSame('warning', $messages[0]['element']);
+        $this->assertSame('flash/warning', $messages[0]['element']);
     }
 }
