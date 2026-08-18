@@ -8,6 +8,7 @@ use Cake\Console\Arguments;
 use Cake\Console\ConsoleIo;
 use Cake\Console\ConsoleOptionParser;
 use Cake\Core\Configure;
+use Cake\Core\Plugin;
 
 /**
  * Cakelte command.
@@ -26,7 +27,6 @@ class CopyFilesCommand extends Command
         'layout' => [
             'layout/default.php',
             'layout/login.php',
-            'layout/top-nav.php',
         ],
         'content' => [
             'element/content/header.php',
@@ -34,10 +34,11 @@ class CopyFilesCommand extends Command
         'header' => [
             'element/header/main.php',
             'element/header/menu.php',
+            'element/header/search.php',
             'element/header/messages.php',
             'element/header/notifications.php',
-            'element/header/search-default.php',
-            'element/header/search-block.php',
+            'element/header/fullscreen.php',
+            'element/header/user.php',
         ],
         'footer' => [
             'element/footer/main.php',
@@ -45,15 +46,6 @@ class CopyFilesCommand extends Command
         'sidebar' => [
             'element/sidebar/main.php',
             'element/sidebar/menu.php',
-            'element/sidebar/search.php',
-            'element/sidebar/user.php',
-        ],
-        'aside' => [
-            'element/aside/main.php',
-        ],
-        'extra' => [
-            'element/extra/css.php',
-            'element/extra/script.php',
         ],
     ];
 
@@ -90,21 +82,19 @@ class CopyFilesCommand extends Command
 
     /**
      * Implement this method with your command's logic.
-     * termail
-
+     *
      * @param \Cake\Console\Arguments $args The command arguments.
      * @param \Cake\Console\ConsoleIo $io The console io
      * @return int|null The exit code or null for success
      */
     public function execute(Arguments $args, ConsoleIo $io): ?int
     {
-        // @todo if all files
         $all = $args->getOption('all');
         $forceOverwrite = (bool)$args->getOption('force');
         $type = $args->getArgument('type');
 
         if (!$all && empty($type)) {
-            $io->err('Error: Need to add a type argument or --all option, excecute `cakelte copy_files -h` for help.');
+            $io->err('Error: Need to add a type argument or --all option, execute `cakelte copy_files -h` for help.');
 
             return self::CODE_ERROR;
         }
@@ -115,7 +105,7 @@ class CopyFilesCommand extends Command
             $files = $this->files[$type];
         }
 
-        $src = Configure::read('CakeLte.plugin-path') . 'templates/';
+        $src = Plugin::path('CakeLte') . 'templates/';
         $dest = Configure::read('App.paths.templates.0') . 'plugin/CakeLte/';
 
         foreach ($files as $file) {

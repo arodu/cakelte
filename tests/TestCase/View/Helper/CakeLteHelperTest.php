@@ -5,6 +5,7 @@ namespace CakeLte\Test\TestCase\View\Helper;
 
 use Cake\TestSuite\TestCase;
 use Cake\View\View;
+use CakeLte\Enum\Layout;
 use CakeLte\View\Helper\CakeLteHelper;
 
 /**
@@ -51,76 +52,48 @@ class CakeLteHelperTest extends TestCase
      */
     public function testGetBodyClass(): void
     {
-        $result = $this->CakeLteHelper->getBodyClass();
-        $this->assertTextContains('layout-fixed sidebar-mini', $result);
+        $this->assertSame('', $this->CakeLteHelper->getBodyClass());
 
-        $this->CakeLteHelper->setConfig([
-            'sidebar.fixed' => true,
-            'sidebar.collapsed' => true,
-            'dark-mode' => true,
-            'footer.fixed' => true,
-        ]);
-        $result = $this->CakeLteHelper->getBodyClass();
-        $this->assertTextContains('dark-mode layout-fixed sidebar-mini sidebar-collapse layout-footer-fixed', $result);
+        $this->CakeLteHelper->set('layout', Layout::FIXED_MINI);
+        $this->assertSame('layout-fixed sidebar-mini', $this->CakeLteHelper->getBodyClass());
+
+        $this->CakeLteHelper->set('layout', Layout::FIXED_MINI_COLLAPSED);
+        $this->assertSame('layout-fixed sidebar-mini sidebar-collapse', $this->CakeLteHelper->getBodyClass());
+
+        $this->CakeLteHelper->set('layout', 'layout-fixed');
+        $this->assertSame('layout-fixed', $this->CakeLteHelper->getBodyClass());
     }
 
     /**
-     * Test getHeaderClass method
+     * Test rtl method
      *
      * @return void
-     * @uses \CakeLte\View\Helper\CakeLteHelper::getHeaderClass()
+     * @uses \CakeLte\View\Helper\CakeLteHelper::rtl()
      */
-    public function testGetHeaderClass(): void
+    public function testRtl(): void
     {
-        $result = $this->CakeLteHelper->getHeaderClass();
-        $this->assertTextContains('navbar-white navbar-light', $result);
+        $this->assertNull($this->CakeLteHelper->rtl());
 
-        $this->CakeLteHelper->setConfig([
-            'header.border' => false,
-            'header.dropdown-legacy' => true,
-        ]);
-        $result = $this->CakeLteHelper->getHeaderClass();
-        $this->assertTextContains('navbar-white navbar-light border-bottom-0 dropdown-legacy', $result);
+        $this->CakeLteHelper->set('rtl', true);
+        $this->assertSame('dir="rtl"', $this->CakeLteHelper->rtl());
+
+        $this->CakeLteHelper->set('rtl', false);
+        $this->assertNull($this->CakeLteHelper->rtl());
     }
 
     /**
-     * Test getSidebarClass method
+     * Test getLogo method
      *
      * @return void
-     * @uses \CakeLte\View\Helper\CakeLteHelper::getSidebarClass()
+     * @uses \CakeLte\View\Helper\CakeLteHelper::getLogo()
      */
-    public function testGetSidebarClass(): void
+    public function testGetLogo(): void
     {
-        $result = $this->CakeLteHelper->getSidebarClass();
-        $this->assertTextContains('sidebar-dark-primary elevation-4 layout-fixed', $result);
+        $result = $this->CakeLteHelper->getLogo();
+        $this->assertStringContainsString('<img', $result);
+        $this->assertStringContainsString('brand-image', $result);
 
-        $this->CakeLteHelper->setConfig([
-            'sidebar.fixed' => false,
-            'sidebar.disabled-auto-expand' => true,
-        ]);
-        $result = $this->CakeLteHelper->getSidebarClass();
-        $this->assertTextContains('sidebar-dark-primary elevation-4 sidebar-no-expand', $result);
-    }
-
-    /**
-     * Test getMenuClass method
-     *
-     * @return void
-     * @uses \CakeLte\View\Helper\CakeLteHelper::getMenuClass()
-     */
-    public function testGetMenuClass(): void
-    {
-        $result = $this->CakeLteHelper->getMenuClass();
-        $this->assertTextEquals('', $result);
-
-        $this->CakeLteHelper->setConfig([
-            'sidebar.flat-style' => true,
-            'sidebar.legacy-style' => true,
-            'sidebar.compact' => true,
-            'sidebar.child-indent' => true,
-            'sidebar.child-hide-collapse' => true,
-        ]);
-        $result = $this->CakeLteHelper->getMenuClass();
-        $this->assertTextContains('nav-flat nav-legacy nav-compact nav-child-indent nav-collapse-hide-child', $result);
+        $this->CakeLteHelper->setConfig('settings.appLogo', '');
+        $this->assertNull($this->CakeLteHelper->getLogo());
     }
 }

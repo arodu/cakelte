@@ -4,9 +4,9 @@
   "type": "cakephp-plugin",
   "license": "MIT",
   "require": {
-    "php": ">=8.1",
-    "arodu/cakephp-bootstrap-tools": "^2.0",
-    "almasaeed2010/adminlte": "^4.0.0-rc4",
+    "php": ">=8.2",
+    "arodu/cakephp-bootstrap-tools": "^2.2",
+    "almasaeed2010/adminlte": "^4.4",
     "cakephp/cakephp": "^5.0",
     "friendsofcake/bootstrap-ui": "^5.0"
   },
@@ -28,9 +28,6 @@
     }
   },
   "scripts": {
-    "post-install-cmd": [
-      "bin/cake cakelte install"
-    ],
     "check": [
       "@test",
       "@cs-check"
