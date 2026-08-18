@@ -3,6 +3,11 @@ parameters:
     checkMissingIterableValueType: false
     treatPhpDocTypesAsCertain: false
     checkGenericClassInNonGenericObjectType: false
+    bootstrapFiles:
+        - tests/stubs/constants.php
+        - tests/stubs/AppController.php
+        - vendor/cakephp/cakephp/src/I18n/functions.php
+        - vendor/cakephp/cakephp/src/I18n/functions_global.php
     paths:
         - src/
     excludePaths:

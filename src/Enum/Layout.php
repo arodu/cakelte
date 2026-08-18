@@ -15,12 +15,11 @@ enum Layout: string
      */
     public function getCssClass(): string
     {
-        return match ($this->value) {
+        return match ($this) {
             self::FIXED_SIDEBAR => 'layout-fixed',
             self::FIXED_COMPLETE => 'layout-fixed-complete',
             self::FIXED_MINI => 'layout-fixed sidebar-mini',
             self::FIXED_MINI_COLLAPSED => 'layout-fixed sidebar-mini sidebar-collapse',
-            default => '',
         };
     }
 }

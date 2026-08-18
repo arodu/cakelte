@@ -1,8 +1,5 @@
 # CakeLTE: AdminLTE plugin for CakePHP 5.x
 
-> [!CAUTION]
-> This version is not yet ready to be implemented, still in development
-
 ## Getting Started
 
 ### Dependencies
@@ -17,8 +14,14 @@ You can install this plugin into your CakePHP application using [composer](https
 The recommended way to install composer packages is:
 
 ```bash
-composer require almasaeed2010/adminlte:v4.0.0-rc4
-composer require arodu/cakelte:dev-3.next-cake5_dev
+composer require arodu/cakelte
+```
+
+After installing, load the plugin and publish the AdminLTE assets:
+
+```bash
+bin/cake plugin load CakeLte
+bin/cake cakelte install
 ```
 
 ## Configuration
@@ -29,10 +32,14 @@ You can load the plugin using the shell command:
 bin/cake plugin load CakeLte
 ```
 
-add AdminLTE symlink to webroot
+Add the AdminLTE symlink to webroot:
+
 ```bash
 bin/cake cakelte install
 ```
+
+> `bin/cake cakelte install` is a manual step of your application. It is not run
+> automatically by composer.
 
 ## How to use
 
@@ -63,28 +70,10 @@ class AppView extends View{
 }
 ```
 
-or you can extends from CakeLteView
-
-```php
-namespace App\View;
-
-use Cake\View\View;
-use CakeLte\View\CakeLteView;
-
-class AppView extends CakeLteView{
-
-  public function initialize(): void{
-    parent::initialize();
-    //...
-  }
-}
-```
-
 Options layouts
 
 - `CakeLte.default`
 - `CakeLte.login`
-- `CakeLte.top-nav`
 
 ### Create code from bake
 
@@ -103,29 +92,26 @@ Replace the files elements
 - Layouts
   - `templates/layout/default.php`
   - `templates/layout/login.php`
-  - `templates/layout/top-nav.php`
 - Content
   - `templates/element/content/header.php`
 - Header navbar
   - `templates/element/header/main.php`
   - `templates/element/header/menu.php`
+  - `templates/element/header/search.php`
   - `templates/element/header/messages.php`
   - `templates/element/header/notifications.php`
-  - `templates/element/header/search-default.php`
-  - `templates/element/header/search-block.php`
+  - `templates/element/header/fullscreen.php`
+  - `templates/element/header/user.php`
 - Footer
   - `templates/element/footer/main.php`
 - Left sidebar
   - `templates/element/sidebar/main.php`
   - `templates/element/sidebar/menu.php`
-  - `templates/element/sidebar/search.php`
-  - `templates/element/sidebar/user.php`
-- Right sidebar
-  - `templates/element/aside/main.php`
 
 Or you can use the following command to copy all files
+
 ```bash
-bin/cake cakelte copy_file --all
+bin/cake cakelte copy_files --all
 ```
 
 ## Page debug
@@ -133,9 +119,9 @@ bin/cake cakelte copy_file --all
 Link to debug
 
 ```php
-echo $this->Html->link(__('CakeLTE debug page'), '/cake_lte/debug' );
+echo $this->Html->link(__('CakeLTE debug page'), '/cakelte/debug' );
 
-// {your-url}/cake_lte/debug
+// {your-url}/cakelte/debug
 ```
 
 ![Page Debug with default layout](docs/page-debug_default_darkmode.png)
