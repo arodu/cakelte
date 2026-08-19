@@ -37,7 +37,9 @@ class CopyFilesCommand extends Command
             'element/header/search.php',
             'element/header/messages.php',
             'element/header/notifications.php',
+            'element/header/language.php',
             'element/header/fullscreen.php',
+            'element/header/color-mode.php',
             'element/header/user.php',
         ],
         'footer' => [

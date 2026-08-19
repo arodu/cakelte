@@ -94,6 +94,22 @@ class ElementTest extends TestCase
     }
 
     /**
+     * Test the language header element renders the locale dropdown
+     *
+     * @return void
+     */
+    public function testLanguageElementMarkup(): void
+    {
+        $output = $this->View->element('CakeLte.header/language');
+
+        $this->assertStringContainsString('id="language-menu"', $output);
+        $this->assertStringContainsString('data-bs-toggle="dropdown"', $output);
+        $this->assertStringContainsString('bi bi-translate', $output);
+        $this->assertStringContainsString('hreflang', $output);
+        $this->assertStringNotContainsString('aria-current="true"', $output);
+    }
+
+    /**
      * Test the color-mode header element renders the light/dark/auto dropdown
      *
      * @return void

@@ -134,7 +134,9 @@ the same structure of `templates/`:
   - `templates/element/header/search.php`
   - `templates/element/header/messages.php`
   - `templates/element/header/notifications.php`
+  - `templates/element/header/language.php`
   - `templates/element/header/fullscreen.php`
+  - `templates/element/header/color-mode.php`
   - `templates/element/header/user.php`
 - Footer
   - `templates/element/footer/main.php`
@@ -152,6 +154,30 @@ You can also copy a single category:
 
 ```bash
 bin/cake cakelte copy_files sidebar
+```
+
+## Language menu
+
+The header includes a language switcher dropdown (`templates/element/header/language.php`)
+with English, Español, Français, Deutsch and العربية entries. It is **markup only
+by design**: swapping the locale is the application's job. To wire it to a real
+locale switch: replace the `href="#"` of each item with a per-locale URL (or a
+form that posts the choice), persist the choice in a cookie or the URL, mark the
+current language with `aria-current`, and serve `adminlte.rtl.css` alongside
+`dir="rtl"` when switching to an RTL locale. For a CakePHP app, point the links at
+a controller action that calls `I18n::setLocale()` and redirects back.
+
+```php
+// Example controller action
+use Cake\I18n\I18n;
+
+public function changeLanguage(string $lang): ResponseInterface
+{
+    I18n::setLocale($lang);
+    $this->getRequest()->getSession()->write('Config.language', $lang);
+
+    return $this->redirect($this->referer('/', true));
+}
 ```
 
 ## Page debug
