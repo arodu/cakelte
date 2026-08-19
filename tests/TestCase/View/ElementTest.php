@@ -128,6 +128,42 @@ class ElementTest extends TestCase
     }
 
     /**
+     * Test the default layout head includes accessibility metas and preload
+     *
+     * @return void
+     */
+    public function testDefaultLayoutHeadAccessibilityMetas(): void
+    {
+        $layoutFile = Plugin::path('CakeLte') . 'templates' . DS . 'layout' . DS . 'default.php';
+        $layoutSource = (string)file_get_contents($layoutFile);
+
+        $this->assertStringContainsString('name="color-scheme"', $layoutSource);
+        $this->assertStringContainsString('name="theme-color"', $layoutSource);
+        $this->assertStringContainsString('name="supported-color-schemes"', $layoutSource);
+        $this->assertStringContainsString('rel="preload"', $layoutSource);
+        $this->assertStringContainsString('media="print"', $layoutSource);
+    }
+
+    /**
+     * Test the login layout head includes accessibility metas and preload
+     *
+     * @return void
+     */
+    public function testLoginLayoutHeadAccessibilityMetas(): void
+    {
+        $layoutFile = Plugin::path('CakeLte') . 'templates' . DS . 'layout' . DS . 'login.php';
+        $layoutSource = (string)file_get_contents($layoutFile);
+
+        $this->assertStringContainsString('name="color-scheme"', $layoutSource);
+        $this->assertStringContainsString('name="theme-color"', $layoutSource);
+        $this->assertStringContainsString('name="supported-color-schemes"', $layoutSource);
+        $this->assertStringContainsString('rel="preload"', $layoutSource);
+        $this->assertStringContainsString('media="print"', $layoutSource);
+        $this->assertStringNotContainsString('overlayscrollbars@2.10.1', $layoutSource);
+        $this->assertStringNotContainsString('bootstrap@5.3.3', $layoutSource);
+    }
+
+    /**
      * Test the default layout includes the color-mode element and theme init script
      *
      * @return void
