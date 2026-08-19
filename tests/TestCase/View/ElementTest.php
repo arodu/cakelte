@@ -51,6 +51,35 @@ class ElementTest extends TestCase
     }
 
     /**
+     * Test the sidebar element includes the sidebar search filter
+     *
+     * @return void
+     */
+    public function testSidebarIncludesSearch(): void
+    {
+        $sidebarFile = Plugin::path('CakeLte') . 'templates' . DS . 'element' . DS . 'sidebar' . DS . 'main.php';
+        $sidebarSource = (string)file_get_contents($sidebarFile);
+
+        $this->assertStringContainsString('data-lte-toggle="sidebar-search"', $sidebarSource);
+        $this->assertStringContainsString('data-lte-target="#navigation"', $sidebarSource);
+        $this->assertStringContainsString('data-lte-search-empty', $sidebarSource);
+    }
+
+    /**
+     * Test the menu container template carries the navigation id for the sidebar search
+     *
+     * @return void
+     */
+    public function testMenuContainerHasNavigationId(): void
+    {
+        $cakeLteFile = Plugin::path('CakeLte') . 'src' . DS . 'CakeLte.php';
+        $cakeLteSource = (string)file_get_contents($cakeLteFile);
+
+        $this->assertStringContainsString('id="navigation"', $cakeLteSource);
+        $this->assertStringContainsString('class="nav sidebar-menu flex-column"', $cakeLteSource);
+    }
+
+    /**
      * Test the color-mode header element renders the light/dark/auto dropdown
      *
      * @return void
