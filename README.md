@@ -82,6 +82,8 @@ class AppView extends View
 
 ![Page Debug with default layout](docs/page-debug_default.png)
 
+![Page Debug with default dark layout](docs/page-debug_default_darkmode.png)
+
 ## Next steps
 
 For the full usage and configuration details, read the
