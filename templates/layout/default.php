@@ -49,7 +49,7 @@
     <?= $this->fetch('css') ?>
 </head>
 
-<body class="sidebar-expand-lg bg-body-tertiary">
+<body class="<?= $this->CakeLte->getBodyClass() ?> sidebar-expand-lg bg-body-tertiary">
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
         <?= $this->element('CakeLte.header/main') ?>

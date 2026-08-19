@@ -66,6 +66,13 @@ option:
 - `Layout::FIXED_MINI` → `layout-fixed sidebar-mini`
 - `Layout::FIXED_MINI_COLLAPSED` → `layout-fixed sidebar-mini sidebar-collapse`
 
+The `<body>` of the default layout combines the `layout` classes with the
+static AdminLTE suffix: `getBodyClass() + sidebar-expand-lg bg-body-tertiary`.
+With the default `Layout::FIXED_SIDEBAR` the rendered body class is
+`layout-fixed sidebar-expand-lg bg-body-tertiary`, matching the AdminLTE
+starter. The `login` layout uses its own static class (`login-page
+bg-body-secondary`) and is not affected by this option.
+
 The sidebar menu is defined in `vendor/arodu/cakelte/config/menu.php`. Copy it
 to `config/menu.php` to override the default items.
 

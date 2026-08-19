@@ -111,6 +111,23 @@ class ElementTest extends TestCase
     }
 
     /**
+     * Test the default layout body uses getBodyClass() plus the AdminLTE suffix
+     *
+     * @return void
+     */
+    public function testDefaultLayoutBodyUsesGetBodyClass(): void
+    {
+        $layoutFile = Plugin::path('CakeLte') . 'templates' . DS . 'layout' . DS . 'default.php';
+        $layoutSource = (string)file_get_contents($layoutFile);
+
+        $this->assertStringContainsString(
+            'class="<?= $this->CakeLte->getBodyClass() ?> sidebar-expand-lg bg-body-tertiary"',
+            $layoutSource,
+        );
+        $this->assertStringContainsString('sidebar-expand-lg bg-body-tertiary', $layoutSource);
+    }
+
+    /**
      * Test the default layout includes the color-mode element and theme init script
      *
      * @return void
