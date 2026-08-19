@@ -2,7 +2,7 @@
 
 use UtilityKit\Utility\ComposerManifest;
 
-$this->assign('title', 'CakePHP: the rapid development php framework');
+$this->assign('title', __('CakePHP: the rapid development php framework'));
 $this->MenuLte->activeItem('debug');
 
 echo $this->element('BootstrapTools.pages/debug', [

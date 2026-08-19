@@ -51,6 +51,22 @@ class ElementTest extends TestCase
     }
 
     /**
+     * Test the header elements wrap visible text in the __() translation function
+     *
+     * @return void
+     */
+    public function testHeaderElementsUseTranslation()
+    {
+        $templatesDir = Plugin::path('CakeLte') . 'templates' . DS . 'element' . DS;
+        $elements = ['header/menu', 'header/search', 'header/messages', 'header/notifications', 'header/color-mode', 'header/user', 'footer/main'];
+
+        foreach ($elements as $element) {
+            $source = (string)file_get_contents($templatesDir . $element . '.php');
+            $this->assertStringContainsString('__', $source, "Expected __() in {$element}");
+        }
+    }
+
+    /**
      * Test the sidebar element includes the sidebar search filter
      *
      * @return void

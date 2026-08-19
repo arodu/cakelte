@@ -10,7 +10,7 @@
         <ul class="navbar-nav ms-auto">
             <!--begin::Search (small screens: the field above is hidden, so link to the search page)-->
             <li class="nav-item d-md-none">
-                <a class="nav-link" href="<?= $searchAction ?? '#' ?>" aria-label="Search">
+                <a class="nav-link" href="<?= $searchAction ?? '#' ?>" aria-label="<?= __('Search') ?>">
                     <i class="bi bi-search" aria-hidden="true"></i>
                 </a>
             </li>

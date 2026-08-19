@@ -5,24 +5,24 @@
         <span class="navbar-badge badge text-bg-warning">15</span>
     </a>
     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-        <span class="dropdown-item dropdown-header">15 Notifications</span>
+        <span class="dropdown-item dropdown-header"><?= __('{0} Notifications', '15') ?></span>
         <div class="dropdown-divider"></div>
         <a href="#" class="dropdown-item">
-            <i class="bi bi-envelope me-2"></i> 4 new messages
-            <span class="float-end text-secondary fs-7">3 mins</span>
+            <i class="bi bi-envelope me-2"></i> <?= __('{0} new messages', '4') ?>
+            <span class="float-end text-secondary fs-7"><?= __('{0} mins', '3') ?></span>
         </a>
         <div class="dropdown-divider"></div>
         <a href="#" class="dropdown-item">
-            <i class="bi bi-people-fill me-2"></i> 8 friend requests
-            <span class="float-end text-secondary fs-7">12 hours</span>
+            <i class="bi bi-people-fill me-2"></i> <?= __('{0} friend requests', '8') ?>
+            <span class="float-end text-secondary fs-7"><?= __('{0} hours', '12') ?></span>
         </a>
         <div class="dropdown-divider"></div>
         <a href="#" class="dropdown-item">
-            <i class="bi bi-file-earmark-fill me-2"></i> 3 new reports
-            <span class="float-end text-secondary fs-7">2 days</span>
+            <i class="bi bi-file-earmark-fill me-2"></i> <?= __('{0} new reports', '3') ?>
+            <span class="float-end text-secondary fs-7"><?= __('{0} days', '2') ?></span>
         </a>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item dropdown-footer"> See All Notifications </a>
+        <a href="#" class="dropdown-item dropdown-footer"> <?= __('See All Notifications') ?> </a>
     </div>
 </li>
 <!--end::Notifications Dropdown Menu-->

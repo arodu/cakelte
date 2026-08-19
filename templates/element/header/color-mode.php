@@ -4,7 +4,7 @@
         class="nav-link"
         href="#"
         id="bd-theme"
-        aria-label="Toggle color scheme"
+        aria-label="<?= __('Toggle color scheme') ?>"
         data-bs-toggle="dropdown"
         aria-expanded="false"
     >
@@ -25,7 +25,7 @@
                 aria-pressed="false"
             >
                 <i class="bi bi-sun-fill me-2"></i>
-                Light
+                <?= __('Light') ?>
                 <i class="bi bi-check-lg ms-auto d-none"></i>
             </button>
         </li>
@@ -37,7 +37,7 @@
                 aria-pressed="false"
             >
                 <i class="bi bi-moon-fill me-2"></i>
-                Dark
+                <?= __('Dark') ?>
                 <i class="bi bi-check-lg ms-auto d-none"></i>
             </button>
         </li>
@@ -49,7 +49,7 @@
                 aria-pressed="true"
             >
                 <i class="bi bi-circle-half me-2"></i>
-                Auto
+                <?= __('Auto') ?>
                 <i class="bi bi-check-lg ms-auto d-none"></i>
             </button>
         </li>

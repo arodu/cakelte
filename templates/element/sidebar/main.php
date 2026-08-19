@@ -28,7 +28,7 @@
             type="search"
             id="sidebar-search-input"
             class="form-control form-control-sm"
-            placeholder="Filter menu…"
+            placeholder="<?= __('Filter menu…') ?>"
             autocomplete="off"
             data-lte-toggle="sidebar-search"
             data-lte-target="#navigation"
@@ -40,7 +40,7 @@
     <!--end::Sidebar Search-->
     <!--begin::Sidebar Wrapper-->
     <div class="sidebar-wrapper">
-        <nav class="mt-2" aria-label="Main navigation">
+        <nav class="mt-2" aria-label="<?= __('Main navigation') ?>">
             <?= $this->element('CakeLte.sidebar/menu') ?>
         </nav>
     </div>
