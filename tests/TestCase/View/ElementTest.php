@@ -80,6 +80,20 @@ class ElementTest extends TestCase
     }
 
     /**
+     * Test the messages header element uses p.dropdown-item-title like the starter
+     *
+     * @return void
+     */
+    public function testMessagesElementMarkup(): void
+    {
+        $output = $this->View->element('CakeLte.header/messages');
+
+        $this->assertStringContainsString('dropdown-item-title', $output);
+        $this->assertStringNotContainsString('<h3 class="dropdown-item-title"', $output);
+        $this->assertStringNotContainsString('</h3>', $output);
+    }
+
+    /**
      * Test the color-mode header element renders the light/dark/auto dropdown
      *
      * @return void

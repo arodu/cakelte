@@ -12,10 +12,10 @@
                     <?= $this->Html->image('/adminlte/dist/assets/img/user1-128x128.jpg', ['alt' => 'User Avatar', 'class' => 'img-size-50 rounded-circle me-3']) ?>
                 </div>
                 <div class="flex-grow-1">
-                    <h3 class="dropdown-item-title">
+                    <p class="dropdown-item-title">
                         Brad Diesel
                         <span class="float-end fs-7 text-danger"><i class="bi bi-star-fill"></i></span>
-                    </h3>
+                    </p>
                     <p class="fs-7">Call me whenever you can...</p>
                     <p class="fs-7 text-secondary">
                         <i class="bi bi-clock-fill me-1"></i> 4 Hours Ago
@@ -32,12 +32,12 @@
                     <?= $this->Html->image('/adminlte/dist/assets/img/user8-128x128.jpg', ['alt' => 'User Avatar', 'class' => 'img-size-50 rounded-circle me-3']) ?>
                 </div>
                 <div class="flex-grow-1">
-                    <h3 class="dropdown-item-title">
+                    <p class="dropdown-item-title">
                         John Pierce
                         <span class="float-end fs-7 text-secondary">
                             <i class="bi bi-star-fill"></i>
                         </span>
-                    </h3>
+                    </p>
                     <p class="fs-7">I got your message bro</p>
                     <p class="fs-7 text-secondary">
                         <i class="bi bi-clock-fill me-1"></i> 4 Hours Ago
@@ -54,12 +54,12 @@
                     <?= $this->Html->image('/adminlte/dist/assets/img/user3-128x128.jpg', ['alt' => 'User Avatar', 'class' => 'img-size-50 rounded-circle me-3']) ?>
                 </div>
                 <div class="flex-grow-1">
-                    <h3 class="dropdown-item-title">
+                    <p class="dropdown-item-title">
                         Nora Silvester
                         <span class="float-end fs-7 text-warning">
                             <i class="bi bi-star-fill"></i>
                         </span>
-                    </h3>
+                    </p>
                     <p class="fs-7">The subject goes here</p>
                     <p class="fs-7 text-secondary">
                         <i class="bi bi-clock-fill me-1"></i> 4 Hours Ago
