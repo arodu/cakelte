@@ -96,4 +96,25 @@ class CakeLteHelperTest extends TestCase
         $this->CakeLteHelper->setConfig('settings.appLogo', '');
         $this->assertNull($this->CakeLteHelper->getLogo());
     }
+
+    /**
+     * Test the default CDN asset versions match the AdminLTE starter
+     *
+     * @return void
+     * @uses \CakeLte\View\Helper\CakeLteHelper::getConfig()
+     */
+    public function testDefaultCdnVersions(): void
+    {
+        $css = $this->CakeLteHelper->getConfig('css');
+        $scripts = $this->CakeLteHelper->getConfig('scripts');
+
+        $this->assertStringContainsString('overlayscrollbars@2.11.0', implode(' ', $css));
+        $this->assertStringContainsString('bootstrap-icons@1.13.1', implode(' ', $css));
+        $this->assertStringContainsString('overlayscrollbars@2.11.0', implode(' ', $scripts));
+        $this->assertStringContainsString('bootstrap@5.3.8', implode(' ', $scripts));
+
+        $this->assertStringNotContainsString('2.10.1', implode(' ', $css) . ' ' . implode(' ', $scripts));
+        $this->assertStringNotContainsString('1.11.3', implode(' ', $css));
+        $this->assertStringNotContainsString('5.3.3', implode(' ', $scripts));
+    }
 }

@@ -37,7 +37,9 @@ class CopyFilesCommand extends Command
             'element/header/search.php',
             'element/header/messages.php',
             'element/header/notifications.php',
+            'element/header/language.php',
             'element/header/fullscreen.php',
+            'element/header/color-mode.php',
             'element/header/user.php',
         ],
         'footer' => [
@@ -63,17 +65,17 @@ class CopyFilesCommand extends Command
         $parser->addArgument('type', [
             'required' => false,
             'choices' => array_keys($this->files),
-            'help' => 'Type of files to copy',
+            'help' => __('Type of files to copy'),
         ]);
 
         $parser->addOption('all', [
             'short' => 'a',
-            'help' => 'Copy all files',
+            'help' => __('Copy all files'),
             'boolean' => true,
         ]);
         $parser->addOption('force', [
             'short' => 'f',
-            'help' => 'Force overwrite',
+            'help' => __('Force overwrite'),
             'boolean' => true,
         ]);
 
@@ -94,7 +96,7 @@ class CopyFilesCommand extends Command
         $type = $args->getArgument('type');
 
         if (!$all && empty($type)) {
-            $io->err('Error: Need to add a type argument or --all option, execute `cakelte copy_files -h` for help.');
+            $io->err(__('Error: Need to add a type argument or --all option, execute `cakelte copy_files -h` for help.'));
 
             return self::CODE_ERROR;
         }

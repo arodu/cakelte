@@ -34,10 +34,10 @@ class InstallCommand extends Command
     public function buildOptionParser(ConsoleOptionParser $parser): ConsoleOptionParser
     {
         $parser->setDescription([
-            'Copy AdminLte assets to webroot',
+            __('Copy AdminLte assets to webroot'),
         ])->addOption('overwrite', [
             'short' => 'o',
-            'help' => 'Overwrite existing symlink / folder / files.',
+            'help' => __('Overwrite existing symlink / folder / files.'),
             'default' => false,
             'boolean' => true,
         ]);
@@ -63,7 +63,7 @@ class InstallCommand extends Command
         $this->_createSymlink($src, $dest);
 
         $this->io->out();
-        $this->io->out('Done');
+        $this->io->out(__('Done'));
 
         return static::CODE_SUCCESS;
     }
