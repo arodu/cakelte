@@ -4,9 +4,17 @@
     <div class="container-fluid">
         <?php echo $this->element('CakeLte.header/menu') ?>
 
+        <?php echo $this->element('CakeLte.header/search') ?>
+
         <!--begin::End Navbar Links-->
         <ul class="navbar-nav ms-auto">
-            <?php echo $this->element('CakeLte.header/search') ?>
+            <!--begin::Search (small screens: the field above is hidden, so link to the search page)-->
+            <li class="nav-item d-md-none">
+                <a class="nav-link" href="<?= $searchAction ?? '#' ?>" aria-label="Search">
+                    <i class="bi bi-search" aria-hidden="true"></i>
+                </a>
+            </li>
+            <!--end::Search-->
             <?php echo $this->element('CakeLte.header/messages') ?>
             <?php echo $this->element('CakeLte.header/notifications') ?>
             <?php echo $this->element('CakeLte.header/fullscreen') ?>

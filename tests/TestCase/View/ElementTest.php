@@ -70,6 +70,47 @@ class ElementTest extends TestCase
     }
 
     /**
+     * Test the search header element renders the AdminLTE 4 navbar search form
+     *
+     * @return void
+     */
+    public function testSearchElementMarkup(): void
+    {
+        $output = $this->View->element(
+            'CakeLte.header/search',
+            ['searchAction' => '/search'],
+        );
+
+        $this->assertStringContainsString('class="navbar-search', $output);
+        $this->assertStringContainsString('role="search"', $output);
+        $this->assertStringContainsString('name="q"', $output);
+        $this->assertStringContainsString('navbar-search-submit', $output);
+        $this->assertStringContainsString('action="/search"', $output);
+        $this->assertStringNotContainsString('data-widget="navbar-search"', $output);
+    }
+
+    /**
+     * Test the default header places the search form before the ms-auto list
+     * and keeps the mobile fallback icon inside the list
+     *
+     * @return void
+     */
+    public function testDefaultLayoutIncludesSearch(): void
+    {
+        $headerSource = (string)file_get_contents(Plugin::path('CakeLte') . 'templates' . DS . 'element' . DS . 'header' . DS . 'main.php');
+
+        $this->assertStringContainsString(
+            "element('CakeLte.header/search')",
+            $headerSource,
+        );
+        $this->assertLessThan(
+            strpos($headerSource, 'class="navbar-nav ms-auto"'),
+            strpos($headerSource, "element('CakeLte.header/search')"),
+        );
+        $this->assertStringContainsString('d-md-none', $headerSource);
+    }
+
+    /**
      * Test the default layout includes the color-mode element and theme init script
      *
      * @return void
