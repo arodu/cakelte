@@ -17,7 +17,7 @@
     <?= $this->Html->meta('icon') ?>
     <!--begin::Accessibility Features-->
     <meta name="supported-color-schemes" content="light dark" />
-    <link rel="preload" href="/adminlte/dist/css/adminlte.min.css" as="style" />
+    <link rel="preload" href="<?= $this->Url->css('/adminlte/dist/css/adminlte') ?>" as="style" />
     <!--end::Accessibility Features-->
     <!--begin::Theme Init (prevents flash of incorrect theme on load, #6043)-->
     <script>
