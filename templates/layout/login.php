@@ -17,7 +17,7 @@
     <?= $this->Html->meta('icon') ?>
     <!--begin::Accessibility Features-->
     <meta name="supported-color-schemes" content="light dark" />
-    <link rel="preload" href="/adminlte/dist/css/adminlte.min.css" as="style" />
+    <link rel="preload" href="<?= $this->Url->css('/adminlte/dist/css/adminlte') ?>" as="style" />
     <!--end::Accessibility Features-->
     <!--begin::Theme Init (prevents flash of incorrect theme on load, #6043)-->
     <script>
@@ -96,7 +96,7 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
         crossorigin="anonymous"></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="/adminlte/dist/js/adminlte"></script>
+    <script src="<?= $this->Url->script('/adminlte/dist/js/adminlte') ?>"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
         const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
