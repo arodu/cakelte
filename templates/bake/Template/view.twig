@@ -127,7 +127,7 @@ $this->Breadcrumbs->add([
       <?php if (empty(${{ singularVar }}->{{ details.property }})) { ?>
         <tr>
             <td colspan="{{ details.fields|length + 1 }}" class="text-muted">
-              {{ otherPluralHumanName }} record not found!
+              <?= __('{{ otherPluralHumanName }} record not found!') ?>
             </td>
         </tr>
       <?php }else{ ?>
