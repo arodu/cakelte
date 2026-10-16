@@ -74,7 +74,12 @@ $this->Breadcrumbs->add([
 {% endif %}
     <div class="ml-auto">
       <?= $this->Form->button(__('Save')) ?>
+{% if 'add' not in action %}
+      <?= $this->Html->link(__('Cancel'), ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}], ['class' => 'btn btn-default']) ?>
+{% else %}
       <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
+{% endif %}
+
     </div>
   </div>
 

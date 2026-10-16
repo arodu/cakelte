@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace CakeLte\Style;
@@ -12,6 +11,11 @@ trait StyleTrait
     protected $custom_css_classes = [];
     protected $_helper;
 
+    /**
+     * Constructor
+     *
+     * @param mixed $helper The CakeLte helper instance.
+     */
     public function __construct($helper)
     {
         $this->_helper = $helper;
@@ -20,7 +24,7 @@ trait StyleTrait
     /**
      * @param string $key
      * @param string $style
-     * @param boolean $autoload
+     * @param bool $autoload
      * @return void
      */
     public function addStyle(string $key, string $style, bool $autoload = true): void

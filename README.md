@@ -34,6 +34,11 @@ public function bootstrap(){
 }
 ```
 
+add AdminLTE symlink to webroot
+```bash
+bin/cake cakelte install
+```
+
 ## How to use
 
 Copy the file `vendor/arodu/cakelte/config/cakelte.php` to `config/cakelte.php`
@@ -96,32 +101,37 @@ bin/cake bake template [command] -t CakeLte register
 bin/cake bake template [command] -t CakeLte recovery
 ```
 
-### To modify the template you can copy one or all the files within your project
+### To modify the template you can copy one or all the files within your project, copying the following files in the folder `templates/plugin/CakeLte/` and keeping the same structure of `templates/`
 
 Replace the files elements
 
 - Layouts
-  - `src/templates/layout/default.php`
-  - `src/templates/layout/login.php`
-  - `src/templates/layout/top-nav.php`
+  - `templates/layout/default.php`
+  - `templates/layout/login.php`
+  - `templates/layout/top-nav.php`
 - Content
-  - `src/templates/element/content/header.php`
+  - `templates/element/content/header.php`
 - Header navbar
-  - `src/templates/element/header/main.php`
-  - `src/templates/element/header/menu.php`
-  - `src/templates/element/header/messages.php`
-  - `src/templates/element/header/notifications.php`
-  - `src/templates/element/header/search-default.php`
-  - `src/templates/element/header/search-block.php`
+  - `templates/element/header/main.php`
+  - `templates/element/header/menu.php`
+  - `templates/element/header/messages.php`
+  - `templates/element/header/notifications.php`
+  - `templates/element/header/search-default.php`
+  - `templates/element/header/search-block.php`
 - Footer
-  - `src/templates/element/footer/main.php`
+  - `templates/element/footer/main.php`
 - Left sidebar
-  - `src/templates/element/sidebar/main.php`
-  - `src/templates/element/sidebar/menu.php`
-  - `src/templates/element/sidebar/search.php`
-  - `src/templates/element/sidebar/user.php`
+  - `templates/element/sidebar/main.php`
+  - `templates/element/sidebar/menu.php`
+  - `templates/element/sidebar/search.php`
+  - `templates/element/sidebar/user.php`
 - Right sidebar
-  - `src/templates/element/aside/main.php`
+  - `templates/element/aside/main.php`
+
+Or you can use the following command to copy all files
+```bash
+bin/cake cakelte copy_file --all
+```
 
 ## Page debug
 

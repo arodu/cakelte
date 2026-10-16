@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $this->fetch('title') . ' | ' . strip_tags($this->CakeLte->getConfig('app-name')) ?></title>
+    <title><?= strip_tags($this->fetch('title') . ' | ' . $this->CakeLte->getConfig('app-name')) ?></title>
 
     <?= $this->Html->meta('icon') ?>
     <?= $this->fetch('meta') ?>
@@ -21,11 +21,11 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
-    <?= $this->Html->css('CakeLte./AdminLTE/plugins/fontawesome-free/css/all.min.css') ?>
+    <?= $this->Html->css('/adminlte/plugins/fontawesome-free/css/all.min.css') ?>
     <!-- Theme style -->
-    <?= $this->Html->css('CakeLte./AdminLTE/dist/css/adminlte.min.css') ?>
+    <?= $this->Html->css('/adminlte/dist/css/adminlte.min.css') ?>
     <?= $this->Html->css('CakeLte.style') ?>
-    <?= $this->element('layout/css') ?>
+    <?php echo $this->element('CakeLte.extra/css') ?>
     <?= $this->fetch('css') ?>
 </head>
 
@@ -33,7 +33,7 @@
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand <?= $this->CakeLte->getHeaderClass() ?>">
-            <?= $this->element('header/main') ?>
+            <?= $this->element('CakeLte.header/main') ?>
         </nav>
         <!-- /.navbar -->
 
@@ -46,7 +46,7 @@
             </a>
             <!-- Sidebar -->
             <div class="sidebar">
-                <?= $this->element('sidebar/main') ?>
+                <?= $this->element('CakeLte.sidebar/main') ?>
             </div>
             <!-- /.sidebar -->
         </aside>
@@ -56,7 +56,7 @@
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                    <?= $this->element('content/header') ?>
+                    <?= $this->element('CakeLte.content/header') ?>
                 </div><!-- /.container-fluid -->
             </div>
 
@@ -74,25 +74,25 @@
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
-            <?= $this->element('aside/main') ?>
+            <?= $this->element('CakeLte.aside/main') ?>
         </aside>
         <!-- /.control-sidebar -->
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <?= $this->element('footer/main') ?>
+            <?= $this->element('CakeLte.footer/main') ?>
         </footer>
     </div>
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <?= $this->Html->script('CakeLte./AdminLTE/plugins/jquery/jquery.min.js') ?>
+    <?= $this->Html->script('/adminlte/plugins/jquery/jquery.min.js') ?>
     <!-- Bootstrap 4 -->
-    <?= $this->Html->script('CakeLte./AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>
+    <?= $this->Html->script('/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>
     <!-- AdminLTE App -->
-    <?= $this->Html->script('CakeLte./AdminLTE/dist/js/adminlte.min.js') ?>
+    <?= $this->Html->script('/adminlte/dist/js/adminlte.min.js') ?>
 
-    <?= $this->element('layout/script') ?>
+    <?= $this->element('CakeLte.extra/script') ?>
     <?= $this->fetch('script') ?>
 </body>
 

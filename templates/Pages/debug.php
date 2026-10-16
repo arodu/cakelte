@@ -22,6 +22,8 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Http\Exception\NotFoundException;
 
+$this->MenuLte->activeItem('startPages.activePage');
+
 $checkConnection = function (string $name) {
     $error = null;
     $connected = false;

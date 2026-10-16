@@ -5,6 +5,10 @@ namespace CakeLte\View;
 
 use BootstrapUI\View\UIViewTrait;
 
+/**
+ * @property \CakeLte\View\Helper\CakeLteHelper $CakeLte
+ * @property \CakeLte\View\Helper\MenuLteHelper $MenuLte
+ */
 trait CakeLteTrait
 {
     use UIViewTrait;
@@ -19,22 +23,6 @@ trait CakeLteTrait
     {
         $this->initializeUI();
         $this->loadHelper('CakeLte.CakeLte', $options);
-    }
-
-    /**
-     * @param string $name Name
-     * @param array $data data
-     * @param array $options Options
-     * @return string
-     */
-    public function element(string $name, array $data = [], array $options = []): string
-    {
-        if ($this->_getElementFileName($name, false)) {
-            $options = array_merge($options, ['plugin' => false]);
-        } else {
-            $name = 'CakeLte.' . $name;
-        }
-
-        return parent::element($name, $data, $options);
+        $this->loadHelper('CakeLte.MenuLte', $options['menu'] ?? []);
     }
 }

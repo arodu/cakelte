@@ -8,14 +8,17 @@ use Cake\Console\Arguments;
 use Cake\Console\ConsoleIo;
 use Cake\Console\ConsoleOptionParser;
 use Cake\Core\Configure;
-use Exception;
 
 /**
  * Cakelte command.
  */
 class CopyFilesCommand extends Command
 {
-
+    /**
+     * Get the command name.
+     *
+     * @return string
+     */
     public static function defaultName(): string
     {
         return 'cakelte copy_files';
@@ -49,6 +52,10 @@ class CopyFilesCommand extends Command
         ],
         'aside' => [
             'element/aside/main.php',
+        ],
+        'extra' => [
+            'element/extra/css.php',
+            'element/extra/script.php',
         ],
     ];
 
@@ -85,7 +92,7 @@ class CopyFilesCommand extends Command
 
     /**
      * Implement this method with your command's logic.
-     *termail
+     * termail
 
      * @param \Cake\Console\Arguments $args The command arguments.
      * @param \Cake\Console\ConsoleIo $io The console io
@@ -100,6 +107,7 @@ class CopyFilesCommand extends Command
 
         if (!$all && empty($type)) {
             $io->err('Error: Need to add a type argument or --all option, excecute `cakelte copy_files -h` for help.');
+
             return 1;
         }
 
@@ -109,8 +117,8 @@ class CopyFilesCommand extends Command
             $files = $this->files[$type];
         }
 
-        $src = Configure::read('plugins.CakeLte') . 'templates/';
-        $dest = Configure::read('App.paths.templates.0');
+        $src = Configure::read('CakeLte.plugin-path') . 'templates/';
+        $dest = Configure::read('App.paths.templates.0') . 'plugin/CakeLte/';
 
         foreach ($files as $file) {
             $content = file_get_contents($src . $file);
@@ -118,6 +126,11 @@ class CopyFilesCommand extends Command
         }
     }
 
+    /**
+     * Get all registered files as a flat list.
+     *
+     * @return array
+     */
     protected function getAllFiles()
     {
         $output = [];

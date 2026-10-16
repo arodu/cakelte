@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ruleset name="App">
+    <rule ref="./vendor/cakephp/cakephp-codesniffer/CakePHP">
+        <exclude name="CakePHP.Commenting.FunctionComment.MissingParamComment"/>
+        <exclude name="Generic.Files.LineEndings.InvalidEOLChar"/>
+        <exclude name="Generic.Files.LineLength.TooLong"/>
+    </rule>
+    <rule ref="Generic.WhiteSpace.ScopeIndent.Incorrect">
+     <exclude-pattern>templates/*</exclude-pattern>
+    </rule>
+    <exclude-pattern>tests/stubs/*</exclude-pattern>
+
+    <file>src/</file>
+    <file>tests/</file>
+</ruleset>
