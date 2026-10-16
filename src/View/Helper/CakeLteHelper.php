@@ -18,8 +18,8 @@ class CakeLteHelper extends Helper
         'configFile' => null,
     ];
 
-    const DEFAULT_APP_CONFIG_FILE = 'cakelte';
-    const DEFAULT_PLUGIN_CONFIG_FILE = 'CakeLte.cakelte';
+    public const DEFAULT_APP_CONFIG_FILE = 'cakelte';
+    public const DEFAULT_PLUGIN_CONFIG_FILE = 'CakeLte.cakelte';
 
     public Header $Header;
     public Sidebar $Sidebar;
@@ -108,4 +108,3 @@ class CakeLteHelper extends Helper
         return implode(' ', $output);
     }
 }
-

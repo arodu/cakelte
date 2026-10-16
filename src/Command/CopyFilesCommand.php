@@ -8,14 +8,17 @@ use Cake\Console\Arguments;
 use Cake\Console\ConsoleIo;
 use Cake\Console\ConsoleOptionParser;
 use Cake\Core\Configure;
-use Exception;
 
 /**
  * Cakelte command.
  */
 class CopyFilesCommand extends Command
 {
-
+    /**
+     * Get the command name.
+     *
+     * @return string
+     */
     public static function defaultName(): string
     {
         return 'cakelte copy_files';
@@ -53,7 +56,7 @@ class CopyFilesCommand extends Command
         'extra' => [
             'element/extra/css.php',
             'element/extra/script.php',
-        ]
+        ],
     ];
 
     /**
@@ -89,7 +92,7 @@ class CopyFilesCommand extends Command
 
     /**
      * Implement this method with your command's logic.
-     *termail
+     * termail
 
      * @param \Cake\Console\Arguments $args The command arguments.
      * @param \Cake\Console\ConsoleIo $io The console io
@@ -104,6 +107,7 @@ class CopyFilesCommand extends Command
 
         if (!$all && empty($type)) {
             $io->err('Error: Need to add a type argument or --all option, excecute `cakelte copy_files -h` for help.');
+
             return 1;
         }
 
@@ -122,6 +126,11 @@ class CopyFilesCommand extends Command
         }
     }
 
+    /**
+     * Get all registered files as a flat list.
+     *
+     * @return array
+     */
     protected function getAllFiles()
     {
         $output = [];
@@ -134,4 +143,3 @@ class CopyFilesCommand extends Command
         return $output;
     }
 }
-

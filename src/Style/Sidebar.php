@@ -1,10 +1,7 @@
 <?php
-
 declare(strict_types=1);
 
 namespace CakeLte\Style;
-
-use CakeLte\Style\StyleTrait;
 
 class Sidebar implements StyleInterface
 {
@@ -50,6 +47,11 @@ class Sidebar implements StyleInterface
         self::STYLE_LIGHT_BLACK => 'sidebar-light-black',
     ];
 
+    /**
+     * Get the dark sidebar styles.
+     *
+     * @return array<string, string>
+     */
     public static function getDarkStyles()
     {
         return [
@@ -64,6 +66,11 @@ class Sidebar implements StyleInterface
         ];
     }
 
+    /**
+     * Get the light sidebar styles.
+     *
+     * @return array<string, string>
+     */
     public static function getLightStyles()
     {
         return [

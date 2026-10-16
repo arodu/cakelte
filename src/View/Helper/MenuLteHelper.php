@@ -58,7 +58,7 @@ class MenuLteHelper extends Helper
 
     /**
      * @todo set cache
-     * 
+     *
      * Menu Example
      * $menu = [
      *     'startPages' => [
@@ -85,9 +85,7 @@ class MenuLteHelper extends Helper
      *         }
      *     ],
      * ];
-     * 
      * @param array $menu
-     * @param boolean $cache
      * @return string
      */
     public function render(array $menu): string
@@ -102,6 +100,12 @@ class MenuLteHelper extends Helper
         return $output;
     }
 
+    /**
+     * Render the top navigation menu.
+     *
+     * @param array $menu The menu definition.
+     * @return string
+     */
     public function renderTopMenu(array $menu): string
     {
         $this->setConfig('cssClass', [
@@ -127,20 +131,20 @@ class MenuLteHelper extends Helper
 
         return $this->render($menu);
     }
-    
+
     /**
      * @param string $tag
      * @param array $item
-     * @param integer $level
+     * @param int $level
      * @return string
      */
     protected function renderItem(string $tag, array $item, int $level): string
     {
-        if(!$this->checkShowCondition($item['show'] ?? $this->getConfig('defaultShowItem'))) {
+        if (!$this->checkShowCondition($item['show'] ?? $this->getConfig('defaultShowItem'))) {
             return '';
         }
 
-        if(isset($item['type']) && $item['type'] === static::ITEM_TYPE_HEADER) {
+        if (isset($item['type']) && $item['type'] === static::ITEM_TYPE_HEADER) {
             return $this->formatItemHeader($tag, $item);
         }
 
@@ -150,7 +154,7 @@ class MenuLteHelper extends Helper
         $dropdownWrap = null;
         $isActive = isset($item['active']) && $item['active'] || $this->checkActiveItem($tag);
         $isDropdown = isset($item['dropdown']) && is_array($item['dropdown']);
-        
+
         if ($isActive) {
             $classLink[] = $this->getConfig('cssClass.activeItem');
         }
@@ -158,12 +162,12 @@ class MenuLteHelper extends Helper
         if ($isDropdown) {
             $classItem[] = $this->getConfig('cssClass.itemDropdown');
             $dropdownIcon = $this->formatTemplate('dropdownIcon', ['icon' => $this->getConfig('defaultDropdownIcon')]);
-            $dropdownWrap = $this->formatTemplate('dropdownWrap', ['items' => $this->renderItems($item['dropdown'], $level+1)]);
+            $dropdownWrap = $this->formatTemplate('dropdownWrap', ['items' => $this->renderItems($item['dropdown'], $level + 1)]);
             if ($isActive) {
                 $classItem[] = $this->getConfig('cssClass.menuOpen');
             }
         }
-        
+
         $icon = $item['icon'] ?? $this->getConfig('itemIcon')[$level] ?? $this->getConfig('itemIcon')['default'];
         $itemIcon = $this->formatTemplate('itemIcon', ['icon' => $icon]);
 
@@ -176,9 +180,9 @@ class MenuLteHelper extends Helper
             'dropdownIcon' => $dropdownIcon,
         ]);
 
-        $itemLink = $this->Html->link($itemLinkTarget, $item['uri'] ?? '#',[
+        $itemLink = $this->Html->link($itemLinkTarget, $item['uri'] ?? '#', [
             'class' => $classLink,
-            'escape' => false
+            'escape' => false,
         ]);
 
         return $this->formatTemplate('itemMenu', [
@@ -188,6 +192,13 @@ class MenuLteHelper extends Helper
         ]);
     }
 
+    /**
+     * Render a list of menu items.
+     *
+     * @param array $items The items to render.
+     * @param int $level The nesting level.
+     * @return string
+     */
     protected function renderItems(array $items, int $level): string
     {
         $output = '';
@@ -221,6 +232,13 @@ class MenuLteHelper extends Helper
         ]);
     }
 
+    /**
+     * Format a menu header item.
+     *
+     * @param string $tag The item tag.
+     * @param array $item The item definition.
+     * @return string
+     */
     protected function formatItemHeader($tag, $item): string
     {
         $label = $item['label'] ?? $tag;
@@ -233,7 +251,7 @@ class MenuLteHelper extends Helper
 
     /**
      * @param bool|callable $show
-     * @return boolean
+     * @return bool
      */
     protected function checkShowCondition($show): bool
     {
@@ -248,10 +266,13 @@ class MenuLteHelper extends Helper
     }
 
     /**
-     * @param string $itemTag
-     * @return void
+     * Set (and optionally reset) the active menu items.
+     *
+     * @param string $itemTag The active item tag.
+     * @param bool $reset Whether to reset the active items first.
+     * @return $this
      */
-    public function activeItem(string $itemTag, bool $reset = false): MenuLteHelper
+    public function activeItem(string $itemTag, bool $reset = false)
     {
         if ($reset) {
             $this->resetActiveItem();
@@ -263,9 +284,11 @@ class MenuLteHelper extends Helper
     }
 
     /**
-     * @return void
+     * Reset the active menu items.
+     *
+     * @return $this
      */
-    public function resetActiveItem(): MenuLteHelper
+    public function resetActiveItem()
     {
         $this->_activeItems = [];
 
@@ -274,7 +297,7 @@ class MenuLteHelper extends Helper
 
     /**
      * @param string $tag
-     * @return boolean
+     * @return bool
      */
     protected function checkActiveItem(string $tag): bool
     {
@@ -284,10 +307,15 @@ class MenuLteHelper extends Helper
                 return true;
             }
         }
-        
+
         return false;
     }
 
+    /**
+     * Set the active item from the MenuLte component, if any.
+     *
+     * @return void
+     */
     protected function checkActiveFromComponent(): void
     {
         $_menuActiveItem = $this->getView()->get('_menuActiveItem', null);
