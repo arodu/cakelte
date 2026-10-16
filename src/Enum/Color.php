@@ -1,8 +1,7 @@
 <?php
-
 declare(strict_types=1);
 
-namespace App\Enum;
+namespace CakeLte\Enum;
 
 enum Color: string
 {
@@ -35,7 +34,7 @@ enum Color: string
 
     /**
      * @param string $prefix
-     * @param boolean $prefixClassAlone
+     * @param bool $prefixClassAlone
      * @return string
      */
     public function cssClass(string $prefix = 'card', bool $prefixClassAlone = true): string
