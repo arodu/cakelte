@@ -163,3 +163,6 @@ bin/cake cache clear_all
 Open the login and default layouts and check the header, sidebar, color mode and
 mobile search. If an asset or template is missing, see
 [Troubleshooting](troubleshooting.md).
+
+---
+[Back to index](index.md)

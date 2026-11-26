@@ -17,8 +17,9 @@ The settings are `appName`, `appLogo`, `layout` and `rtl`. See
 
 ## App name and logo
 
-`appName` and `appLogo` are used by the layout title and the sidebar brand.
-`getLogo()` returns the logo image markup, or `null` when `appLogo` is empty:
+`appName` is used by the layout title and the sidebar brand. `appLogo` is used
+by the sidebar brand and `getLogo()`. `getLogo()` returns the logo image markup,
+or `null` when `appLogo` is empty:
 
 ```php
 <?= $this->CakeLte->getLogo() ?>
@@ -114,3 +115,6 @@ $this->CakeLte->setConfig('meta', [
 `getBodyClass()` returns the layout classes. `rtl()` returns `dir="rtl"` when
 the setting is true, but the bundled layouts do not apply it. See
 [Configuration](configuration.md#the-rtl-option) for the current behavior.
+
+---
+[Back to index](index.md)

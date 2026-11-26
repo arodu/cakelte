@@ -104,3 +104,6 @@ bin/cake plugin loaded
 
 And call `initializeCakeLte()` from `AppView::initialize()` after
 `parent::initialize()`. See [Layouts](layouts.md).
+
+---
+[Back to index](index.md)

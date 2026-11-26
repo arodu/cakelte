@@ -155,10 +155,14 @@ and `navbar-nav`, respectively.
 |--------|-----------|--------|-------------|
 | `menuClass` | ignored by the sidebar template | `nav` | Classes for the container. |
 | `activeClass` | `active` | `active` | Active item class. |
-| `dropdownOpenClass` | `menu-open` | `dropdown-open` | Class applied by templates to an open parent item. |
+| `dropdownOpenClass` | `menu-open` | `dropdown-open`* | Class for an open parent item; only CakeLTE's sidebar templates render it. |
 | `dropdownClass` | `dropdown` | `dropdown` | Class for an item that has children. |
 | `defaultIcon` | Bootstrap Icons by level | `null` | Icon used when an item has no `icon`. |
 | `templates` | CakeLTE sidebar templates | Bootstrap Tools templates | Per-render template overrides. |
+
+\* The generic `Menu` defaults set `dropdown-open`, but the default templates do
+not include `{{dropdownOpenClass}}`; add it to a custom `menuItem` template if
+you need the class.
 
 `MenuLte`'s sidebar template hardcodes the AdminLTE container classes, so
 `menuClass` has no effect there; use `Menu`, `Nav`, `Pills`, `Tabs`,
@@ -201,3 +205,6 @@ CakeLTE loads the menu helpers only. The same package also ships `Dropdown`,
 `Table`, `ActionItems`, `ModalAjax`, `Stepper`, `TabsAjax` and `Bootstrap`
 helpers; load them with `$this->loadHelper('BootstrapTools.<Name>')` if your
 application needs them.
+
+---
+[Back to index](index.md)
