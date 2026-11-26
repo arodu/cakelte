@@ -91,7 +91,8 @@ echo $this->MenuLte->render($menu);
 ```
 
 The application file must live at `config/menu.php` and return the same
-`['Menu' => [...]]` structure. See [Sidebar](sidebar.md) for the item format.
+`['Menu' => [...]]` structure. See [Menus](menus.md) for the item reference and
+[Sidebar](sidebar.md) for the sidebar-specific override.
 
 ---
 [Back to index](index.md)

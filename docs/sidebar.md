@@ -14,35 +14,8 @@ The default menu is the plugin's `config/menu.php` (the `CakeLte.menu` config
 file). The items already use the `__()` translation function, so they can be
 localized by the consuming application.
 
-Each menu item supports the following keys:
-
-| Key | Description |
-|-----|-------------|
-| `label` | The display label of the item. |
-| `url` | The URL the item links to. |
-| `icon` | The Bootstrap Icons class, for example `bi bi-grid-fill`. |
-| `children` | An array of sub-items (up to three levels). |
-| `type` | The item type: `link` (default), `divider` or `title`. |
-| `disabled` | Marks the item as disabled. |
-| `target` | The link target, for example `_blank`. |
-| `active` | Forces the active state (`true` or a callable). |
-| `show` | Hides the item (`false` or a callable). |
-
-Example:
-
-```php
-return [
-    'Menu' => [
-        ['label' => __('Home'), 'url' => '/', 'icon' => 'bi bi-grid-fill'],
-        [
-            'label' => __('Level 1'),
-            'children' => [
-                ['label' => __('Level 2'), 'url' => '/level-2'],
-            ],
-        ],
-    ],
-];
-```
+The item format is shared with the generic `Menu` helper; see [Menus](menus.md)
+for the item reference, active items and examples.
 
 The plugin always loads its own `CakeLte.menu`; copying the file to
 `config/menu.php` alone does not override it. To use an application menu:

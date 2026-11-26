@@ -43,6 +43,7 @@ nav:
   - Layouts: layouts.md
   - Header: header.md
   - Sidebar: sidebar.md
+  - Menus: menus.md
   - Pages: pages.md
   - Commands: commands.md
   - Customization: customization.md

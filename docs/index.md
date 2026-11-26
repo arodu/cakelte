@@ -29,6 +29,8 @@ Copy the configuration and wire the `CakeLteTrait` in your `AppView`.
 - Header elements: menu, search, messages, notifications, language, fullscreen,
   color mode and user.
 - Sidebar with brand, menu tree and client-side filter.
+- Menu construction through `arodu/cakephp-bootstrap-tools`, with `MenuLte` for
+  the sidebar and `Menu` for Bootstrap navs, pills and tabs.
 - AdminLTE-compatible helpers through `arodu/cakephp-bootstrap-tools`.
 - Console commands to publish assets and copy templates.
 
@@ -41,6 +43,7 @@ Copy the configuration and wire the `CakeLteTrait` in your `AppView`.
 | [Layouts](layouts.md) | The two layouts, `CakeLteTrait` and content blocks. |
 | [Header](header.md) | Header elements and the search action. |
 | [Sidebar](sidebar.md) | Sidebar structure, menu format and override. |
+| [Menus](menus.md) | Menu construction, item reference, active items and menu variants. |
 | [Pages](pages.md) | Debug and sample pages. |
 | [Commands](commands.md) | `cakelte install` and `cakelte copy_files`. |
 | [Customization](customization.md) | Template overrides and bake templates. |
