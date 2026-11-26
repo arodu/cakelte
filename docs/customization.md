@@ -54,15 +54,26 @@ See [Commands](commands.md) for the full reference.
 
 ## Bake templates
 
-CakeLTE ships bake templates so you can generate code with the plugin layout:
+CakeLTE ships bake templates for the CRUD views and the authentication pages.
+The bake plugin must be installed in your application
+(`composer require --dev cakephp/bake`).
+
+Generate the CRUD views with the CakeLTE theme:
 
 ```bash
-bin/cake bake all [command] -t CakeLte
-
-bin/cake bake template [command] -t CakeLte login
-bin/cake bake template [command] -t CakeLte register
-bin/cake bake template [command] -t CakeLte recovery
+bin/cake bake all Users -t CakeLte
 ```
+
+Generate one authentication template:
+
+```bash
+bin/cake bake template Users login -t CakeLte
+bin/cake bake template Users register -t CakeLte
+bin/cake bake template Users recovery -t CakeLte
+```
+
+The shipped templates are `index`, `view`, `add`, `edit`, `login`, `register`
+and `recovery`.
 
 ---
 [Back to index](index.md)

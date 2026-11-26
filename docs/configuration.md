@@ -47,17 +47,51 @@ and is not affected by this option.
 
 ## The `rtl` option
 
-Set `rtl` to `true` to render the layout in right-to-left mode:
+The helper exposes `rtl()`, which returns `dir="rtl"` when the option is true:
 
 ```php
 'rtl' => true,
 ```
 
+!!! warning "Not applied by the bundled layouts"
+    The `CakeLte.default` and `CakeLte.login` layouts render `<html lang="en">`
+    without calling `rtl()`, and the helper always loads the LTR
+    `adminlte.css`. Setting `rtl` does not change the bundled layouts in 3.x.
+
+To use it, override the layout (see [Customization](customization.md)) and add
+the helper to the `<html>` tag, then load `adminlte.rtl.css` instead of the LTR
+stylesheet:
+
+```php
+<html lang="en" <?= $this->CakeLte->rtl() ?>>
+```
+
+The RTL stylesheet ships with AdminLTE at
+`/adminlte/dist/css/adminlte.rtl.css`; the plugin does not add it to the default
+asset list.
+
 ## The sidebar menu
 
-The sidebar menu is defined in `vendor/arodu/cakelte/config/menu.php`. Copy it
-to `config/menu.php` to override the default items. See [Sidebar](sidebar.md)
-for the menu item format.
+The plugin renders its default menu from
+`vendor/arodu/cakelte/config/menu.php` (the `CakeLte.menu` config file). It
+always loads that file, so copying it to `config/menu.php` does not replace it.
+
+To use an application-level menu, copy the sidebar element and point it at your
+file:
+
+```bash
+bin/cake cakelte copy_files sidebar
+```
+
+Then edit `templates/plugin/CakeLte/element/sidebar/menu.php`:
+
+```php
+$menu = $this->MenuLte->menuFromFile(['configFile' => 'menu']);
+echo $this->MenuLte->render($menu);
+```
+
+The application file must live at `config/menu.php` and return the same
+`['Menu' => [...]]` structure. See [Sidebar](sidebar.md) for the item format.
 
 ---
 [Back to index](index.md)

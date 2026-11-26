@@ -1,25 +1,25 @@
 # Header
 
-The app header (`templates/element/header/main.php`) renders a set of elements
-in the right-aligned navbar (`ms-auto`). In order:
+The app header (`templates/element/header/main.php`) renders:
 
-1. **Search** (`menu`, `search`) - the navbar search form and the mobile search icon.
-2. **Messages** (`messages`) - the messages dropdown.
-3. **Notifications** (`notifications`) - the notifications dropdown.
-4. **Language** (`language`) - the language switcher dropdown.
-5. **Fullscreen** (`fullscreen`) - the fullscreen toggle.
-6. **Color mode** (`color-mode`) - the light/dark/auto theme toggle.
-7. **User** (`user`) - the user menu dropdown.
+1. The **navbar menu** (`menu`) - the sidebar toggle and the Home/Contact links.
+2. The **desktop search form** (`search`).
+3. The right-aligned navbar (`ms-auto`): the **mobile search icon**, then the
+   messages, notifications, language, fullscreen, color mode and user elements.
 
 ## Search
 
 The search field is shown on desktop (`md` and up) and hidden on small screens,
-where a search icon links to the search page instead. The form `action` is
-configurable through the element variable `$searchAction`:
+where a search icon links to the search page instead. Both the form and the
+mobile icon read the `searchAction` view variable:
 
 ```php
-echo $this->element('CakeLte.header/search', ['searchAction' => '/search']);
+$this->set('searchAction', '/search');
 ```
+
+Set it in the template or layout that renders the header. Passing
+`searchAction` only to `CakeLte.header/search` configures the desktop form but
+not the mobile icon rendered by `CakeLte.header/main`.
 
 ## Language menu
 
@@ -41,6 +41,10 @@ public function changeLanguage(string $lang): ResponseInterface
 ```
 
 ## Header elements
+
+The messages, notifications, language and user elements contain sample markup
+(placeholder images, names and counts). Replace them with data from your
+application; the language dropdown is intentionally markup-only.
 
 Each element lives in `templates/element/header/` and can be overridden (see
 [Customization](customization.md)):

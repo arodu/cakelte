@@ -44,6 +44,20 @@ Calling `initializeCakeLte()` registers:
 - the BootstrapUI helpers,
 - the menu helpers (`Menu` and `MenuLte`).
 
+## Content blocks
+
+The `CakeLte.default` layout renders the page title and a `headerEnd` block:
+
+```php
+$this->assign('title', __('Dashboard'));
+
+$this->start('headerEnd');
+echo $this->Html->link(__('New'), ['action' => 'add'], ['class' => 'btn btn-primary']);
+$this->end();
+```
+
+`headerEnd` replaces the default breadcrumb in the content header.
+
 ## Layout options
 
 - `CakeLte.default`
