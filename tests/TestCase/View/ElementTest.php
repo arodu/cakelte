@@ -288,4 +288,20 @@ class ElementTest extends TestCase
         $this->assertStringContainsString('bi bi-fullscreen-exit d-none', $output);
         $this->assertStringNotContainsString('style="display: none"', $output);
     }
+
+    /**
+     * Test the header controls keep the AdminLTE 4 accessibility labels.
+     *
+     * @return void
+     */
+    public function testHeaderElementsExposeAdminLteAccessibilityLabels(): void
+    {
+        $menu = $this->View->element('CakeLte.header/menu');
+        $messages = $this->View->element('CakeLte.header/messages');
+        $notifications = $this->View->element('CakeLte.header/notifications');
+
+        $this->assertStringContainsString('aria-label="Toggle sidebar"', $menu);
+        $this->assertStringContainsString('aria-label="Messages: 3 unread"', $messages);
+        $this->assertStringContainsString('aria-label="Notifications: 15 unread"', $notifications);
+    }
 }

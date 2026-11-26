@@ -1,6 +1,6 @@
 <!--begin::Notifications Dropdown Menu-->
 <li class="nav-item dropdown">
-    <a class="nav-link" data-bs-toggle="dropdown" href="#">
+    <a class="nav-link" data-bs-toggle="dropdown" href="#" aria-label="<?= __('Notifications: {0} unread', '15') ?>">
         <i class="bi bi-bell-fill"></i>
         <span class="navbar-badge badge text-bg-warning">15</span>
     </a>
