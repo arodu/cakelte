@@ -1,7 +1,7 @@
 <!--begin::Start Navbar Links-->
 <ul class="navbar-nav">
     <li class="nav-item">
-        <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
+        <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button" aria-label="<?= __('Toggle sidebar') ?>">
             <i class="bi bi-list"></i>
         </a>
     </li>

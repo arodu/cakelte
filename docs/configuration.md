@@ -29,7 +29,7 @@ the AdminLTE body classes:
 | Case | CSS classes |
 |------|-------------|
 | `Layout::FIXED_SIDEBAR` | `layout-fixed` |
-| `Layout::FIXED_COMPLETE` | `layout-fixed-complete` |
+| `Layout::FIXED_COMPLETE` | `layout-fixed fixed-header fixed-footer` |
 | `Layout::FIXED_MINI` | `layout-fixed sidebar-mini` |
 | `Layout::FIXED_MINI_COLLAPSED` | `layout-fixed sidebar-mini sidebar-collapse` |
 

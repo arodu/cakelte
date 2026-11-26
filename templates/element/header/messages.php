@@ -1,6 +1,6 @@
 <!--begin::Messages Dropdown Menu-->
 <li class="nav-item dropdown">
-    <a class="nav-link" data-bs-toggle="dropdown" href="#">
+    <a class="nav-link" data-bs-toggle="dropdown" href="#" aria-label="<?= __('Messages: {0} unread', '3') ?>">
         <i class="bi bi-chat-text"></i>
         <span class="navbar-badge badge text-bg-danger">3</span>
     </a>

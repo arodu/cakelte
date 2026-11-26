@@ -35,7 +35,6 @@ class CakeLteHelper extends Helper
             'appName' => 'CakeLte',
             'appLogo' => 'CakeLte.cake.icon.svg',
         ],
-        'autoRenderAssets' => false,
         'meta' => [],
         'css' => [
             'https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css',

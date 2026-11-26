@@ -259,4 +259,49 @@ class ElementTest extends TestCase
 
         Configure::delete('App.paths.templates');
     }
+
+    /**
+     * Test the user menu uses Bootstrap 5 outline button classes.
+     *
+     * @return void
+     */
+    public function testUserMenuUsesBootstrap5ButtonClasses(): void
+    {
+        $output = $this->View->element('CakeLte.header/user');
+
+        $this->assertStringContainsString('btn btn-outline-secondary', $output);
+        $this->assertStringContainsString('btn btn-outline-danger float-end', $output);
+        $this->assertStringNotContainsString('btn-default', $output);
+        $this->assertStringNotContainsString('btn-flat', $output);
+    }
+
+    /**
+     * Test the fullscreen toggle matches the AdminLTE 4 starter markup.
+     *
+     * @return void
+     */
+    public function testFullscreenToggleMatchesAdminLte4(): void
+    {
+        $output = $this->View->element('CakeLte.header/fullscreen');
+
+        $this->assertStringContainsString('aria-label="Toggle fullscreen"', $output);
+        $this->assertStringContainsString('bi bi-fullscreen-exit d-none', $output);
+        $this->assertStringNotContainsString('style="display: none"', $output);
+    }
+
+    /**
+     * Test the header controls keep the AdminLTE 4 accessibility labels.
+     *
+     * @return void
+     */
+    public function testHeaderElementsExposeAdminLteAccessibilityLabels(): void
+    {
+        $menu = $this->View->element('CakeLte.header/menu');
+        $messages = $this->View->element('CakeLte.header/messages');
+        $notifications = $this->View->element('CakeLte.header/notifications');
+
+        $this->assertStringContainsString('aria-label="Toggle sidebar"', $menu);
+        $this->assertStringContainsString('aria-label="Messages: 3 unread"', $messages);
+        $this->assertStringContainsString('aria-label="Notifications: 15 unread"', $notifications);
+    }
 }
