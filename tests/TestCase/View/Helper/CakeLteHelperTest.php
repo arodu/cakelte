@@ -54,6 +54,9 @@ class CakeLteHelperTest extends TestCase
     {
         $this->assertSame('', $this->CakeLteHelper->getBodyClass());
 
+        $this->CakeLteHelper->set('layout', Layout::FIXED_COMPLETE);
+        $this->assertSame('layout-fixed fixed-header fixed-footer', $this->CakeLteHelper->getBodyClass());
+
         $this->CakeLteHelper->set('layout', Layout::FIXED_MINI);
         $this->assertSame('layout-fixed sidebar-mini', $this->CakeLteHelper->getBodyClass());
 
