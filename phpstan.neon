@@ -1,5 +1,6 @@
 parameters:
     level: 8
+    phpVersion: 80200
     checkMissingIterableValueType: false
     treatPhpDocTypesAsCertain: false
     checkGenericClassInNonGenericObjectType: false
