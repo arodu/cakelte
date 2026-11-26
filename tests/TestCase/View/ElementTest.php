@@ -274,4 +274,18 @@ class ElementTest extends TestCase
         $this->assertStringNotContainsString('btn-default', $output);
         $this->assertStringNotContainsString('btn-flat', $output);
     }
+
+    /**
+     * Test the fullscreen toggle matches the AdminLTE 4 starter markup.
+     *
+     * @return void
+     */
+    public function testFullscreenToggleMatchesAdminLte4(): void
+    {
+        $output = $this->View->element('CakeLte.header/fullscreen');
+
+        $this->assertStringContainsString('aria-label="Toggle fullscreen"', $output);
+        $this->assertStringContainsString('bi bi-fullscreen-exit d-none', $output);
+        $this->assertStringNotContainsString('style="display: none"', $output);
+    }
 }
