@@ -1,0 +1,73 @@
+[project]
+site_url = "https://arodu.github.io/cakelte/"
+site_name = "CakeLTE 3.x Documentation"
+site_description = "AdminLTE 4 plugin for CakePHP 5.x"
+copyright = "Copyright &copy; 2026 Alberto Rodriguez — MIT License"
+repo_url = "https://github.com/arodu/cakelte"
+repo_name = "arodu/cakelte"
+edit_uri = "edit/3.next-cake5/docs/"
+strict = true
+
+nav = [
+  { "Home" = "index.md" },
+  { "Getting Started" = "getting-started.md" },
+  { "Configuration" = "configuration.md" },
+  { "Theme & assets" = "theme.md" },
+  { "Layouts" = "layouts.md" },
+  { "Header" = "header.md" },
+  { "Sidebar" = "sidebar.md" },
+  { "Menus" = "menus.md" },
+  { "Pages" = "pages.md" },
+  { "Commands" = "commands.md" },
+  { "Customization" = "customization.md" },
+  { "Upgrading from 2.x" = "upgrade.md" },
+  { "Troubleshooting" = "troubleshooting.md" },
+]
+
+[project.theme]
+variant = "classic"
+logo = "assets/logo.svg"
+favicon = "assets/logo.svg"
+language = "en"
+features = [
+  "navigation.sections",
+  "navigation.top",
+  "navigation.footer",
+  "search.highlight",
+  "content.code.copy",
+  "content.action.edit",
+  "toc.follow",
+]
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "indigo"
+accent = "indigo"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "indigo"
+accent = "indigo"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+[project.markdown_extensions]
+admonition = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+tables = {}
+toc.permalink = true
+pymdownx.details = {}
+pymdownx.highlight.anchor_linenums = true
+pymdownx.highlight.line_spans = "__span"
+pymdownx.highlight.pygments_lang_class = true
+pymdownx.inlinehilite = {}
+pymdownx.snippets = {}
+pymdownx.superfences = {}
+pymdownx.tabbed.alternate_style = true
