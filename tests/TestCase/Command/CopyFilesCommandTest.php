@@ -198,7 +198,6 @@ class CopyFilesCommandTest extends TestCase
     public function testGetAllFiles(): void
     {
         $reflection = new ReflectionMethod($this->CopyFilesCommand, 'getAllFiles');
-        $reflection->setAccessible(true);
 
         $files = $reflection->invoke($this->CopyFilesCommand);
 
