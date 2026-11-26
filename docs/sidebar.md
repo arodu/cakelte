@@ -5,47 +5,35 @@ The left sidebar (`templates/element/sidebar/main.php`) has three parts:
 1. The **brand** - the logo and the application name, linked to the home page.
 2. The **sidebar search** - a filter field that hides and expands menu items as
    you type. It targets the menu container by its `id="navigation"`.
-3. The **sidebar wrapper** - the navigation menu generated from
+3. The **sidebar wrapper** - the navigation menu generated from the plugin's
    `config/menu.php`.
 
 ## The menu
 
-The sidebar menu is rendered from `config/menu.php`. The items already use the
-`__()` translation function, so they can be localized by the consuming
-application.
+The default menu is the plugin's `config/menu.php` (the `CakeLte.menu` config
+file). The items already use the `__()` translation function, so they can be
+localized by the consuming application.
 
-Each menu item supports the following keys:
+The item format is shared with the generic `Menu` helper; see [Menus](menus.md)
+for the item reference, active items and examples.
 
-| Key | Description |
-|-----|-------------|
-| `label` | The display label of the item. |
-| `url` | The URL the item links to. |
-| `icon` | The Bootstrap Icons class, for example `bi bi-grid-fill`. |
-| `children` | An array of sub-items (up to three levels). |
-| `type` | The item type, for example a divider or a title. |
-| `disabled` | Marks the item as disabled. |
+The plugin always loads its own `CakeLte.menu`; copying the file to
+`config/menu.php` alone does not override it. To use an application menu:
 
-Example:
+1. Copy the sidebar element:
 
-```php
-return [
-    'Menu' => [
-        ['label' => __('Home'), 'url' => '/', 'icon' => 'bi bi-grid-fill'],
-        [
-            'label' => __('Level 1'),
-            'children' => [
-                ['label' => __('Level 2'), 'url' => '/level-2'],
-            ],
-        ],
-    ],
-];
-```
+   ```bash
+   bin/cake cakelte copy_files sidebar
+   ```
 
-To override the menu in your application, copy the file:
+2. Put your menu in `config/menu.php`.
 
-```bash
-cp vendor/arodu/cakelte/config/menu.php config/menu.php
-```
+3. Edit `templates/plugin/CakeLte/element/sidebar/menu.php` to load that file:
+
+   ```php
+   $menu = $this->MenuLte->menuFromFile(['configFile' => 'menu']);
+   echo $this->MenuLte->render($menu);
+   ```
 
 ## Sidebar search
 
@@ -54,4 +42,4 @@ The sidebar search filter is provided by AdminLTE's `SidebarSearch` (bundled in
 expands any subtree that holds a match. No JavaScript configuration is needed.
 
 ---
-[Back to index](index.md) · [Back to README](../README.md)
+[Back to index](index.md)

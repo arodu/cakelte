@@ -5,6 +5,8 @@ config/Migrations/schema-dump-default.lock
 .phpunit.cache
 /webroot/coverage
 /.phpunit.cache
+/site
+/.cache
 
 # Local: config de opencode y workbench (no versionado)
 /AGENTS.md

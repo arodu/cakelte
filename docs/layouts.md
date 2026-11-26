@@ -7,11 +7,13 @@ CakeLTE ships two layouts:
 
 ## Using a layout
 
-Set the layout in your controller or in `AppView`:
+Set the layout in your controller:
 
 ```php
 $this->viewBuilder()->setLayout('CakeLte.default');
 ```
+
+Or set the `$layout` property in `AppView` (shown below).
 
 ## Using the `CakeLteTrait`
 
@@ -41,8 +43,23 @@ class AppView extends View
 Calling `initializeCakeLte()` registers:
 
 - the `CakeLte.CakeLte` helper,
-- the BootstrapUI helpers,
+- the BootstrapUI helpers (`Html`, `Form`, `Flash`, `Paginator`,
+  `Breadcrumbs`, `ColorMode`),
 - the menu helpers (`Menu` and `MenuLte`).
+
+## Content blocks
+
+The `CakeLte.default` layout renders the page title and a `headerEnd` block:
+
+```php
+$this->assign('title', __('Dashboard'));
+
+$this->start('headerEnd');
+echo $this->Html->link(__('New'), ['action' => 'add'], ['class' => 'btn btn-primary']);
+$this->end();
+```
+
+`headerEnd` replaces the default breadcrumb in the content header.
 
 ## Layout options
 
@@ -50,4 +67,4 @@ Calling `initializeCakeLte()` registers:
 - `CakeLte.login`
 
 ---
-[Back to index](index.md) · [Back to README](../README.md)
+[Back to index](index.md)

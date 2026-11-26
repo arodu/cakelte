@@ -1,24 +1,56 @@
-# CakeLTE Documentation
+# CakeLTE 3.x
 
-Documentation for the CakeLTE plugin, an AdminLTE wrapper for CakePHP 5.x.
+[![CakePHP 5](https://img.shields.io/badge/CakePHP-5.x-red?style=flat-square)](https://cakephp.org)
+[![AdminLTE 4](https://img.shields.io/badge/AdminLTE-4.x-blue?style=flat-square)](https://adminlte.io)
+[![PHP 8.2+](https://img.shields.io/badge/PHP-8.2%2B-777?style=flat-square)](https://www.php.net)
 
-## Getting started
+CakeLTE is a CakePHP 5.x plugin that wraps AdminLTE 4 and Bootstrap 5. It
+provides layouts, header and sidebar elements, and helper integrations so you
+can build an admin panel without maintaining the AdminLTE markup by hand.
 
-- [Getting Started](getting-started.md) - requirements, installation, loading the plugin and publishing assets.
+!!! info "Version 3.x"
+    This documentation covers CakeLTE 3.x (CakePHP 5 + AdminLTE 4). The 2.x
+    line uses AdminLTE 3 and is not covered here.
 
-## Configuration and usage
+## Install
 
-- [Configuration](configuration.md) - the `config/cakelte.php` file, the `Layout` enum and the `rtl` option.
-- [Layouts](layouts.md) - the `CakeLte.default` and `CakeLte.login` layouts and the `CakeLteTrait`.
-- [Header](header.md) - the header elements: menu, search, messages, notifications, language, fullscreen, color-mode and user.
-- [Sidebar](sidebar.md) - the sidebar structure, the menu and the sidebar search filter.
-- [Pages](pages.md) - the sample pages: debug and sample.
+```bash
+composer require arodu/cakelte
+bin/cake plugin load CakeLte
+bin/cake cakelte install
+```
 
-## Tools and customization
+Copy the configuration and wire the `CakeLteTrait` in your `AppView`.
+[Getting Started](getting-started.md) walks through the full setup.
 
-- [Commands](commands.md) - the `install` and `copy_files` console commands.
-- [Customization](customization.md) - overriding templates, the `copy_files` command and bake templates.
+## What you get
+
+- `CakeLte.default` and `CakeLte.login` layouts built on the AdminLTE 4 starter.
+- Header elements: menu, search, messages, notifications, language, fullscreen,
+  color mode and user.
+- Sidebar with brand, menu tree and client-side filter.
+- Menu construction through `arodu/cakephp-bootstrap-tools`, with `MenuLte` for
+  the sidebar and `Menu` for Bootstrap navs, pills and tabs.
+- AdminLTE-compatible helpers through `arodu/cakephp-bootstrap-tools`.
+- Console commands to publish assets and copy templates.
+
+## Documentation
+
+| Section | What it covers |
+|---------|----------------|
+| [Getting Started](getting-started.md) | Requirements, installation, plugin loading, assets and configuration. |
+| [Configuration](configuration.md) | `config/cakelte.php`, the `Layout` enum, body classes and `rtl`. |
+| [Theme & assets](theme.md) | App name and logo, CSS/JS lists, meta tags and helper methods. |
+| [Layouts](layouts.md) | The two layouts, `CakeLteTrait` and content blocks. |
+| [Header](header.md) | Header elements and the search action. |
+| [Sidebar](sidebar.md) | Sidebar structure, menu format and override. |
+| [Menus](menus.md) | Menu construction, item reference, active items and menu variants. |
+| [Pages](pages.md) | Debug and sample pages. |
+| [Commands](commands.md) | `cakelte install` and `cakelte copy_files`. |
+| [Customization](customization.md) | Template overrides and bake templates. |
+| [Upgrading from 2.x](upgrade.md) | Breaking changes and migration checklist. |
+| [Troubleshooting](troubleshooting.md) | Assets, menus, RTL, templates and common errors. |
 
 ---
 
-Back to the [README](../README.md)
+Back to the [GitHub repository](https://github.com/arodu/cakelte).

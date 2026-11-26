@@ -11,9 +11,10 @@ vendor package):
 bin/cake cakelte install
 ```
 
-| Option | Description |
-|--------|-------------|
-| `--overwrite` / `-o` | Overwrite an existing symlink, folder or files. |
+> The command declares `--overwrite` / `-o`, but 3.x does not apply it yet. If
+> `webroot/adminlte` already exists, remove it before running the command again.
+> If the symlink cannot be created, copy the package manually; see
+> [Troubleshooting](troubleshooting.md#assets-are-not-published).
 
 This is a manual step, not run automatically by composer.
 
@@ -44,4 +45,4 @@ Files are copied into `templates/plugin/CakeLte/` in your application. See
 [Customization](customization.md) for the list of files.
 
 ---
-[Back to index](index.md) · [Back to README](../README.md)
+[Back to index](index.md)
