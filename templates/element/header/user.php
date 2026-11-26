@@ -27,8 +27,8 @@
         <!--end::Menu Body-->
         <!--begin::Menu Footer-->
         <li class="user-footer">
-            <a href="#" class="btn btn-default btn-flat"><?= __('Profile') ?></a>
-            <a href="#" class="btn btn-default btn-flat float-end"><?= __('Sign out') ?></a>
+            <a href="#" class="btn btn-outline-secondary"><?= __('Profile') ?></a>
+            <a href="#" class="btn btn-outline-danger float-end"><?= __('Sign out') ?></a>
         </li>
         <!--end::Menu Footer-->
     </ul>

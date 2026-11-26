@@ -259,4 +259,19 @@ class ElementTest extends TestCase
 
         Configure::delete('App.paths.templates');
     }
+
+    /**
+     * Test the user menu uses Bootstrap 5 outline button classes.
+     *
+     * @return void
+     */
+    public function testUserMenuUsesBootstrap5ButtonClasses(): void
+    {
+        $output = $this->View->element('CakeLte.header/user');
+
+        $this->assertStringContainsString('btn btn-outline-secondary', $output);
+        $this->assertStringContainsString('btn btn-outline-danger float-end', $output);
+        $this->assertStringNotContainsString('btn-default', $output);
+        $this->assertStringNotContainsString('btn-flat', $output);
+    }
 }
