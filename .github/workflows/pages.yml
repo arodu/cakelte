@@ -40,7 +40,9 @@ jobs:
           path: site
 
   deploy:
-    if: github.ref == 'refs/heads/3.next-cake5' && github.event_name != 'pull_request'
+    # Push deployments come from 3.next-cake5; a manual run can also preview
+    # the docs branch before it is merged.
+    if: (github.ref == 'refs/heads/3.next-cake5' || github.ref == 'refs/heads/docs/gh-pages') && github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-26.04
     permissions:
