@@ -13,6 +13,8 @@ bin/cake cakelte install
 
 > The command declares `--overwrite` / `-o`, but 3.x does not apply it yet. If
 > `webroot/adminlte` already exists, remove it before running the command again.
+> If the symlink cannot be created, copy the package manually; see
+> [Troubleshooting](troubleshooting.md#assets-are-not-published).
 
 This is a manual step, not run automatically by composer.
 

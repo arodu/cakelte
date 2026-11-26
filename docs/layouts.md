@@ -43,7 +43,8 @@ class AppView extends View
 Calling `initializeCakeLte()` registers:
 
 - the `CakeLte.CakeLte` helper,
-- the BootstrapUI helpers,
+- the BootstrapUI helpers (`Html`, `Form`, `Flash`, `Paginator`,
+  `Breadcrumbs`, `ColorMode`),
 - the menu helpers (`Menu` and `MenuLte`).
 
 ## Content blocks

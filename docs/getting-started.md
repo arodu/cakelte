@@ -40,6 +40,9 @@ Publish the AdminLTE assets to your webroot (creates a symlink):
 bin/cake cakelte install
 ```
 
+> If the symlink cannot be created on your platform, see
+> [Troubleshooting](troubleshooting.md#assets-are-not-published).
+
 > This is a manual step of your application. It is not run automatically by
 > composer.
 
@@ -69,6 +72,8 @@ You should see `CakeLte` in the list.
 
 - Read [Configuration](configuration.md) to choose the layout and review the
   options.
+- Read [Theme & assets](theme.md) to customize the app name, logo, CSS and
+  scripts.
 - Read [Layouts](layouts.md) to wire the layouts and the `CakeLteTrait`.
 - Read [Customization](customization.md) to override templates and generate
   code with the bake templates.

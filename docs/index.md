@@ -40,6 +40,7 @@ Copy the configuration and wire the `CakeLteTrait` in your `AppView`.
 |---------|----------------|
 | [Getting Started](getting-started.md) | Requirements, installation, plugin loading, assets and configuration. |
 | [Configuration](configuration.md) | `config/cakelte.php`, the `Layout` enum, body classes and `rtl`. |
+| [Theme & assets](theme.md) | App name and logo, CSS/JS lists, meta tags and helper methods. |
 | [Layouts](layouts.md) | The two layouts, `CakeLteTrait` and content blocks. |
 | [Header](header.md) | Header elements and the search action. |
 | [Sidebar](sidebar.md) | Sidebar structure, menu format and override. |
@@ -47,6 +48,8 @@ Copy the configuration and wire the `CakeLteTrait` in your `AppView`.
 | [Pages](pages.md) | Debug and sample pages. |
 | [Commands](commands.md) | `cakelte install` and `cakelte copy_files`. |
 | [Customization](customization.md) | Template overrides and bake templates. |
+| [Upgrading from 2.x](upgrade.md) | Breaking changes and migration checklist. |
+| [Troubleshooting](troubleshooting.md) | Assets, menus, RTL, templates and common errors. |
 
 ---
 

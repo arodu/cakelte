@@ -194,3 +194,10 @@ the complete list.
 
 `children` is recursive; the helper renders whatever depth the array contains.
 CakeLTE's bundled sidebar menu uses three levels.
+
+## Other Bootstrap Tools helpers
+
+CakeLTE loads the menu helpers only. The same package also ships `Dropdown`,
+`Table`, `ActionItems`, `ModalAjax`, `Stepper`, `TabsAjax` and `Bootstrap`
+helpers; load them with `$this->loadHelper('BootstrapTools.<Name>')` if your
+application needs them.
