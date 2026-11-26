@@ -36,4 +36,29 @@ class CakeLteTraitTest extends TestCase
         $this->assertTrue($helpers->has('MenuLte'));
         $this->assertInstanceOf(MenuHelper::class, $helpers->get('MenuLte'));
     }
+
+    /**
+     * Test an active child marks its parent with the AdminLTE menu-open class.
+     *
+     * @return void
+     */
+    public function testActiveChildMenuGetsMenuOpenClass(): void
+    {
+        $view = new CakeLteTestView();
+        $view->initializeCakeLte();
+        $view->loadHelpers();
+
+        $menu = [
+            [
+                'label' => 'Parent',
+                'children' => [
+                    ['label' => 'Child', 'url' => '/child'],
+                ],
+            ],
+        ];
+
+        $html = $view->MenuLte->render($menu, ['activeItem' => '0.0']);
+
+        $this->assertStringContainsString('menu-open', $html);
+    }
 }
