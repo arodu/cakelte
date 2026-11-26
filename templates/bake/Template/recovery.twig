@@ -15,14 +15,14 @@ $this->layout = 'CakeLte.login';
         <?= $this->Form->control('email', [
             'placeholder' => __('Email'),
             'label' => false,
-            'append' => '<i class="fas fa-envelope"></i>',
+            'append' => '<i class="bi bi-envelope"></i>',
         ]) ?>
 
         <div class="row">
             <div class="col-12">
                 <?= $this->Form->control(__('Request new password'), [
                     'type' => 'submit',
-                    'class' => 'btn btn-primary btn-block',
+                    'class' => 'btn btn-primary w-100',
                 ]) ?>
             </div>
         </div>

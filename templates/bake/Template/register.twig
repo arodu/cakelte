@@ -15,26 +15,26 @@ $this->layout = 'CakeLte.login';
         <?= $this->Form->control('username', [
             'placeholder' => __('Username'),
             'label' => false,
-            'append' => '<i class="fas fa-user"></i>',
+            'append' => '<i class="bi bi-person"></i>',
         ]) ?>
 
         <?= $this->Form->control('email', [
             'placeholder' => __('Email'),
             'label' => false,
-            'append' => '<i class="fas fa-envelope"></i>',
+            'append' => '<i class="bi bi-envelope"></i>',
         ]) ?>
 
         <?= $this->Form->control('password', [
             'placeholder' => __('Password'),
             'label' => false,
-            'append' => '<i class="fas fa-lock"></i>',
+            'append' => '<i class="bi bi-lock"></i>',
         ]) ?>
 
         <?= $this->Form->control('password_confirm', [
             'type' => 'password',
             'placeholder' => __('Confirm Password'),
             'label' => false,
-            'append' => '<i class="fas fa-lock"></i>',
+            'append' => '<i class="bi bi-lock"></i>',
         ]) ?>
 
         <div class="row">
@@ -49,7 +49,7 @@ $this->layout = 'CakeLte.login';
             <div class="col-4">
                 <?= $this->Form->control(__('Register'), [
                     'type' => 'submit',
-                    'class' => 'btn btn-primary btn-block',
+                    'class' => 'btn btn-primary w-100',
                 ]) ?>
             </div>
         </div>
@@ -59,14 +59,14 @@ $this->layout = 'CakeLte.login';
         <div class="social-auth-links text-center mb-3">
             <p>- OR -</p>
             <?= $this->Html->link(
-                '<i class="fab fa-facebook-f mr-2"></i>' . __('Sign up using Facebook'),
+                '<i class="bi bi-facebook me-2"></i>' . __('Sign up using Facebook'),
                 '#',
-                ['class' => 'btn btn-block btn-primary', 'escape' => false]
+                ['class' => 'btn btn-primary w-100', 'escape' => false]
             ) ?>
             <?= $this->Html->link(
-                '<i class="fab fa-google mr-2"></i>' . __('Sign up using Google'),
+                '<i class="bi bi-google me-2"></i>' . __('Sign up using Google'),
                 '#',
-                ['class' => 'btn btn-block btn-danger', 'escape' => false]
+                ['class' => 'btn btn-danger w-100', 'escape' => false]
             ) ?>
         </div>
         <!-- /.social-auth-links -->
