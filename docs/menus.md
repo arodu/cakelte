@@ -62,7 +62,7 @@ echo $this->Menu->render($items);
 | `target` | string | HTML `target`, for example `_blank`. |
 | `append` | string or callable | Extra HTML inside the link (badge, count). |
 
-Callables receive the current `ServerRequest`:
+`show`, `active` and `disabled` callables receive the current `ServerRequest`:
 
 ```php
 use Cake\Http\ServerRequest;
@@ -77,6 +77,7 @@ $items = [
 ];
 ```
 
+An `append` callable receives `(array $item, ServerRequest $request)`.
 `append` is inserted as HTML. Escape any dynamic value you put there.
 
 Use the helper constants for special items:

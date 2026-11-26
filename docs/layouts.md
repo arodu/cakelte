@@ -7,11 +7,13 @@ CakeLTE ships two layouts:
 
 ## Using a layout
 
-Set the layout in your controller or in `AppView`:
+Set the layout in your controller:
 
 ```php
 $this->viewBuilder()->setLayout('CakeLte.default');
 ```
+
+Or set the `$layout` property in `AppView` (shown below).
 
 ## Using the `CakeLteTrait`
 

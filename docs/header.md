@@ -10,8 +10,8 @@ The app header (`templates/element/header/main.php`) renders:
 ## Search
 
 The search field is shown on desktop (`md` and up) and hidden on small screens,
-where a search icon links to the search page instead. Both the form and the
-mobile icon read the `searchAction` view variable:
+where a search icon uses `$searchAction` (it defaults to `#`). Both the form
+and the mobile icon read the `searchAction` view variable:
 
 ```php
 $this->set('searchAction', '/search');

@@ -11,9 +11,8 @@ vendor package):
 bin/cake cakelte install
 ```
 
-| Option | Description |
-|--------|-------------|
-| `--overwrite` / `-o` | Overwrite an existing symlink, folder or files. |
+> The command declares `--overwrite` / `-o`, but 3.x does not apply it yet. If
+> `webroot/adminlte` already exists, remove it before running the command again.
 
 This is a manual step, not run automatically by composer.
 
