@@ -122,7 +122,7 @@ The element layout changed:
 - Removed: `aside/main`, `extra/css`, `extra/script`, `header/search-block`,
   `header/search-default`, `sidebar/search`, `sidebar/user`.
 - Added: `header/search`, `header/language`, `header/fullscreen`,
-  `header/color-mode`, `header/user`, `sidebar/main`, `sidebar/menu`.
+  `header/color-mode`, `header/user`.
 
 The full list is in [Customization](customization.md).
 
