@@ -55,7 +55,7 @@ The helper exposes `rtl()`, which returns `dir="rtl"` when the option is true:
 
 !!! warning "Not applied by the bundled layouts"
     The `CakeLte.default` and `CakeLte.login` layouts render `<html lang="en">`
-    without calling `rtl()`, and the helper always loads the LTR
+    without calling `rtl()`, and the default asset list only includes the LTR
     `adminlte.css`. Setting `rtl` does not change the bundled layouts in 3.x.
 
 To use it, override the layout (see [Customization](customization.md)) and add

@@ -13,7 +13,7 @@ theme instead of maintaining the markup by hand.
 
 ## Requirements
 
-- PHP >= 8.2 (CI covers 8.2 through 8.6)
+- PHP >= 8.2
 - CakePHP >= 5.0
 
 ## Installation
@@ -67,8 +67,11 @@ You should see `CakeLte` in the list.
 
 ## Next steps
 
-- Read [Configuration](configuration.md) to set up `config/cakelte.php`.
+- Read [Configuration](configuration.md) to choose the layout and review the
+  options.
 - Read [Layouts](layouts.md) to wire the layouts and the `CakeLteTrait`.
+- Read [Customization](customization.md) to override templates and generate
+  code with the bake templates.
 
 ---
 [Back to index](index.md)
