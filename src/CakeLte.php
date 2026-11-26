@@ -7,10 +7,8 @@ abstract class CakeLte
 {
     public const LAYOUT_DEFAULT = 'CakeLte.default';
     public const LAYOUT_LOGIN = 'CakeLte.login';
-    public const LAYOUT_TOP_NAV = 'CakeLte.top-nav';
 
     public const NAME = 'CakeLte';
-    public const MENU = 'CakeLteMenu';
     public const MENU_CONFIG = [
         'configFile' => 'CakeLte.menu',
         'configKey' => 'Menu',
