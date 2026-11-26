@@ -50,4 +50,4 @@ Calling `initializeCakeLte()` registers:
 - `CakeLte.login`
 
 ---
-[Back to index](index.md) · [Back to README](../README.md)
+[Back to index](index.md)

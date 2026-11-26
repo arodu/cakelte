@@ -54,4 +54,4 @@ The sidebar search filter is provided by AdminLTE's `SidebarSearch` (bundled in
 expands any subtree that holds a match. No JavaScript configuration is needed.
 
 ---
-[Back to index](index.md) · [Back to README](../README.md)
+[Back to index](index.md)

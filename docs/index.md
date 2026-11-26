@@ -21,4 +21,4 @@ Documentation for the CakeLTE plugin, an AdminLTE wrapper for CakePHP 5.x.
 
 ---
 
-Back to the [README](../README.md)
+Back to the [GitHub repository](https://github.com/arodu/cakelte)

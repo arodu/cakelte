@@ -59,4 +59,4 @@ You should see `CakeLte` in the list.
 - Read [Layouts](layouts.md) to wire the layouts and the `CakeLteTrait`.
 
 ---
-[Back to index](index.md) · [Back to README](../README.md)
+[Back to index](index.md)

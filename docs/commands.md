@@ -44,4 +44,4 @@ Files are copied into `templates/plugin/CakeLte/` in your application. See
 [Customization](customization.md) for the list of files.
 
 ---
-[Back to index](index.md) · [Back to README](../README.md)
+[Back to index](index.md)

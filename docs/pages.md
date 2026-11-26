@@ -23,4 +23,4 @@ Bootstrap navigation components (navbar, nav, nav-pills, nav-tabs).
 Both pages are available when the plugin's routes are loaded.
 
 ---
-[Back to index](index.md) · [Back to README](../README.md)
+[Back to index](index.md)

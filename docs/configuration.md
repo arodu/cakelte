@@ -60,4 +60,4 @@ to `config/menu.php` to override the default items. See [Sidebar](sidebar.md)
 for the menu item format.
 
 ---
-[Back to index](index.md) · [Back to README](../README.md)
+[Back to index](index.md)
