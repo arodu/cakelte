@@ -71,4 +71,24 @@ class BakeAuthTemplatesTest extends TestCase
             $this->assertStringContainsString('me-2', $content, sprintf('Expected me-2 in %s', $file));
         }
     }
+
+    /**
+     * The authentication bake templates must not use the removed BootstrapUI 4
+     * `custom` checkbox option.
+     *
+     * @return void
+     */
+    public function testAuthTemplatesDoNotUseBootstrapUi4CustomOption(): void
+    {
+        $base = dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'bake' . DIRECTORY_SEPARATOR . 'Template' . DIRECTORY_SEPARATOR;
+
+        foreach (array_keys(static::TEMPLATES) as $file) {
+            $content = (string)file_get_contents($base . $file);
+            $this->assertStringNotContainsString(
+                "'custom' =>",
+                $content,
+                sprintf('BootstrapUI 4 custom option remains in %s', $file),
+            );
+        }
+    }
 }
